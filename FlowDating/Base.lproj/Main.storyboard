@@ -3510,36 +3510,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDi-bj-faa">
-                                <rect key="frame" x="16" y="115" width="343" height="515"/>
-                                <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kBm-zr-yb8">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="515"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GGG-Wa-Zvf">
-                                            <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="np9-Cw-jr0">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HcB-DJ-1Tn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </collectionViewCellContentView>
-                                            </collectionViewCell>
-                                        </cells>
-                                    </collectionView>
-                                </subviews>
+                                <rect key="frame" x="0.0" y="115" width="375" height="515"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="kBm-zr-yb8" firstAttribute="top" secondItem="NDi-bj-faa" secondAttribute="top" id="9XR-1Z-Toh"/>
-                                    <constraint firstItem="kBm-zr-yb8" firstAttribute="leading" secondItem="NDi-bj-faa" secondAttribute="leading" id="D2V-fS-4is"/>
-                                    <constraint firstAttribute="trailing" secondItem="kBm-zr-yb8" secondAttribute="trailing" id="cZ3-8q-kT2"/>
-                                    <constraint firstAttribute="bottom" secondItem="kBm-zr-yb8" secondAttribute="bottom" id="wwF-ux-PcW"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusview">
                                         <real key="value" value="15"/>
@@ -3638,7 +3610,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="iad-df-7kE" firstAttribute="top" secondItem="ltU-uq-A6r" secondAttribute="top" id="1Ji-5V-l8w"/>
                                     <constraint firstAttribute="trailing" secondItem="EHA-Ui-dIv" secondAttribute="trailing" constant="20" id="6zB-hh-4nB"/>
@@ -3704,10 +3676,10 @@
                         <constraints>
                             <constraint firstItem="fVZ-zl-aZo" firstAttribute="top" secondItem="DFE-Tn-MqC" secondAttribute="top" id="02X-Qb-DLn"/>
                             <constraint firstItem="fVZ-zl-aZo" firstAttribute="leading" secondItem="DFE-Tn-MqC" secondAttribute="leading" id="02n-eq-WoW"/>
-                            <constraint firstItem="voV-Ne-874" firstAttribute="trailing" secondItem="NDi-bj-faa" secondAttribute="trailing" constant="16" id="97U-3v-pFg"/>
+                            <constraint firstItem="voV-Ne-874" firstAttribute="trailing" secondItem="NDi-bj-faa" secondAttribute="trailing" id="97U-3v-pFg"/>
                             <constraint firstItem="Ls2-iq-MPc" firstAttribute="top" secondItem="NDi-bj-faa" secondAttribute="bottom" constant="-54" id="HIR-UT-IAo"/>
                             <constraint firstItem="voV-Ne-874" firstAttribute="trailing" secondItem="fVZ-zl-aZo" secondAttribute="trailing" id="U7h-wK-SpY"/>
-                            <constraint firstItem="NDi-bj-faa" firstAttribute="leading" secondItem="voV-Ne-874" secondAttribute="leading" constant="16" id="djy-98-ni7"/>
+                            <constraint firstItem="NDi-bj-faa" firstAttribute="leading" secondItem="voV-Ne-874" secondAttribute="leading" id="djy-98-ni7"/>
                             <constraint firstItem="Ls2-iq-MPc" firstAttribute="centerX" secondItem="DFE-Tn-MqC" secondAttribute="centerX" id="oAV-2n-1xy"/>
                             <constraint firstItem="NDi-bj-faa" firstAttribute="centerX" secondItem="DFE-Tn-MqC" secondAttribute="centerX" id="sid-ww-U7H"/>
                             <constraint firstItem="NDi-bj-faa" firstAttribute="top" secondItem="fVZ-zl-aZo" secondAttribute="bottom" constant="15" id="xoT-hB-q6C"/>
@@ -4132,7 +4104,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKn-8D-zy9">
-                                        <rect key="frame" x="164" y="14.5" width="47.5" height="21"/>
+                                        <rect key="frame" x="165.5" y="14.5" width="44" height="21"/>
                                         <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -4335,7 +4307,7 @@
     </scenes>
     <designables>
         <designable name="unN-UW-b75">
-            <size key="intrinsicContentSize" width="65" height="36"/>
+            <size key="intrinsicContentSize" width="64" height="36"/>
         </designable>
     </designables>
     <resources>

@@ -551,14 +551,14 @@ extension HomeVC : TinderCardDelegate{
         print("valueArray count ----",valueArray.count)
         print("CurrentIndex ------",currentIndex)
         if valueArray.count > 0{
-            let value = valueArray[currentIndex]
-            let ids = value.num
-//            let storyboard = UIStoryboard(name: "TabStoryboard", bundle: nil)
-//            let filter = storyboard.instantiateViewController(withIdentifier: "detail") as! CandidateDetailsVC
+//            let value = valueArray[currentIndex]
+//            let ids = value.num
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let filter = storyboard.instantiateViewController(withIdentifier: "CandidateDetailsVC") as! CandidateDetailsVC
 //            filter.personUserid = ids ?? 0
-//            DispatchQueue.main.async {
-//                self.navigationController?.pushViewController(filter, animated: false)
-//            }
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(filter, animated: false)
+            }
             
             
         }

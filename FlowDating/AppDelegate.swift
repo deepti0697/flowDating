@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.window?.makeKeyAndVisible()
         IQKeyboardManager.shared.enable = true
         let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-        let vc1 = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        let vc1 = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         let nv4 = UINavigationController(rootViewController: vc1)
       
         self.window?.rootViewController = nv4

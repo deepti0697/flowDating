@@ -29,8 +29,13 @@ class VC_Interests: UIViewController {
        
         tabBarItem.image = UIImage(named: "bottom_tab_heart")
     }
+    @IBAction func openProfileAction(_ sender: Any) {
+        openViewController(controller: MeVC.self, storyBoard: .homeStoryboard) { (vc) in
+
+        }
+    }
     @IBAction func swiftchAction(_ sender: UISwitch) {
-        if sender.isOn {
+        if !sender.isOn {
             openViewController(controller: HomeVC.self, storyBoard: .mainStoryBoard) { (vc) in
 
             }
@@ -97,18 +102,39 @@ class Cell_InterestingUser: UICollectionViewCell {
     private var gradient: CAGradientLayer!
 
     
-    
-    
-    func gradientLayer(){
-        gradient = CAGradientLayer()
-        gradient.frame = self.bounds
-        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradient.locations = [0, 1, 0.9, 1]
-        img_Shadow.layer.mask = gradient
+    let layerg = CAGradientLayer()
+    override  func awakeFromNib() {
+        superview?.awakeFromNib()
+      
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = img_Profile.bounds
+        gradient.colors = [UIColor.clear.cgColor,UIColor.black.cgColor]
+        gradient.locations = [0.5, 1.0]
+        
+        img_Profile.layer.insertSublayer(gradient, at: 0)
+        
+        
+        let gradient2: CAGradientLayer = CAGradientLayer()
+        gradient2.frame = img_Profile.bounds
+        gradient2.colors = [UIColor.black.cgColor,UIColor.clear.cgColor,UIColor.clear.cgColor]
+        gradient2.locations = [0.0,0.0 ,1.0]
+        
+        img_Profile.layer.insertSublayer(gradient2, at: 0)
+    }
+    override func layoutSubviews() {
+        layerg.frame = CGRect(x: 0.0, y: 0.0, width: self.img_Profile.frame.size.width, height: self.img_Profile.frame.size.height)
     }
     
+//    func gradientLayer(){
+//        gradient = CAGradientLayer()
+//        gradient.frame = self.bounds
+//        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor]
+//        gradient.locations = [0, 1, 0.9, 1]
+//        img_Shadow.layer.mask = gradient
+//    }
+//
     func cellLoad(Index:Int,lang:String){
-       gradientLayer()
+//       gradientLayer()
     }
 }
 

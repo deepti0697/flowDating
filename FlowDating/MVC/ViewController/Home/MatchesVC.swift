@@ -18,6 +18,14 @@ class MatchesVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    @IBAction func swiftchAction(_ sender: UISwitch) {
+        if !sender.isOn {
+            openViewController(controller: HomeVC.self, storyBoard: .mainStoryBoard) { (vc) in
+
+            }
+        }
+       
+    }
     /*
     // MARK: - Navigation
 
@@ -27,7 +35,11 @@ class MatchesVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func openProfileAction(_ sender: Any) {
+        openViewController(controller: MeVC.self, storyBoard: .homeStoryboard) { (vc) in
 
+        }
+    }
 }
 
 extension MatchesVC : UITableViewDelegate,UITableViewDataSource{

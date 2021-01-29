@@ -847,6 +847,7 @@ extension UIStoryboard {
     
     enum Storyboard: String {
         case mainStoryBoard = "Main"
+        case homeStoryboard = "Home"
        
      
         var filename: String {

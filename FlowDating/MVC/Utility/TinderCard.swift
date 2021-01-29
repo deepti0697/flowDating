@@ -141,7 +141,7 @@ class TinderCard: UIView {
         v.translatesAutoresizingMaskIntoConstraints = false
         
         
-        let vH = v.heightAnchor.constraint(equalToConstant: 141)
+        let vH = v.heightAnchor.constraint(equalToConstant: 138)
         let vW = v.widthAnchor.constraint(equalToConstant: viewbootom.frame.size.width)
         
         NSLayoutConstraint.activate([vH,vW])

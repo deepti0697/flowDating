@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SwipeView" customModule="FlowDating" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.40000000596046448" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1wv-95-Lfs">
+                    <rect key="frame" x="48" y="88" width="315" height="482"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" name="textfiledColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusview">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view alpha="0.34999999403953552" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sff-ks-hG8">
+                    <rect key="frame" x="36" y="75" width="340" height="482"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusview">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9Y-u9-3wB">
+                    <rect key="frame" x="20" y="13" width="374" height="527"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusview">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="g9Y-u9-3wB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="1UT-HS-kSW"/>
+                <constraint firstItem="Sff-ks-hG8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="4gd-nf-gF3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="g9Y-u9-3wB" secondAttribute="bottom" constant="50" id="6lh-8d-pAD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="g9Y-u9-3wB" secondAttribute="trailing" constant="20" id="7QE-OI-euy"/>
+                <constraint firstItem="g9Y-u9-3wB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="DZQ-de-50W"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Sff-ks-hG8" secondAttribute="trailing" constant="38" id="Ej8-Ik-pF8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Sff-ks-hG8" secondAttribute="bottom" constant="33" id="JIu-us-VPd"/>
+                <constraint firstItem="g9Y-u9-3wB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="Mbs-iA-2kr"/>
+                <constraint firstItem="g9Y-u9-3wB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="c0n-1u-Stw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="g9Y-u9-3wB" secondAttribute="bottom" constant="50" id="j1l-Pq-c1N"/>
+                <constraint firstItem="Sff-ks-hG8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="31" id="j3t-Ck-5fq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="g9Y-u9-3wB" secondAttribute="trailing" constant="20" id="qgN-tJ-B6t"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="Swipview" destination="g9Y-u9-3wB" id="iok-P3-qQh"/>
+            </connections>
+            <point key="canvasLocation" x="2.8985507246376816" y="61.607142857142854"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="textfiledColor">
+            <color red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

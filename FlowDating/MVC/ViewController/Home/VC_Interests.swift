@@ -16,8 +16,6 @@ class VC_Interests: UIViewController {
   
     @IBOutlet weak var collectionView_InterestingUser: UICollectionView!
     
-    
-  
     var interestInfoArr = NSMutableArray()
     var selectedIndexForView = 0
     var type = "ViewedMe"
@@ -30,6 +28,14 @@ class VC_Interests: UIViewController {
     override func viewDidLoad() {
        
         tabBarItem.image = UIImage(named: "bottom_tab_heart")
+    }
+    @IBAction func swiftchAction(_ sender: UISwitch) {
+        if sender.isOn {
+            openViewController(controller: HomeVC.self, storyBoard: .mainStoryBoard) { (vc) in
+
+            }
+        }
+       
     }
     
     func UiLoad(){

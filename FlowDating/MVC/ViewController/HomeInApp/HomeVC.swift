@@ -182,6 +182,12 @@ class HomeVC: ViewController {
     }
     
     
+   
+    @IBAction func switchONOFFAC(_ sender: UISwitch) {
+        if !sender.isOn {
+            appdelegate.setHomeView()
+        }
+    }
     func loadCardValues() {
         
         if valueArray.count > 0 {

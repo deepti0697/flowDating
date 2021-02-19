@@ -19,11 +19,12 @@ class MatchesVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     @IBAction func swiftchAction(_ sender: UISwitch) {
-        if !sender.isOn {
-            openViewController(controller: HomeVC.self, storyBoard: .mainStoryBoard) { (vc) in
+//        if !sender.isOn {
+//            openViewController(controller: HomeVC.self, storyBoard: .mainStoryBoard) { (vc) in
 
-            }
-        }
+//            }
+     //   }
+    appdelegate.setHomeVC()
        
     }
     /*

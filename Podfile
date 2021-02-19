@@ -21,7 +21,8 @@ pod 'AlamofireImage'
 pod 'SwiftyJSON'
 pod 'SVProgressHUD'
 pod 'SDWebImage'
-
+pod 'Firebase/Analytics'
+pod 'Firebase/Messaging'
   target 'FlowDatingTests' do
     inherit! :search_paths
     # Pods for testing

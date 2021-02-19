@@ -7,7 +7,7 @@
 //
 
 
-var  MAX_BUFFER_SIZE = 30;
+var  MAX_BUFFER_SIZE = 3;
 let  SEPERATOR_DISTANCE = 8;
 let  TOPYAXIS = 75;
 let names = ["Adam Gontier","Matt Walst","Brad Walst","Neil Sanderson","Barry Stock","Nicky Patson"]
@@ -17,6 +17,7 @@ import UIKit
 import SwiftyJSON
 class HomeVC: ViewController {
     
+    @IBOutlet weak var pageControll: UIPageControl!
     @IBOutlet weak var curveView: UIView!
     @IBOutlet weak var btnClose: UIButton!
     
@@ -42,11 +43,13 @@ class HomeVC: ViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        self.pageControll.numberOfPages = 2
         //let newCard = createTinderCard(at: 0,value: [:])
         // Do any additional setup after loading the view.
       
     }
+    
+  
     override func viewWillLayoutSubviews() {
            super.viewWillLayoutSubviews()
 
@@ -95,10 +98,51 @@ class HomeVC: ViewController {
         
     }
     
+    @IBAction func openProfileVC(_ sender: Any) {
+        openViewController(controller: MeVC.self, storyBoard: .homeStoryboard) { (vc) in
+
+        }
+    }
+    @IBOutlet weak var openprofile: UIImageView!
     func sendDatafilter(reset: Bool, data: NSDictionary) {
         self.callAPIforExplore(reset: reset, dict: data)
     }
     
+    @IBAction func btn2Action(_ sender: Any) {
+            let dummyCard = currentLoadedCardsArray.first
+                          
+                    if let imageview = dummyCard?.viewWithTag(1) as? UIImageView{
+                        imageview.image = valueArray[1].all[0]
+                        self.pageControll.currentPage = 0
+                    }
+        }
+        @IBAction func btnAction(_ sender: Any) {
+            let dummyCard = currentLoadedCardsArray.first
+                  
+            if let imageview = dummyCard?.viewWithTag(1) as? UIImageView{
+                imageview.image = valueArray[1].all[1]
+                self.pageControll.currentPage = 1
+            }
+        }
+    
+    @IBAction func openPageDetailAcrtion(_ sender: Any) {
+        
+        print("valueArray count ----",valueArray.count)
+        print("CurrentIndex ------",currentIndex)
+        if valueArray.count > 0{
+//            let value = valueArray[currentIndex]
+//            let ids = value.num
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let filter = storyboard.instantiateViewController(withIdentifier: "CandidateDetailsVC") as! CandidateDetailsVC
+//            filter.personUserid = ids ?? 0
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(filter, animated: false)
+            }
+            
+            
+        }
+        
+    }
     @IBAction func action_filter(_ sender: Any) {
 //        let subcription_plan = CommonMethod().getUserDefaults(key: Constant.key_subcription_plan) as! Int
 //        if subcription_plan == 0{
@@ -123,6 +167,9 @@ class HomeVC: ViewController {
     }
     
     @IBAction func actionPoke(_ sender: Any) {
+        let card = currentLoadedCardsArray.first
+        
+        card?.leftClickAction()
 //        let cardInfo = valueArray[currentIndex]
 //        self.callforPoke(user:cardInfo.id)
         
@@ -548,20 +595,7 @@ extension HomeVC : TinderCardDelegate{
     }
     func tapedoncard()  {
         
-        print("valueArray count ----",valueArray.count)
-        print("CurrentIndex ------",currentIndex)
-        if valueArray.count > 0{
-//            let value = valueArray[currentIndex]
-//            let ids = value.num
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let filter = storyboard.instantiateViewController(withIdentifier: "CandidateDetailsVC") as! CandidateDetailsVC
-//            filter.personUserid = ids ?? 0
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(filter, animated: false)
-            }
-            
-            
-        }
+       
         
     }
     // action called when the card goes to the right.

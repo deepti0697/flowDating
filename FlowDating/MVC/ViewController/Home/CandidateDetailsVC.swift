@@ -66,6 +66,7 @@ class CandidateDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSo
             
             let slide1:ImageViewPage = Bundle.main.loadNibNamed("ImageViewPage", owner: self, options: nil)?.first as! ImageViewPage
             slide1.img.image = item
+            slide1.img.contentMode = .scaleToFill
             slide1.tag = 1
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
             tap.numberOfTapsRequired = 1

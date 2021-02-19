@@ -6,9 +6,12 @@
 //
 
 import UIKit
-
-class CompleteProfile1VC: UIViewController {
+import  SwiftyJSON
+class CompleteProfile1VC: UIViewController,UITextViewDelegate {
    
+    let placeholderLabel = UILabel()
+    var isMaleSelected  = true
+    @IBOutlet weak var setScrollView: UIScrollView!
     @IBOutlet weak var descriptionTxtView: UITextView!
     @IBOutlet weak var displayNameTxt: UITextField!
     let datePicker = UIDatePicker()
@@ -22,6 +25,17 @@ class CompleteProfile1VC: UIViewController {
         txtDob.inputAccessoryView = toolbar
         txtDob.inputView = datePicker
         setupDatePicker()
+        self.txtDob.RightViewImage(#imageLiteral(resourceName: "Union -3"))
+      
+        self.descriptionTxtView.delegate = self
+        placeholderLabel.text = "Short Description (Optional)"
+        placeholderLabel.font = UIFont.italicSystemFont(ofSize: (descriptionTxtView.font?.pointSize)!)
+        placeholderLabel.sizeToFit()
+        descriptionTxtView.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (descriptionTxtView.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !descriptionTxtView.text.isEmpty
+        self.descriptionTxtView.delegate = self
         // Do any additional setup after loading the view.
     }
  
@@ -32,6 +46,7 @@ class CompleteProfile1VC: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 //        self.baseView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
+        self.setScrollView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
         self.baseview2.roundCorners(corners: [.topLeft, .topRight], radius: 30)
     }
     
@@ -42,6 +57,13 @@ class CompleteProfile1VC: UIViewController {
        
         self.baseview2.roundCorners(corners: [.topLeft, .topRight], radius: 30)
        }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+
+        if descriptionTxtView.textColor == UIColor.lightGray {
+            descriptionTxtView.text = ""
+            descriptionTxtView.textColor = UIColor.black
+        }
+    }
     func setupDatePicker() {
         datePicker.datePickerMode = .date
         toolbar.sizeToFit()
@@ -71,7 +93,8 @@ class CompleteProfile1VC: UIViewController {
     }
     @IBAction func maleAction(_ sender: UIButton) {
 //        sender.selectedbtn()
-        sender.setImage(#imageLiteral(resourceName: "man-3"), for: .normal)
+        isMaleSelected = true
+        sender.setImage(#imageLiteral(resourceName: "man"), for: .normal)
         femaleBtn.setImage(#imageLiteral(resourceName: "woman"), for: .normal)
         sender.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
         sender.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
@@ -81,8 +104,14 @@ class CompleteProfile1VC: UIViewController {
         
     }
    
+    @IBAction func saveAndContinueAction(_ sender: Any) {
+        if Validate.shared.validateCompletePrfoile(vc:self){
+            self.completeUserProfile1()
+        }
+    }
     @IBAction func femaleAction(_ sender: UIButton) {
 //        sender.selectedbtn()
+        isMaleSelected = false
         maleBtn.setImage(#imageLiteral(resourceName: "man-1"), for: .normal)
         sender.setImage(#imageLiteral(resourceName: "woman-2"), for: .normal)
         sender.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
@@ -94,12 +123,7 @@ class CompleteProfile1VC: UIViewController {
     
 }
 extension UIView {
-   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
-    }
+   
 }
 extension CompleteProfile1VC:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -115,5 +139,41 @@ extension CompleteProfile1VC:UITextFieldDelegate {
         }
         return true
     }
+    func completeUserProfile1(){
+        var params =  [String : Any]()
+        
+        params["name"] = self.displayNameTxt.text
+        params["dob"] = self.txtDob.text ?? ""
+        params["about"] = self.descriptionTxtView.text
+        if isMaleSelected {
+        params["gender"] = "male"
+        }
+        else {
+            params["gender"] = "female"
+        }
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServiceForCompleteProfile(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
+                }
+                }
+             else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
+    
+    }
+    func textViewDidChange(_ textView: UITextView) {
+          placeholderLabel.isHidden = !descriptionTxtView.text.isEmpty
+      }
 }
 

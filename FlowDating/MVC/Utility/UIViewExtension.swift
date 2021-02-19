@@ -18,6 +18,12 @@ extension UIView {
     self.layer.masksToBounds = true
   }
    
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+         let mask = CAShapeLayer()
+         mask.path = path.cgPath
+         layer.mask = mask
+     }
         func addLine(position : LINE_POSITION, color: UIColor, width: Double) {
             let lineView = UIView()
             lineView.backgroundColor = color
@@ -83,33 +89,4 @@ class DesignableLabel: UILabel {
 
 
 
-
-class CustomDashedView: UIView {
-
-    
-    @IBInspectable var dashWidth: CGFloat = 0
-    @IBInspectable var dashColor: UIColor = .clear
-    @IBInspectable var dashLength: CGFloat = 0
-    @IBInspectable var betweenDashesSpace: CGFloat = 0
-
-    var dashBorder: CAShapeLayer?
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        dashBorder?.removeFromSuperlayer()
-        let dashBorder = CAShapeLayer()
-        dashBorder.lineWidth = dashWidth
-        dashBorder.strokeColor = dashColor.cgColor
-        dashBorder.lineDashPattern = [dashLength, betweenDashesSpace] as [NSNumber]
-        dashBorder.frame = bounds
-        dashBorder.fillColor = nil
-        if cornerRadius > 0 {
-            dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
-        } else {
-            dashBorder.path = UIBezierPath(rect: bounds).cgPath
-        }
-        layer.addSublayer(dashBorder)
-        self.dashBorder = dashBorder
-    }
-}
 

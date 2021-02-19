@@ -23,7 +23,7 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tbl.delegate = self
         tbl.dataSource = self
         
-        
+        imgProfile.contentMode = .scaleToFill
         // Do any additional setup after loading the view.
     }
     
@@ -91,13 +91,12 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
-//        if indexPath.row == 0{
-//            let storyboard = UIStoryboard(name: "TabStoryboard", bundle: nil)
-//            let filter = storyboard.instantiateViewController(withIdentifier: "detail") as! CandidateDetailsVC
-//            let user = getUser()
-//            filter.personUserid = user.id
-//            self.navigationController?.pushViewController(filter, animated: true)
-//        }
+        if indexPath.row == 6{
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let filter = storyboard.instantiateViewController(withIdentifier: "VC_Setting") as! VC_Setting
+            
+            self.navigationController?.pushViewController(filter, animated: true)
+        }
 //        if indexPath.row == 2{
 //            let storyboard = UIStoryboard(name: "TabStoryboard", bundle: nil)
 //            let filter = storyboard.instantiateViewController(withIdentifier: "matual") as! MatualFriendVc

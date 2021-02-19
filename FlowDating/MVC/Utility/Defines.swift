@@ -85,84 +85,23 @@ struct ServiceUrls
 //    static let baseUrl = "http://34.238.160.251:3002/register_user"
 
     
-    static let baseUrl = "https://www.theuniondating.com/api/"
+    static let baseUrl = "http://192.168.1.115/flow_dating_app/public/api/"
     static let home = "explore"
     static let regiser_New_User = "/auth/register"
     static let check_Mobile_Registered = "/auth/email-mobile-exists"
 //    static let login = "v1/login"
-    static let login = "/auth/login"
-    static let verify_OTP = "/auth/verify-otp"
-    static let send_OTP = "/auth/send-otp"
-    static let appData = "/auth/appdata"
-    static let register_otp = "v1/register-otp"
-    
-    static let language = "v1/languages"
-    static let update_language = "v1/update-language"
-    static let countries = "v1/countries"
-    static let category = "v1/category"
-    static let prdCategory = "v1/product-cat"
-    static let prdSubCategory = "v1/product-subcat"
-    static let update_country = "v1/update-country"
-    static let update_category = "v1/update-category"
-    static let home_product_ForGuest = "v1/home-prd-public" + "?categories_id=&recentlyadded=recentlyadded&mosttrending=mosttrending"
-    static let home_product = "v1/home-prd" + "?categories_id=&recentlyadded=recentlyadded&mosttrending=mosttrending"
-    static let register = "v1/register"
-    static let loan_Types  = "/lender/loan_types"
-    static let loan_lender = "/lender"
-    static let register_new = "v1/register-new"
-    
-    
-    static let enterregistrationcode = "patient/enter_registration_code"
-    static let createpassword = "patient/create_password"
-    static let forgot_password = "forgot_password"
-    static let otpEnter = "verify_otp"
-    static let generateOTP = "generate_otp"
+    static let login = "apiLogin"
+
+ 
+    static let hitSurvey = "complete_questionnaire"
+    static let send_OTP = "send_login_otp"
+    static let sign_up_Otp = "send_otp"
   
-    static let setPasswordForgot = "reset_pass_otp"
-    
+    static let sign_up_Email = "mobileRegistration"
+    static let complete_profile = "complete_profile"
+    static let complete_profile_prefrence = "complete_profile_preference"
    
-    static let get_state    = "get_state"
-    static let list_queries  = "list_queries"
-    static let create_request  = "create_request"
-    static let update_user_fileds  = "update_user_fields"
-    static let get_vendor_details = "get_vendor_details"
-    static let upload_user_files = "upload_user_files"
-    static let update_profile_image = "update_profile_data"
-    static let addQuery             = "add_query"
-     static let get_query_detail             = "get_query_detail"
-    static let add_query_reply             = "add_query_reply"
-    static let submit_contact_form =  "submit_contact_form"
-    static let get_resume = "get_resume"
-    static let list_notification_logs = "list_notification_logs"
-    static let search_string = "search_queries"
-    static let prd_like = "v1/prd-like"
-    static let prd_wishlist = "v1/prd-wishlist"
-    static let home_filter_user = "v1/home-filter-user"
-    static let home_filter_guestUser = "v1/home-filter"
-    static let settings = "v1/settings"
-    static let supportform = "v1/supportform"
-    static let languageFetch = "v1/languages"
-    static let countryFetch = "v1/countries"
-    static let logout = "v1/logout"
-    static let transaction_record = "v1/transaction-record"
-    static let transaction_detail_with_trans_id = "v1/transaction-detail?trans_id="
-    static let submit_rating = "v1/submit-rating"
-    
-    static let prd_detail = "v1/prd-detail?prd_id="
-    static let prd_similar = "v1/prd-similar?prd_id="
-    static let prd_wishlist_detailPage = "v1/my-wishlist-prd?prd_id="
-    static let prd_reviews_rating = "v1/prd-review-rating?prd_id="
-    static let get_profile = "v1/get-profile"
-    static let update_profile = "v1/update-profile"
-    
-    static let change_password = "v1/change-password"  //v1/following
-    
-    static let following = "v1/following"
-    static let follower = "v1/follower"
-    static let start_unfollow = "v1/start-unfollow"
-    static let start_follow = "v1/start-follow"
-    
-    static let my_ads = "v1/my-ads"
+
 
     
 

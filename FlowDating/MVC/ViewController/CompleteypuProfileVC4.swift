@@ -30,7 +30,11 @@ class CompleteypuProfileVC4: UIViewController {
     }
     
     @IBAction func latterACtion(_ sender: Any) {
-        appDelegate.setHomeView()
+//        appDelegate.setHomeView()
+//        openViewController(controller: HomeVC.self, storyBoard: .mainStoryBoard) { (vc) in
+//
+//        }
+        appdelegate.setHomeVC()
     }
     /*
     // MARK: - Navigation

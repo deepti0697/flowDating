@@ -16,13 +16,14 @@ class ViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+//           self.roundedView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
     }
     override func viewWillLayoutSubviews() {
            super.viewWillLayoutSubviews()
-
+//        self.roundedView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
            // Call the roundCorners() func right there.
      
-//        self.roundedView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
        }
 
    
@@ -37,5 +38,6 @@ class ViewController: UIViewController {
         }
    
     }
+  
 }
 

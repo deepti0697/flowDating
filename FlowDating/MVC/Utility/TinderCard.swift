@@ -72,11 +72,12 @@ class TinderCard: UIView {
         
         
         let backGroundImageView = UIImageView(frame:backGroundView.bounds)
-        backGroundImageView.backgroundColor = .red
-        let parse = value.all[0]
-//        backGroundImageView.image = #imageLiteral(resourceName: "bg")
-        backGroundImageView.contentMode = .scaleAspectFill
-        backGroundImageView.image = parse
+                backGroundImageView.backgroundColor = .red
+                backGroundImageView.tag = 1
+                let parse = value.all[0]
+        //        backGroundImageView.image = #imageLiteral(resourceName: "bg")
+                backGroundImageView.contentMode = .scaleAspectFill
+                backGroundImageView.image = parse
         //  backGroundImageView.clipsToBounds = false;
 //        backGroundImageView.image = CommonMethod().cropToBounds(image: UIImage(named:"login_bg") ?? UIImage(), width: Double(bounds.width), height: Double(bounds.height))
 //        backGroundImageView.contentMode = .center
@@ -108,16 +109,16 @@ class TinderCard: UIView {
         
         let viewbootom = UIView()
         viewbootom.backgroundColor = UIColor.clear
-        viewbootom.clipsToBounds = true
+        viewbootom.clipsToBounds = false
         backGroundImageView.addSubview(viewbootom)
         
-        let v:TinderbottomView = Bundle.main.loadNibNamed("TinderbottomView", owner: self, options: nil)?.first as! TinderbottomView       //let tinderview = Bundle.loadNibNamed("TinderbottomView") as! TinderbottomView
+//        let v:TinderbottomView = Bundle.main.loadNibNamed("TinderbottomView", owner: self, options: nil)?.first as! TinderbottomView       //let tinderview = Bundle.loadNibNamed("TinderbottomView") as! TinderbottomView
 //        v.match_lbl .setTitle("ssd", for: .normal)
-        v.nmPerson.text = "Deepti" ?? "" + " \(String(""))"
-        v.distance.text = "2 km"
+//        v.nmPerson.text = "Deepti"
+//        v.distance.text = "2 km"
 //        v.imgCount .setTitle(String(value.public_photo!.count), for: .normal)
         
-        viewbootom.addSubview(v)
+//        viewbootom.addSubview(v)
         
         
         
@@ -138,19 +139,19 @@ class TinderCard: UIView {
         
         
         /////////////////////Constarint ///////////////
-        v.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        let vH = v.heightAnchor.constraint(equalToConstant: 138)
-        let vW = v.widthAnchor.constraint(equalToConstant: viewbootom.frame.size.width)
-        
-        NSLayoutConstraint.activate([vH,vW])
-        
-        v.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20).isActive = true
-        
-        v.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-        
-        v.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+//        v.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        
+//        let vH = v.heightAnchor.constraint(equalToConstant: 141)
+//        let vW = v.widthAnchor.constraint(equalToConstant: viewbootom.frame.size.width)
+//        
+//        NSLayoutConstraint.activate([vH,vW])
+//        
+//        v.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+//        
+//        v.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+//        
+//        v.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
         
     
         

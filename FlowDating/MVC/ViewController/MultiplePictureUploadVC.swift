@@ -11,6 +11,7 @@ import SwiftyJSON
 
 
 class MultiplePictureUploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    
     var isArrayImage = true
     var imgcell = InchargeImageCollectionViewCell()
     @IBOutlet weak var imageCollectionView: UICollectionView!
@@ -169,9 +170,9 @@ extension MultiplePictureUploadVC:UICollectionViewDelegate,UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         imgcell = collectionView.cellForItem(at: indexPath) as! InchargeImageCollectionViewCell
-        if imgcell.imgeView.image == #imageLiteral(resourceName: "AddPhoto")  {
+//        if imgcell.imgeView.image == #imageLiteral(resourceName: "Union 5")  {
         setImageForComplaint(imageSec: "1", cel: imgcell)
-        }
+//        }
         
     
 }

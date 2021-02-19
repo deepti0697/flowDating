@@ -39,11 +39,12 @@ class VC_Messages: UIViewController {
         }
     }
     @IBAction func swiftchAction(_ sender: UISwitch) {
-        if !sender.isOn {
-            openViewController(controller: HomeVC.self, storyBoard: .mainStoryBoard) { (vc) in
-
-            }
-        }
+//        if !sender.isOn {
+//
+//        openViewController(controller: HomeVC.self, storyBoard: .mainStoryBoard) { (vc) in
+        appdelegate.setHomeVC()
+//            }
+//        }
        
     }
     override func viewWillAppear(_ animated: Bool) {

@@ -10,6 +10,7 @@
 		1BEEA167F617C520038E83EB /* Pods_FlowDatingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDC61BE2DEDBEB807920EAC /* Pods_FlowDatingTests.framework */; };
 		2E430C3553802676E425C878 /* Pods_FlowDating.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9144DFED2D9ECC9CBE5725C5 /* Pods_FlowDating.framework */; };
 		7627D7A47BBF4B347FB3A110 /* Pods_FlowDating_FlowDatingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C8FCAD9FCB55AC2CCAA485 /* Pods_FlowDating_FlowDatingUITests.framework */; };
+		F226C73E25D5578F0039FED3 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F226C73D25D5578F0039FED3 /* Model.swift */; };
 		F231783B25BE82A300F4F78A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231783A25BE82A300F4F78A /* AppDelegate.swift */; };
 		F231783F25BE82A300F4F78A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231783E25BE82A300F4F78A /* ViewController.swift */; };
 		F231784225BE82A300F4F78A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F231784025BE82A300F4F78A /* Main.storyboard */; };
@@ -33,6 +34,10 @@
 		F231797325BED7CE00F4F78A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231797225BED7CE00F4F78A /* LoginVC.swift */; };
 		F231797825BED7ED00F4F78A /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231797725BED7ED00F4F78A /* SignupVC.swift */; };
 		F231797D25BED8D800F4F78A /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231797C25BED8D800F4F78A /* UIViewExtension.swift */; };
+		F252DB6A25D6458C0023AA42 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F252DB6925D6458C0023AA42 /* Validate.swift */; };
+		F252DB6F25D645E80023AA42 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F252DB6E25D645E80023AA42 /* Validation.swift */; };
+		F252DB7425D645F40023AA42 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F252DB7325D645F40023AA42 /* AppHelper.swift */; };
+		F252DB7E25D64A9C0023AA42 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F252DB7D25D64A9C0023AA42 /* CustomView.swift */; };
 		F2562CE725C27E040061A6C6 /* CompleteypuProfileVC4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2562CE625C27E040061A6C6 /* CompleteypuProfileVC4.swift */; };
 		F2562D1525C28F210061A6C6 /* MultiplePictureUploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2562D1425C28F200061A6C6 /* MultiplePictureUploadVC.swift */; };
 		F2562D1D25C28F7D0061A6C6 /* InchargeImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2562D1C25C28F7D0061A6C6 /* InchargeImageCollectionViewCell.swift */; };
@@ -41,6 +46,8 @@
 		F2562D7525C2BE0C0061A6C6 /* VC_Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2562D7425C2BE0C0061A6C6 /* VC_Messages.swift */; };
 		F2562D9E25C2C6670061A6C6 /* MatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2562D9D25C2C6670061A6C6 /* MatchesVC.swift */; };
 		F2562DA325C2C6BD0061A6C6 /* MatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2562DA225C2C6BD0061A6C6 /* MatchesTableViewCell.swift */; };
+		F281D33E25C7C5D500546B6F /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F281D33D25C7C5D500546B6F /* FilterCollectionViewCell.swift */; };
+		F281D39825C8126200546B6F /* VC_Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F281D39725C8125F00546B6F /* VC_Setting.swift */; };
 		F28F44F725C1271300C283FA /* CompleteProfile1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28F44F625C1271300C283FA /* CompleteProfile1VC.swift */; };
 		F28F450625C12F0600C283FA /* CompleteProfile2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28F450525C12F0600C283FA /* CompleteProfile2VC.swift */; };
 		F2A5311925C40F9400E02054 /* CandidateDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5311825C40F9400E02054 /* CandidateDetailsVC.swift */; };
@@ -48,6 +55,7 @@
 		F2A5312425C4136000E02054 /* ImageViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5312325C4136000E02054 /* ImageViewPage.swift */; };
 		F2A5312925C4145100E02054 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5312825C4145100E02054 /* DetailsCell.swift */; };
 		F2A5317B25C436B800E02054 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5317A25C436B800E02054 /* MeVC.swift */; };
+		F2AF8FF125D5417000DF76AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2AF8FF025D5417000DF76AC /* GoogleService-Info.plist */; };
 		F2F43DF025C2D2D20007C3BC /* VC_Interests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F43DEF25C2D2D20007C3BC /* VC_Interests.swift */; };
 		F2F8472C25C13C7E00DC1340 /* SurveyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F8472B25C13C7E00DC1340 /* SurveyVC.swift */; };
 		F2F8478B25C16AC900DC1340 /* TinderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F8478A25C16AC900DC1340 /* TinderCard.swift */; };
@@ -92,6 +100,7 @@
 		BE487E682CCD7A8D3AEEB794 /* Pods-FlowDating-FlowDatingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowDating-FlowDatingUITests.debug.xcconfig"; path = "Target Support Files/Pods-FlowDating-FlowDatingUITests/Pods-FlowDating-FlowDatingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFDC61BE2DEDBEB807920EAC /* Pods_FlowDatingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlowDatingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84807CF6C4570D7C9CB3309 /* Pods-FlowDating.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowDating.debug.xcconfig"; path = "Target Support Files/Pods-FlowDating/Pods-FlowDating.debug.xcconfig"; sourceTree = "<group>"; };
+		F226C73D25D5578F0039FED3 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F231783725BE82A300F4F78A /* FlowDating.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowDating.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F231783A25BE82A300F4F78A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F231783E25BE82A300F4F78A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +130,10 @@
 		F231797225BED7CE00F4F78A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		F231797725BED7ED00F4F78A /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		F231797C25BED8D800F4F78A /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		F252DB6925D6458C0023AA42 /* Validate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
+		F252DB6E25D645E80023AA42 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		F252DB7325D645F40023AA42 /* AppHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
+		F252DB7D25D64A9C0023AA42 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		F2562CE625C27E040061A6C6 /* CompleteypuProfileVC4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteypuProfileVC4.swift; sourceTree = "<group>"; };
 		F2562D1425C28F200061A6C6 /* MultiplePictureUploadVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplePictureUploadVC.swift; sourceTree = "<group>"; };
 		F2562D1C25C28F7D0061A6C6 /* InchargeImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InchargeImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +142,8 @@
 		F2562D7425C2BE0C0061A6C6 /* VC_Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VC_Messages.swift; sourceTree = "<group>"; };
 		F2562D9D25C2C6670061A6C6 /* MatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesVC.swift; sourceTree = "<group>"; };
 		F2562DA225C2C6BD0061A6C6 /* MatchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesTableViewCell.swift; sourceTree = "<group>"; };
+		F281D33D25C7C5D500546B6F /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		F281D39725C8125F00546B6F /* VC_Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_Setting.swift; sourceTree = "<group>"; };
 		F28F44F625C1271300C283FA /* CompleteProfile1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteProfile1VC.swift; sourceTree = "<group>"; };
 		F28F450525C12F0600C283FA /* CompleteProfile2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteProfile2VC.swift; sourceTree = "<group>"; };
 		F2A5311825C40F9400E02054 /* CandidateDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateDetailsVC.swift; sourceTree = "<group>"; };
@@ -136,6 +151,8 @@
 		F2A5312325C4136000E02054 /* ImageViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewPage.swift; sourceTree = "<group>"; };
 		F2A5312825C4145100E02054 /* DetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
 		F2A5317A25C436B800E02054 /* MeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
+		F2AF8FF025D5417000DF76AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F2AF8FF525D5440F00DF76AC /* FlowDating.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlowDating.entitlements; sourceTree = "<group>"; };
 		F2F43DEF25C2D2D20007C3BC /* VC_Interests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VC_Interests.swift; sourceTree = "<group>"; };
 		F2F8472B25C13C7E00DC1340 /* SurveyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyVC.swift; sourceTree = "<group>"; };
 		F2F8478A25C16AC900DC1340 /* TinderCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderCard.swift; sourceTree = "<group>"; };
@@ -231,6 +248,8 @@
 		F231783925BE82A300F4F78A /* FlowDating */ = {
 			isa = PBXGroup;
 			children = (
+				F2AF8FF525D5440F00DF76AC /* FlowDating.entitlements */,
+				F2AF8FF025D5417000DF76AC /* GoogleService-Info.plist */,
 				F231794125BECCD500F4F78A /* Font */,
 				F23178A625BE900900F4F78A /* MVC */,
 				F231783A25BE82A300F4F78A /* AppDelegate.swift */,
@@ -288,6 +307,7 @@
 				F28F450525C12F0600C283FA /* CompleteProfile2VC.swift */,
 				F2F8472B25C13C7E00DC1340 /* SurveyVC.swift */,
 				F2562CE625C27E040061A6C6 /* CompleteypuProfileVC4.swift */,
+				F281D39725C8125F00546B6F /* VC_Setting.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -295,13 +315,17 @@
 		F23178A825BE901E00F4F78A /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F252DB6925D6458C0023AA42 /* Validate.swift */,
+				F252DB6E25D645E80023AA42 /* Validation.swift */,
 				F2F8482D25C183AE00DC1340 /* Common.swift */,
 				F2F8483225C1849400DC1340 /* Messages.swift */,
+				F252DB7325D645F40023AA42 /* AppHelper.swift */,
 				F2F8482825C1839F00DC1340 /* AppManager.swift */,
 				F2F8481D25C1810F00DC1340 /* Rechability */,
 				F2F8481825C180E500DC1340 /* Defines.swift */,
 				F2F847EA25C17A5100DC1340 /* ExploreModel.swift */,
 				F231797C25BED8D800F4F78A /* UIViewExtension.swift */,
+				F252DB7D25D64A9C0023AA42 /* CustomView.swift */,
 				F2F8478A25C16AC900DC1340 /* TinderCard.swift */,
 				F23178CB25BEA3DB00F4F78A /* Extension.swift */,
 				F23178AB25BE903900F4F78A /* GradientView.swift */,
@@ -313,6 +337,7 @@
 		F23178A925BE902500F4F78A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F226C73D25D5578F0039FED3 /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				F2A5312825C4145100E02054 /* DetailsCell.swift */,
+				F281D33D25C7C5D500546B6F /* FilterCollectionViewCell.swift */,
 				F2562D1C25C28F7D0061A6C6 /* InchargeImageCollectionViewCell.swift */,
 				F2562DA225C2C6BD0061A6C6 /* MatchesTableViewCell.swift */,
 			);
@@ -508,6 +534,7 @@
 				F231794F25BED28B00F4F78A /* sf_compact_display_semibold.ttf in Resources */,
 				F231794B25BED28800F4F78A /* sf_compact_display_regular.ttf in Resources */,
 				F2F847AB25C1713700DC1340 /* SwipeView.xib in Resources */,
+				F2AF8FF125D5417000DF76AC /* GoogleService-Info.plist in Resources */,
 				F231784725BE82A400F4F78A /* LaunchScreen.storyboard in Resources */,
 				F2A5311F25C4135C00E02054 /* ImageViewPage.xib in Resources */,
 				F231784425BE82A400F4F78A /* Assets.xcassets in Resources */,
@@ -645,14 +672,18 @@
 				F23178CC25BEA3DB00F4F78A /* Extension.swift in Sources */,
 				F2A5312925C4145100E02054 /* DetailsCell.swift in Sources */,
 				F2562D1525C28F210061A6C6 /* MultiplePictureUploadVC.swift in Sources */,
+				F252DB7E25D64A9C0023AA42 /* CustomView.swift in Sources */,
 				F2F43DF025C2D2D20007C3BC /* VC_Interests.swift in Sources */,
 				F231783F25BE82A300F4F78A /* ViewController.swift in Sources */,
 				F2F8482E25C183AE00DC1340 /* Common.swift in Sources */,
 				F2562DA325C2C6BD0061A6C6 /* MatchesTableViewCell.swift in Sources */,
+				F281D33E25C7C5D500546B6F /* FilterCollectionViewCell.swift in Sources */,
 				F2A5317B25C436B800E02054 /* MeVC.swift in Sources */,
+				F252DB6A25D6458C0023AA42 /* Validate.swift in Sources */,
 				F2F847B025C1713E00DC1340 /* SwipeView.swift in Sources */,
 				F2F8481925C180E500DC1340 /* Defines.swift in Sources */,
 				F28F450625C12F0600C283FA /* CompleteProfile2VC.swift in Sources */,
+				F281D39825C8126200546B6F /* VC_Setting.swift in Sources */,
 				F231797325BED7CE00F4F78A /* LoginVC.swift in Sources */,
 				F23178B125BE903E00F4F78A /* GradientButton.swift in Sources */,
 				F2562D7525C2BE0C0061A6C6 /* VC_Messages.swift in Sources */,
@@ -661,6 +692,7 @@
 				F2F847EB25C17A5100DC1340 /* ExploreModel.swift in Sources */,
 				F2562D9E25C2C6670061A6C6 /* MatchesVC.swift in Sources */,
 				F2F847BA25C1717F00DC1340 /* TinderbottomView.swift in Sources */,
+				F252DB7425D645F40023AA42 /* AppHelper.swift in Sources */,
 				F231793D25BECAB800F4F78A /* OtpScreen.swift in Sources */,
 				F2F847C125C1761900DC1340 /* HomeVC.swift in Sources */,
 				F231797D25BED8D800F4F78A /* UIViewExtension.swift in Sources */,
@@ -672,7 +704,9 @@
 				F28F44F725C1271300C283FA /* CompleteProfile1VC.swift in Sources */,
 				F2A5312425C4136000E02054 /* ImageViewPage.swift in Sources */,
 				F2F847FD25C17D8100DC1340 /* ServiceClass.swift in Sources */,
+				F226C73E25D5578F0039FED3 /* Model.swift in Sources */,
 				F231783B25BE82A300F4F78A /* AppDelegate.swift in Sources */,
+				F252DB6F25D645E80023AA42 /* Validation.swift in Sources */,
 				F23178AC25BE903900F4F78A /* GradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -779,7 +813,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -834,7 +868,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -851,16 +885,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = FlowDating/FlowDating.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development: Arun Goyal (6AAGKA6J8D)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = FlowDating/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.LoadLending.FlowDating;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flowdating;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = FlowDatingDeveloper;
 				SWIFT_OBJC_BRIDGING_HEADER = "FlowDating/MVC/Utility/Rechability/FlowDating-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -875,17 +912,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = FlowDating/FlowDating.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development: Arun Goyal (6AAGKA6J8D)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = FlowDating/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.LoadLending.FlowDating;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flowdating;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = FlowDatingDeveloper;
 				SWIFT_OBJC_BRIDGING_HEADER = "FlowDating/MVC/Utility/Rechability/FlowDating-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

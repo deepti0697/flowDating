@@ -36,7 +36,40 @@ extension UIButton {
     
     
 }
+private var kAssociationKeyMaxLength: Int = 0
 extension UITextField {
+  
+        
+        @IBInspectable var maxLength: Int {
+            get {
+                if let length = objc_getAssociatedObject(self, &kAssociationKeyMaxLength) as? Int {
+                    return length
+                } else {
+                    return Int.max
+                }
+            }
+            set {
+                objc_setAssociatedObject(self, &kAssociationKeyMaxLength, newValue, .OBJC_ASSOCIATION_RETAIN)
+                addTarget(self, action: #selector(checkMaxLength), for: .editingChanged)
+            }
+        }
+        
+        @objc func checkMaxLength(textField: UITextField) {
+            guard let prospectiveText = self.text,
+                prospectiveText.count > maxLength
+                else {
+                    return
+            }
+            
+            let selection = selectedTextRange
+            
+            let indexEndOfText = prospectiveText.index(prospectiveText.startIndex, offsetBy: maxLength)
+            let substring = prospectiveText[..<indexEndOfText]
+            text = String(substring)
+            
+            selectedTextRange = selection
+        }
+        
   var placeholder: String? {
       get {
           attributedPlaceholder?.string
@@ -55,6 +88,18 @@ extension UITextField {
           attributedPlaceholder = attributedText
       }
   }
+    public func RightViewImage(_ textFieldImg: UIImage?) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        if let image = textFieldImg {
+            let paddingImage = UIImageView()
+            paddingImage.image = image
+            paddingImage.contentMode = .center
+            paddingImage.frame = CGRect(x: 6, y: 6, width: 14, height: 18)
+            paddingView.addSubview(paddingImage)
+        }
+        self.rightView = paddingView
+        self.rightViewMode = UITextField.ViewMode.always
+    }
 }
 
 
@@ -1191,4 +1236,16 @@ extension UIButton {
 
 
 // Example of using the extension on button press
-    
+extension Bundle {
+    var releaseVersionNumber: String? {
+        return infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    var buildVersionNumber: String? {
+        return infoDictionary?["CFBundleVersion"] as? String
+    }
+    var releaseVersionNumberPretty: String {
+        return "v\(releaseVersionNumber ?? "1.0.0")"
+    }
+
+}
+

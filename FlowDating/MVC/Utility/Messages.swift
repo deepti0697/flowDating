@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 
 import Foundation
-let kAppName            = "LoanLending"
+let kAppName            = "FlowDating"
 
 
 let kHMYMDFormate         = "yyyy-MM-dd HH:mm:ss"
@@ -12,7 +12,9 @@ let kDateFormate2          =  "dd MMM yyyy"
 let kDateFormateAPI       =  "yyyy-MM-dd"
 let kUTC_time_zone_format = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 //2020-05-23T13:18:50.000Z
-
+let ios_version : String = UIDevice.current.systemVersion
+let OS = "iOS"
+let build_Version = Bundle.main.releaseVersionNumberPretty
 let SCREEN_WIDTH  = UIScreen.main.bounds.size.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 //var kWindow = UIWindow(frame: UIScreen.main.bounds)

@@ -50,7 +50,7 @@ class VC_SubmitVerification: UIViewController,UIImagePickerControllerDelegate, U
             img3.isHidden = true
 
             lbl1.text = "Copy This Gesture"
-            lbl2.text = "Copy the gesture in the photo below. We'll compare them and if they match your profile will be verified and you can continue using SugarOrDate as normal."
+            lbl2.text = "Copy the gesture in the photo below. We'll compare them and if they match your profile will be verified and you can continue using FlowDating as normal."
             btn_retake.isHidden = true
             btn_Submit.setTitle("I'm ready", for: .normal)
 
@@ -86,13 +86,13 @@ class VC_SubmitVerification: UIViewController,UIImagePickerControllerDelegate, U
         present(imagePicker, animated: true, completion: nil)
     }
     //MARK: - Done image capture here
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+   
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
         verification1 = false
         uiLoad()
-        selectedImage = (info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage)!
+        selectedImage = (info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage)!
         img3.image = selectedImage
-        
     }
 
     @IBAction func btn_retake(_ sender: Any) {

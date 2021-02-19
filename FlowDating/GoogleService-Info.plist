@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>542877390026-rkqnoifl3mv683c4fe1j9aavseq9di6l.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.542877390026-rkqnoifl3mv683c4fe1j9aavseq9di6l</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCUrYfJjwk-frdv4ldhcEnQ9Bhql6k7OL0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>542877390026</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.flowdating</string>
+	<key>PROJECT_ID</key>
+	<string>flowdate-2362d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flowdate-2362d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:542877390026:ios:4ff001af39d0dca2abd033</string>
+	<key>DATABASE_URL</key>
+	<string>https://flowdate-2362d-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

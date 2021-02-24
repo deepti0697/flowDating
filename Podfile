@@ -15,7 +15,10 @@ pod 'SVPinView'
 pod 'SVProgressHUD'
 pod 'Toast', ‘~> 3.1.0’
 pod 'FAPanels'
+pod 'FacebookCore'
+pod 'FacebookLogin'
 
+pod 'FacebookShare'
 
 pod 'AlamofireImage'
 pod 'SwiftyJSON'
@@ -23,6 +26,7 @@ pod 'SVProgressHUD'
 pod 'SDWebImage'
 pod 'Firebase/Analytics'
 pod 'Firebase/Messaging'
+pod 'GoogleSignIn'
   target 'FlowDatingTests' do
     inherit! :search_paths
     # Pods for testing

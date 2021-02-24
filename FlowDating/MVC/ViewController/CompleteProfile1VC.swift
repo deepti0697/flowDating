@@ -65,6 +65,9 @@ class CompleteProfile1VC: UIViewController,UITextViewDelegate {
         }
     }
     func setupDatePicker() {
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
         datePicker.datePickerMode = .date
         toolbar.sizeToFit()
         let calendar = Calendar.current
@@ -81,7 +84,7 @@ class CompleteProfile1VC: UIViewController,UITextViewDelegate {
     }
     @objc func donedatePicker(){
           let formatter = DateFormatter()
-          formatter.dateFormat = "dd-MMM-yyyy"
+          formatter.dateFormat = "dd MMM yyyy"
         txtDob.text = formatter.string(from: datePicker.date)
         txtDob.resignFirstResponder()
       }
@@ -96,8 +99,8 @@ class CompleteProfile1VC: UIViewController,UITextViewDelegate {
         isMaleSelected = true
         sender.setImage(#imageLiteral(resourceName: "man"), for: .normal)
         femaleBtn.setImage(#imageLiteral(resourceName: "woman"), for: .normal)
-        sender.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
-        sender.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
+        sender.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+        sender.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
         femaleBtn.layer.borderColor = UIColor.lightGray.cgColor
         femaleBtn.setTitleColor(.lightGray, for: .normal)
 //        femaleBtn.normalbtn()
@@ -133,12 +136,12 @@ extension CompleteProfile1VC:UITextFieldDelegate {
       }
         return  true
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (string == " ") {
-            return false
-        }
-        return true
-    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if (string == " ") {
+//            return false
+//        }
+//        return true
+//    }
     func completeUserProfile1(){
         var params =  [String : Any]()
         
@@ -156,6 +159,7 @@ extension CompleteProfile1VC:UITextFieldDelegate {
             print_debug("response: \(parseData)")
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                AppHelper.setStringForKey("2", key: ServiceKeys.profile_Screen)
                 self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
                 }
                 }

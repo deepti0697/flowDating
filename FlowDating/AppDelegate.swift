@@ -34,16 +34,40 @@ import FirebaseMessaging
         
         self.GetFCMToken()
         if  (AppHelper.getStringForKey(ServiceKeys.token) == "") {
-            let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-            let vc1 = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            let nv4 = UINavigationController(rootViewController: vc1)
+            if AppHelper.getBoolForKey(ServiceKeys.isPermissionEnabled) {
+                setinitalViewController()
+            }
+            else {
+                let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
+                let vc1 = storyBoard.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
+                let nv4 = UINavigationController(rootViewController: vc1)
 
-            self.window?.rootViewController = nv4
-            self.window?.makeKeyAndVisible()
+                self.window?.rootViewController = nv4
+                self.window?.makeKeyAndVisible()
+            }
+         
 //                appdelegate.setHomeView()
 //                setHomeView(selectedIndex: 0)
-        }
+            }
+        
         else {
+    if AppHelper.getStringForKey(ServiceKeys.profile_Screen) == "1" {
+        let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
+        let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile1VC") as! CompleteProfile1VC
+        let nv4 = UINavigationController(rootViewController: vc1)
+
+        self.window?.rootViewController = nv4
+        self.window?.makeKeyAndVisible()
+    }
+    else if AppHelper.getStringForKey(ServiceKeys.profile_Screen) == "2" {
+        let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
+        let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile2VC") as! CompleteProfile2VC
+        let nv4 = UINavigationController(rootViewController: vc1)
+
+        self.window?.rootViewController = nv4
+        self.window?.makeKeyAndVisible()
+    }
+    else {
             let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
             let vc1 = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
             let nv4 = UINavigationController(rootViewController: vc1)
@@ -53,11 +77,22 @@ import FirebaseMessaging
         }
     
        
+            
+            
+        }
         return true
     }
     
     // MARK: UISceneSession Lifecycle
     
+    func setinitalViewController() {
+        let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
+        let vc1 = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let nv4 = UINavigationController(rootViewController: vc1)
+
+        self.window?.rootViewController = nv4
+        self.window?.makeKeyAndVisible()
+    }
     func setHomeView() {
         
         let storyBoard  = UIStoryboard(name: "Home", bundle: nil)

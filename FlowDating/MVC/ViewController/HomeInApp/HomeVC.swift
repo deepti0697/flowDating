@@ -17,33 +17,29 @@ import UIKit
 import SwiftyJSON
 class HomeVC: ViewController {
     
-    @IBOutlet weak var pageControll: UIPageControl!
+    var currentPhotos = 0
+    @IBOutlet weak var bottomViewC: UIView!
+//    @IBOutlet weak var pageControll: UIPageControl!
     @IBOutlet weak var curveView: UIView!
     @IBOutlet weak var btnClose: UIButton!
-    
+    var tempArray = [AllUserData]()
     @IBOutlet weak var btnPoke: UIButton!
     @IBOutlet weak var btnLike: UIButton!
     @IBOutlet weak var tinderView: UIView!
     var currentLoadedCardsArray = [TinderCard]()
     var allCardsArray = [TinderCard]()
     var currentIndex = 0
-//    var valueArray = [ExPloreModel]()
+    var valueArray = [AllUserData]()
     var currrentPAge : Int = 1
     var total : Int = 0
     var typefav:String = ""
   
-    let valueArray : [ExPloreModel] =  {
-        var model : [ExPloreModel] = []
-        for n in 1...30 {
-            model.append(ExPloreModel(name: names[Int(arc4random_uniform(UInt32(names.count)))], num: "\(n)", all: [#imageLiteral(resourceName: "Image -31"),#imageLiteral(resourceName: "Image -18")]))
-        }
-        return model
-    }()
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.pageControll.numberOfPages = 2
+//        self.pageControll.numberOfPages = 2
         //let newCard = createTinderCard(at: 0,value: [:])
         // Do any additional setup after loading the view.
       
@@ -67,12 +63,14 @@ class HomeVC: ViewController {
         currentIndex = 0
         loadCardValues()
 //        callAPIforcandidateProfile()
-//        self.callAPIforExplore(reset: false, dict: [:])
+//
 //        if  AppDelegate.sharedInstance.isLocationPermissionOn
 //        {
-//            DispatchQueue.main.async {
-//
-//            }
+          
+                DispatchQueue.main.async {
+                    self.callAPIforExplore(reset: false, dict: [:])
+                }
+            
 //        }else{
 //            print("Not Permit")
 //            let alert = UIAlertController(title: "Allow Location Access", message: "Turn on Location Services in your device settings.Location use for searching friend near by user. Union app upload your location on server to get precise results.", preferredStyle: UIAlertController.Style.alert)
@@ -109,20 +107,67 @@ class HomeVC: ViewController {
     }
     
     @IBAction func btn2Action(_ sender: Any) {
-            let dummyCard = currentLoadedCardsArray.first
-                          
-                    if let imageview = dummyCard?.viewWithTag(1) as? UIImageView{
-                        imageview.image = valueArray[1].all[0]
-                        self.pageControll.currentPage = 0
+        let dummyCard = currentLoadedCardsArray.first
+        //du
+        let total_photos = dummyCard?.totalPhotosCount
+        if total_photos! > 1 &&  currentPhotos <= total_photos! - 1 {
+            if currentPhotos > 0 {
+                
+                currentPhotos = currentPhotos - 1
+                if let uiview = dummyCard?.viewWithTag(2) as? TinderbottomView {
+                    uiview.pageControl.currentPage = currentPhotos
+                }
+                if let imageview = dummyCard?.viewWithTag(1) as? UIImageView{
+                    if let imageStr =  tempArray[0].photos[currentPhotos].name{
+                        print(imageStr)
+                       
+                        let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                        let imageUrl = URL(string: urlString ?? "")
+                        imageview.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "Image -18"), options: .continueInBackground) { (img, err, cacheType, url) in
+                        }
                     }
+//                        imageview.image =
+//                        self.pageControll.currentPage = 0
+                }
+    }
+            }
+           
+//            if currentPhotos >= 0 && total_photos ?? 0 > currentPhotos {
+                   
+                         
+        
+        
         }
         @IBAction func btnAction(_ sender: Any) {
             let dummyCard = currentLoadedCardsArray.first
-                  
-            if let imageview = dummyCard?.viewWithTag(1) as? UIImageView{
-                imageview.image = valueArray[1].all[1]
-                self.pageControll.currentPage = 1
-            }
+//du
+        let total_photos = dummyCard?.totalPhotosCount
+            if total_photos ?? 0 > 1 && currentPhotos <= total_photos ?? 0 - 1 {
+                if currentPhotos != total_photos! - 1 {
+                    currentPhotos = currentPhotos + 1
+                    if let uiview = dummyCard?.viewWithTag(2) as? TinderbottomView {
+                        uiview.pageControl.currentPage = currentPhotos
+                    }
+                    if let imageview = dummyCard?.viewWithTag(1) as? UIImageView{
+                        if let imageStr =  tempArray[0].photos[currentPhotos].name{
+                            print(imageStr)
+                           
+                            let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                            let imageUrl = URL(string: urlString ?? "")
+                            imageview.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "Image -18"), options: .continueInBackground) { (img, err, cacheType, url) in
+                            }
+                        }
+//                        imageview.image =
+//                        self.pageControll.currentPage = 0
+                    }
+        
+        }
+                }
+          
+            
+           
+                 
+            
         }
     
     @IBAction func openPageDetailAcrtion(_ sender: Any) {
@@ -196,7 +241,7 @@ class HomeVC: ViewController {
         
     }
     
-    func createTinderCard(at index: Int , value :ExPloreModel) -> TinderCard {
+    func createTinderCard(at index: Int , value :AllUserData) -> TinderCard {
         
         let card = TinderCard(frame: CGRect(x: 0, y: 0, width: tinderView.frame.size.width , height: tinderView.frame.size.height) ,value : value)
         card.delegate = self
@@ -284,7 +329,7 @@ class HomeVC: ViewController {
     }
     
     func removeObjectAndAddNewValues() {
-        
+        currentPhotos = 0
         //emojiView.rateValue =  2.5
         UIView.animate(withDuration: 0.3) {
             // self.buttonUndo.alpha = 0
@@ -292,6 +337,7 @@ class HomeVC: ViewController {
         
         print("currentLoadedCardsArray ------",currentLoadedCardsArray.count)
         currentLoadedCardsArray.remove(at: 0)
+        tempArray.remove(at: 0)
         //  comp_user_id = (valueArray[currentIndex] as! NSDictionary).value(forKey: "user_id") as? String ?? ""
         // if (txt_search.text?.count ?? 0 == 0){
         // currentIndex = currentIndex + 1
@@ -332,7 +378,7 @@ class HomeVC: ViewController {
     
     
     func removeObjectAndAddNewValuesfromAdded() {
-        
+        currentPhotos = 0
         //emojiView.rateValue =  2.5
         UIView.animate(withDuration: 0.3) {
             // self.buttonUndo.alpha = 0
@@ -340,7 +386,7 @@ class HomeVC: ViewController {
         
         print("currentLoadedCardsArray ------",currentLoadedCardsArray.count)
         currentLoadedCardsArray.remove(at: 0)
-        
+        tempArray.remove(at: 0)
         // currentLoadedCardsArray.remove(at: 0)
         //  print("allCardsArray----",allCardsArray.count )
         //   print("currentLoadedCardsArray----",currentLoadedCardsArray.count )
@@ -388,63 +434,81 @@ class HomeVC: ViewController {
     
     // MARK: - API call
     func callAPIforExplore(reset:Bool,dict:NSDictionary) {
-    
+        var params =  [String : Any]()
+        params["page"] = String(currrentPAge)
+        
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServicesForPRefrenceUSer(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+//
+                let page = parseData["pagination"]
+                self.total = page["total_pages"].intValue
+                self.valueArray.removeAll()
+                for obj in parseData["data"].arrayValue {
+                   let comObj = AllUserData(fromJson:obj)
+                    self.valueArray.append(comObj)
+                    self.tempArray.append(comObj)
+                    
+                }
+                
+                if self.valueArray.count > 0 {
+                    MAX_BUFFER_SIZE = self.valueArray.count
+                }
+//                print("Value array load")
+            
+            else{
+                self.valueArray.removeAll()
+                self.noRecordFound(str: "Not found here!")
+            }
+            
+            DispatchQueue.main.async {
+                print("loadCardValues")
+                self.loadCardValues()
+            }
+            }
+                
+             else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
     }
         
 
-    }
     
+func noRecordFound(str:String){
+    
+    if let foundView = view.viewWithTag(99999999) {
+        foundView.removeFromSuperview()
+    }
+    let lbl:UILabel = UILabel(frame: CGRect(x: 10, y: (SCREEN_HEIGHT/2)-20, width: SCREEN_WIDTH - 20, height: 40))
+    lbl.text = str
+    lbl.textColor = UIColor.white
+    lbl.backgroundColor = .clear
+    lbl.textAlignment = .center
+    lbl.font = UIFont(name: AppFontRegular, size: 12)
+    lbl.tag = 99999999
+    self.view.insertSubview(lbl, at: 0)
+}
         
     
     
     
     // MARK : - API call
-//    func callAPIforcandidateProfile() {
-//
-//        let token = CommonMethod().getUserDefaults(key: Constant.key_device_token) as! String
-//
-//        let userId = CommonMethod().getUserDefaults(key: Constant.key_user_ID) as! Int
-//
-//        self.activityIndicatorBegin()
-//
-//        let data  = [
-//            "user_id" : userId,
-//            "lang" : "en",
-//            "apikey" : "union",
-//            "device_type" : "iOS",
-//            "os_version" : ios_version,
-//            "app_version" : "1.0.0",
-//            "device_token": token
-//
-//            ] as [String:Any]
-//
-//        //let strUrl = AppString.profileDetails\"user_id="+userId
-//
-//        Apicall.sharedInstance.httpinterctaionwithUrl(strurl: AppString.profileDetails, param: data, isAuth: true, completion: { (result) in
-//
-//            print("%@",result )
-//            let response = result as! [String:Any]
-//            self.activityIndicatorEnd()
-//            if(response["status"] as! Int == 200 ){
-//
-//                let repo = response["data"] as! NSDictionary
-//                //                           let data = repo["userInfo"] as! NSDictionary
-//                let userInfo = repo.removeNullValueFromDict()
-//                self.profileDATA = ProfileData().intiDataWithDict(dict: userInfo)
-//                CommonMethod().saveUserDefaults(data:self.profileDATA.subcription_plan ?? 0, key: Constant.key_subcription_plan)
-//
-//
-//            }
-//
-//        }) { (error) in
-//
-//            self.activityIndicatorEnd()
-//
-//            print("%@",error )
-//
-//        }
-//
-//    }
+    func callAPIforcandidateProfile() {
+
+
+        }
+
+    
     
     
     // MARK : - API call
@@ -529,7 +593,7 @@ class HomeVC: ViewController {
 //
 //        }
 //
-//    }
+    }
     
     // MARK : - API call
 //    func callforBlock(user:Int) {

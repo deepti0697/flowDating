@@ -10,12 +10,17 @@ import UIKit
 
 class TinderbottomView: UIView {
 
-    @IBOutlet weak var imgCount: UIButton!
+    @IBOutlet weak var horoScopeLbl: UILabel!
+    
+    @IBOutlet weak var matchPercentage: UILabel!
+    @IBOutlet weak var isVerified: UIImageView!
+    
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var imgFlag: UIImageView!
     @IBOutlet weak var nmPerson: UILabel!
-    @IBOutlet weak var height_matchlbl: NSLayoutConstraint!
-    @IBOutlet weak var match_lbl: UIButton!
+   
+   
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

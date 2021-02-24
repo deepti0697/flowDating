@@ -5,7 +5,10 @@ import UIKit
 import Foundation
 let kAppName            = "FlowDating"
 
-
+let AppFontRegular:String   = "sf_ui_text_regular"
+let AppFontBold:String      = "Linotte-Bold"
+let AppFontSemiBold:String  = "Linotte-Semi-Bold"
+let AppFontLight:String    = "Linotte-Light"
 let kHMYMDFormate         = "yyyy-MM-dd HH:mm:ss"
 let kDateFormate          =  "dd-MMM-yyyy"
 let kDateFormate2          =  "dd MMM yyyy"

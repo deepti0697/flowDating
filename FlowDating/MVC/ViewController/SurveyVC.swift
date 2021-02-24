@@ -18,6 +18,7 @@ class SurveyVC: UIViewController {
     var clarityValue = 0
     var decisionValue = 0
     var interesetedValue  = 0
+    
     @IBOutlet weak var twoOC: UIButton!
     @IBOutlet weak var baseview2: UIView!
     @IBOutlet weak var oneAC: UIButton!
@@ -63,17 +64,18 @@ class SurveyVC: UIViewController {
         super.viewDidLoad()
 //        buttonRounded()
 //        lbl_Distance.backgroundColor = .yellow
-             lbl_Distance.frame = CGRect(x: 0,y: 32,width: 60,height: 15)
+             lbl_Distance.frame = CGRect(x: 0,y: 32,width: 100,height: 15)
         lbl_Distance.setTitleColor(.lightGray, for: .normal)
         lbl_Distance.titleLabel?.font =  UIFont(name: "sf_ui_display_light.ttf", size: 12)
 //             lbl_Distance.Font = UIFont.systemFont(ofSize: 12, weight: .light)
-        lbl_Distance.setTitle("0 CM", for: .normal)
+//        lbl_Distance.setTitle("121 CM", for: .normal)
              lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider.self)
              slider.addSubview(lbl_Distance)
         let collectionLayout = UICollectionViewFlowLayout()
         collectionLayout.itemSize = CGSize(width: self.view.frame.width, height:60)
               collectionLayout.minimumInteritemSpacing = 1
         collectionLayout.scrollDirection = .vertical
+        lbl_Distance.isHidden = true
               collctnView.collectionViewLayout = collectionLayout
         // Do any additional setup after loading the view.
     }
@@ -83,6 +85,8 @@ class SurveyVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
 //
         self.setUIView(caseValue: currentValue)
+        self.slider.minimumValue = 121
+        self.slider.maximumValue = 190
         self.colcnView.isHidden = true
         self.kidsView.isHidden = true
         if currentValue == 1 {
@@ -162,16 +166,48 @@ class SurveyVC: UIViewController {
     
     }
     
-    @IBAction func switchAction(_ sender: Any) {
+    @IBAction func switchAction(_ sender: UISwitch) {
+        if sender.isOn {
+            self.slider.minimumValue = 121
+            self.slider.maximumValue = 195
+            isSwitchOn = true
+//            self.slider.
+            slider.setValue(121, animated: false)
+           lbl_Distance.setTitle("121 CM", for: .normal)
+        }
+        else {
+            isSwitchOn = false
+            self.slider.minimumValue = 47
+            self.slider.maximumValue = 77
+            lbl_Distance.setTitle("47 Inches", for: .normal)
+            slider.setValue(47, animated: false)
+        }
+//        vehicleHeightSliderValueChanged(slider)
+//        sender.isOn = !sender.isOn
     }
+   
     @IBAction func distancesSliderValueChanged(_ sender: UISlider) {
            let currentValue = Int(sender.value)
            print(currentValue)
            self.lbl_Distance.isHidden = false
            let x = Int(round(sender.value))
-           lbl_Distance.setTitle("\(x) CM", for: .normal)
+       
+       
            self.distance = (x)
            lbl_Distance.center = setUISliderThumbValueWithLabel(slider: sender)
+        switch self.currentValue {
+        case 2,4,5:
+            lbl_Distance.setTitle("\(x)", for: .normal)
+        default:
+            if isSwitchOn{
+               lbl_Distance.setTitle("\(x) CM", for: .normal)
+            }
+            else {
+              
+                lbl_Distance.setTitle( "\(x) Inches", for: .normal)
+            }
+        }
+        
    
        }
        func setUISliderThumbValueWithLabel(slider: UISlider) -> CGPoint {
@@ -190,7 +226,7 @@ class SurveyVC: UIViewController {
             self.scaleView.isHidden = false
             self.topLabel.text = "what is your Height"
             self.switchonAndOffView.isHidden = false
-            self.oneAC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.oneAC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.oneAC.setTitleColor(.white, for: .normal)
             self.twoOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.twoOC.setTitleColor(.black, for: .normal)
@@ -199,10 +235,11 @@ class SurveyVC: UIViewController {
             self.kidsView.isHidden = true
             self.scaleView.isHidden = false
             self.topLabel.text = "how good looking you are"
-            self.slider.minimumValue = 0
+            self.slider.minimumValue = 1
             self.slider.maximumValue = 10
+//                lbl_Distance.setTitle("5", for: .normal)
             self.switchonAndOffView.isHidden = true
-            self.twoOC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.twoOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.twoOC.setTitleColor(.white, for: .normal)
             self.oneAC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.oneAC.setTitleColor(.black, for: .normal)
@@ -214,10 +251,11 @@ class SurveyVC: UIViewController {
             
             self.scaleView.isHidden = true
 //            self.topLabel.text = "how good looking you are"
-            self.slider.minimumValue = 0
+            self.slider.minimumValue = 1
             self.slider.maximumValue = 10
             self.switchonAndOffView.isHidden = true
-            self.threeOC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            slider.setValue(1, animated: false)
+            self.threeOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.threeOC.setTitleColor(.white, for: .normal)
             self.fourOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.fourOC.setTitleColor(.black, for: .normal)
@@ -230,8 +268,10 @@ class SurveyVC: UIViewController {
             self.topLabel.text = "how wealthy you are"
             self.slider.minimumValue = 1
             self.slider.maximumValue = 10
+            self.lbl_Distance.setTitle("1", for: .normal)
+            slider.setValue(1, animated: false)
             self.switchonAndOffView.isHidden = true
-            self.fourOC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.fourOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.fourOC.setTitleColor(.white, for: .normal)
             self.fiveOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.fiveOC.setTitleColor(.black, for: .normal)
@@ -241,10 +281,10 @@ class SurveyVC: UIViewController {
         case 5:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = false
-            self.topLabel.text = " how important is other person’s wealth to you"
+            self.topLabel.text = "How important is other person’s wealth to you"
             self.slider.minimumValue = 1
             self.slider.maximumValue = 10
-            self.fiveOC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.fiveOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.fiveOC.setTitleColor(.white, for: .normal)
             self.fourOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.fourOC.setTitleColor(.black, for: .normal)
@@ -254,7 +294,7 @@ class SurveyVC: UIViewController {
         case 6:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = true
-            self.sixOC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.sixOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.sixOC.setTitleColor(.white, for: .normal)
             self.sevenOc.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.sevenOc.setTitleColor(.black, for: .normal)
@@ -266,7 +306,7 @@ class SurveyVC: UIViewController {
         case 7:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = true
-            self.sevenOc.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.sevenOc.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.sevenOc.setTitleColor(.white, for: .normal)
             self.sixOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.sixOC.setTitleColor(.black, for: .normal)
@@ -278,7 +318,7 @@ class SurveyVC: UIViewController {
         case 8:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = true
-            self.eightOC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.eightOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.eightOC.setTitleColor(.white, for: .normal)
             self.nineOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.nineOC.setTitleColor(.black, for: .normal)
@@ -290,7 +330,7 @@ class SurveyVC: UIViewController {
         case 9:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = true
-            self.nineOC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.nineOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.nineOC.setTitleColor(.white, for: .normal)
             self.tenOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.tenOC.setTitleColor(.black, for: .normal)
@@ -302,7 +342,7 @@ class SurveyVC: UIViewController {
         case 10:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = true
-            self.tenOC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.tenOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.tenOC.setTitleColor(.white, for: .normal)
             self.nineOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.nineOC.setTitleColor(.black, for: .normal)
@@ -314,7 +354,7 @@ class SurveyVC: UIViewController {
         case 11:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = true
-            self.elevenOC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.elevenOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.elevenOC.setTitleColor(.white, for: .normal)
             self.tenOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.tenOC.setTitleColor(.black, for: .normal)
@@ -326,7 +366,7 @@ class SurveyVC: UIViewController {
         case 12:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = true
-            self.twelveOC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.twelveOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.twelveOC.setTitleColor(.white, for: .normal)
             self.tenOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.tenOC.setTitleColor(.black, for: .normal)
@@ -371,7 +411,7 @@ class SurveyVC: UIViewController {
             self.stackViewHeightConstraint.constant = 110
             switch currentValue {
             case 6,7:
-                if relevantSelectedIndexArray.count > 1 {
+                if relevantSelectedIndexArray.count >= 1 {
                     hitSurvey(param: setParameters(str: currentValue))
                 }
                 else {
@@ -493,25 +533,21 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
                 cell.collectionImageView.image = #imageLiteral(resourceName: "Group 9950")
               
             }
+            
             else {
                 cell.collectionImageView.image = #imageLiteral(resourceName: "Rectangle 3733")
-              
             }
         default:
         break
-            
-            
-        
-            
-         
+       
     
     }
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: collectionView.frame.width, height: 30)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch  value {
@@ -586,7 +622,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
             decisionValue = indexPath.row
         case 12:
 
-            interesetedValue = indexPath.row
+            clarityValue    = indexPath.row
         default:
            
             
@@ -755,4 +791,25 @@ extension UILabel{
         get { return self.font }
         set { self.font = newValue }
     }
+}
+extension SurveyVC {
+    func vehicleHeightSliderValueChanged(_ slider: UISlider) {
+
+           let currentValue = Int(slider.value)
+
+           let heightMeters = Measurement(value: Double(currentValue), unit: UnitLength.meters)
+//           let heightFeet = heightMeters.converted(to: UnitLength.feet)
+
+           let heightCentimeters = heightMeters.converted(to: UnitLength.centimeters)
+           let heightInches = heightMeters.converted(to: UnitLength.inches)
+
+
+        if isSwitchOn {
+            self.lbl_Distance.setTitle("\(heightInches) inches", for: .normal)
+        }
+        else {
+            self.lbl_Distance.setTitle("\(heightCentimeters) inches", for: .normal)
+        }
+          
+       }
 }

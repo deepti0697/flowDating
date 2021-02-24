@@ -14,7 +14,7 @@ let SCALE_STRENGTH : CGFloat = 4
 let SCALE_RANGE : CGFloat = 0.90
 
 import UIKit
-
+import SDWebImage
 protocol TinderCardDelegate: NSObjectProtocol {
     func cardGoesUp(card: TinderCard)
     func cardGoesDown(card: TinderCard)
@@ -24,6 +24,7 @@ protocol TinderCardDelegate: NSObjectProtocol {
 
 class TinderCard: UIView {
     
+    var totalPhotosCount = 0
     var xCenter: CGFloat = 0.0
     var yCenter: CGFloat = 0.0
     var originalPoint = CGPoint.zero
@@ -33,7 +34,7 @@ class TinderCard: UIView {
     //var EntryFee : String = ""
     weak var delegate: TinderCardDelegate?
     
-    public init(frame: CGRect, value: ExPloreModel) {
+    public init(frame: CGRect, value: AllUserData) {
         super.init(frame: frame)
       //  EntryFee = entryFee
         setupView(at: value)
@@ -44,7 +45,7 @@ class TinderCard: UIView {
     }
     
     
-    func setupView(at value:ExPloreModel) {
+    func setupView(at value:AllUserData) {
         
         layer.cornerRadius = 3
         layer.shadowRadius = 3
@@ -70,14 +71,33 @@ class TinderCard: UIView {
         backGroundView.clipsToBounds = true;
         addSubview(backGroundView)
         
-        
+//        let backGroundImageView = UIImageView(frame:backGroundView.bounds)
+//        backGroundImageView.backgroundColor = AppBackgroungcolor
+//        let parse = value.public_photo?[0] as! NSDictionary
+//        backGroundImageView .sd_setImage(with: URL.init(string: parse["image"] as? String ?? ""), completed: nil)
+//        backGroundImageView.contentMode = .scaleAspectFill
         let backGroundImageView = UIImageView(frame:backGroundView.bounds)
                 backGroundImageView.backgroundColor = .red
                 backGroundImageView.tag = 1
-                let parse = value.all[0]
+        var parse:String?
+        if value.photos.count < 1 {
+            parse = value.profile_pic
+        }
+        else {
+         parse = value.photos[0].name
+            totalPhotosCount = value.photos.count
+        }
+        if let imageStr = parse{
+            print(imageStr)
+           
+            let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let imageUrl = URL(string: urlString ?? "")
+            backGroundImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "Image -18"), options: .continueInBackground) { (img, err, cacheType, url) in
+            }
+        }
         //        backGroundImageView.image = #imageLiteral(resourceName: "bg")
                 backGroundImageView.contentMode = .scaleAspectFill
-                backGroundImageView.image = parse
+//                backGroundImageView.image = parse
         //  backGroundImageView.clipsToBounds = false;
 //        backGroundImageView.image = CommonMethod().cropToBounds(image: UIImage(named:"login_bg") ?? UIImage(), width: Double(bounds.width), height: Double(bounds.height))
 //        backGroundImageView.contentMode = .center
@@ -111,14 +131,25 @@ class TinderCard: UIView {
         viewbootom.backgroundColor = UIColor.clear
         viewbootom.clipsToBounds = false
         backGroundImageView.addSubview(viewbootom)
-        
-//        let v:TinderbottomView = Bundle.main.loadNibNamed("TinderbottomView", owner: self, options: nil)?.first as! TinderbottomView       //let tinderview = Bundle.loadNibNamed("TinderbottomView") as! TinderbottomView
-//        v.match_lbl .setTitle("ssd", for: .normal)
-//        v.nmPerson.text = "Deepti"
-//        v.distance.text = "2 km"
-//        v.imgCount .setTitle(String(value.public_photo!.count), for: .normal)
-        
-//        viewbootom.addSubview(v)
+       
+        let v:TinderbottomView = Bundle.main.loadNibNamed("TinderbottomView", owner: self, options: nil)?.first as! TinderbottomView       //let tinderview = Bundle.loadNibNamed("TinderbottomView") as! TinderbottomView
+        v.frame = viewbootom.frame
+        v.tag  = 2
+//        v.match_lbl.setTitle("ssd", for: .normal)
+        v.nmPerson.text = value.name
+        v.distance.text = "\(value.miles ?? "") miles away"
+        v.horoScopeLbl.text = value.zodiac_sign
+//        v.matchPercentage.setTitle(value.compatibility, for: .normal)
+        v.matchPercentage.text = "\(value.compatibility ?? "") Match"
+        //        v.distance.text = "2 km"
+        v.pageControl.numberOfPages = value.photos.count
+       if value.is_verified {
+        v.isVerified.isHidden = true
+        }
+       else {
+        v.isVerified.isHidden = true
+       }
+        viewbootom.addSubview(v)
         
         
         
@@ -131,6 +162,7 @@ class TinderCard: UIView {
         NSLayoutConstraint.activate([heightConstraint2,widthConstraint2])
         
         viewbootom.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+//        viewbootom.topAnchor.constraint(equalTo: self.topAnchor,constant: 0).isActive = true
         
         viewbootom.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         

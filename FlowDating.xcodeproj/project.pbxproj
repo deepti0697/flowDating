@@ -10,6 +10,7 @@
 		1BEEA167F617C520038E83EB /* Pods_FlowDatingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDC61BE2DEDBEB807920EAC /* Pods_FlowDatingTests.framework */; };
 		2E430C3553802676E425C878 /* Pods_FlowDating.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9144DFED2D9ECC9CBE5725C5 /* Pods_FlowDating.framework */; };
 		7627D7A47BBF4B347FB3A110 /* Pods_FlowDating_FlowDatingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C8FCAD9FCB55AC2CCAA485 /* Pods_FlowDating_FlowDatingUITests.framework */; };
+		F21427E225E38899002FA931 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21427E125E38899002FA931 /* PermissionViewController.swift */; };
 		F226C73E25D5578F0039FED3 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F226C73D25D5578F0039FED3 /* Model.swift */; };
 		F231783B25BE82A300F4F78A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231783A25BE82A300F4F78A /* AppDelegate.swift */; };
 		F231783F25BE82A300F4F78A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231783E25BE82A300F4F78A /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		F231797325BED7CE00F4F78A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231797225BED7CE00F4F78A /* LoginVC.swift */; };
 		F231797825BED7ED00F4F78A /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231797725BED7ED00F4F78A /* SignupVC.swift */; };
 		F231797D25BED8D800F4F78A /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231797C25BED8D800F4F78A /* UIViewExtension.swift */; };
+		F24A17FF25E52B0B00C3ADC8 /* SocialLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24A17FE25E52B0A00C3ADC8 /* SocialLoginHelper.swift */; };
 		F252DB6A25D6458C0023AA42 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F252DB6925D6458C0023AA42 /* Validate.swift */; };
 		F252DB6F25D645E80023AA42 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F252DB6E25D645E80023AA42 /* Validation.swift */; };
 		F252DB7425D645F40023AA42 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F252DB7325D645F40023AA42 /* AppHelper.swift */; };
@@ -100,6 +102,7 @@
 		BE487E682CCD7A8D3AEEB794 /* Pods-FlowDating-FlowDatingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowDating-FlowDatingUITests.debug.xcconfig"; path = "Target Support Files/Pods-FlowDating-FlowDatingUITests/Pods-FlowDating-FlowDatingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFDC61BE2DEDBEB807920EAC /* Pods_FlowDatingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlowDatingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84807CF6C4570D7C9CB3309 /* Pods-FlowDating.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowDating.debug.xcconfig"; path = "Target Support Files/Pods-FlowDating/Pods-FlowDating.debug.xcconfig"; sourceTree = "<group>"; };
+		F21427E125E38899002FA931 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		F226C73D25D5578F0039FED3 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F231783725BE82A300F4F78A /* FlowDating.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowDating.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F231783A25BE82A300F4F78A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 		F231797225BED7CE00F4F78A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		F231797725BED7ED00F4F78A /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		F231797C25BED8D800F4F78A /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		F24A17FE25E52B0A00C3ADC8 /* SocialLoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialLoginHelper.swift; sourceTree = "<group>"; };
 		F252DB6925D6458C0023AA42 /* Validate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
 		F252DB6E25D645E80023AA42 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		F252DB7325D645F40023AA42 /* AppHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
@@ -283,6 +287,7 @@
 		F23178A625BE900900F4F78A /* MVC */ = {
 			isa = PBXGroup;
 			children = (
+				F24A17FE25E52B0A00C3ADC8 /* SocialLoginHelper.swift */,
 				F2F847FC25C17D8100DC1340 /* ServiceClass.swift */,
 				F23178AA25BE902B00F4F78A /* Cell */,
 				F23178A925BE902500F4F78A /* Model */,
@@ -308,6 +313,7 @@
 				F2F8472B25C13C7E00DC1340 /* SurveyVC.swift */,
 				F2562CE625C27E040061A6C6 /* CompleteypuProfileVC4.swift */,
 				F281D39725C8125F00546B6F /* VC_Setting.swift */,
+				F21427E125E38899002FA931 /* PermissionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 				F231783425BE82A300F4F78A /* Frameworks */,
 				F231783525BE82A300F4F78A /* Resources */,
 				800BB19D12A8DD654A17235B /* [CP] Embed Pods Frameworks */,
+				824D239FB2A7F91DFDCA9AB3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -463,6 +470,7 @@
 				F231785525BE82A500F4F78A /* Frameworks */,
 				F231785625BE82A500F4F78A /* Resources */,
 				EDB4AE7F63BB1B9F9325053A /* [CP] Embed Pods Frameworks */,
+				0C7A301BB88326E8431B9F22 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -559,6 +567,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0C7A301BB88326E8431B9F22 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlowDating-FlowDatingUITests/Pods-FlowDating-FlowDatingUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlowDating-FlowDatingUITests/Pods-FlowDating-FlowDatingUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlowDating-FlowDatingUITests/Pods-FlowDating-FlowDatingUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6F075BFAA74DAF71D69A0CD4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -596,6 +621,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlowDating/Pods-FlowDating-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		824D239FB2A7F91DFDCA9AB3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlowDating/Pods-FlowDating-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlowDating/Pods-FlowDating-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlowDating/Pods-FlowDating-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B5C72CD793F5A52BA7CA1D2A /* [CP] Check Pods Manifest.lock */ = {
@@ -692,6 +734,7 @@
 				F2F847EB25C17A5100DC1340 /* ExploreModel.swift in Sources */,
 				F2562D9E25C2C6670061A6C6 /* MatchesVC.swift in Sources */,
 				F2F847BA25C1717F00DC1340 /* TinderbottomView.swift in Sources */,
+				F24A17FF25E52B0B00C3ADC8 /* SocialLoginHelper.swift in Sources */,
 				F252DB7425D645F40023AA42 /* AppHelper.swift in Sources */,
 				F231793D25BECAB800F4F78A /* OtpScreen.swift in Sources */,
 				F2F847C125C1761900DC1340 /* HomeVC.swift in Sources */,
@@ -700,6 +743,7 @@
 				F2F8472C25C13C7E00DC1340 /* SurveyVC.swift in Sources */,
 				F2F8482025C1811F00DC1340 /* Reachability.m in Sources */,
 				F2F8478B25C16AC900DC1340 /* TinderCard.swift in Sources */,
+				F21427E225E38899002FA931 /* PermissionViewController.swift in Sources */,
 				F2562D1D25C28F7D0061A6C6 /* InchargeImageCollectionViewCell.swift in Sources */,
 				F28F44F725C1271300C283FA /* CompleteProfile1VC.swift in Sources */,
 				F2A5312425C4136000E02054 /* ImageViewPage.swift in Sources */,
@@ -813,7 +857,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -868,7 +912,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -890,14 +934,14 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = FlowDating/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.flowdating;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = FlowDatingDeveloper;
+				PROVISIONING_PROFILE_SPECIFIER = FlowDatingDeveloperD;
 				SWIFT_OBJC_BRIDGING_HEADER = "FlowDating/MVC/Utility/Rechability/FlowDating-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -917,14 +961,14 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = FlowDating/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.flowdating;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = FlowDatingDeveloper;
+				PROVISIONING_PROFILE_SPECIFIER = FlowDatingDeveloperD;
 				SWIFT_OBJC_BRIDGING_HEADER = "FlowDating/MVC/Utility/Rechability/FlowDating-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;

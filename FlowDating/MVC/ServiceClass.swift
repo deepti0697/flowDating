@@ -365,7 +365,7 @@ class ServiceClass: NSObject {
         
         
         //multiple images upload
-        func multipleImageUpload(_ urlString:String, params:[String : Any],data: [Data],identifiedImageData : Data,headers:HTTPHeaders, completion:@escaping completionBlockType){
+        func multipleImageUpload(_ urlString:String, params:[String : Any],data: [Data],headers:HTTPHeaders, completion:@escaping completionBlockType){
              
              print(urlString)
              print(params)
@@ -374,11 +374,10 @@ class ServiceClass: NSObject {
             hudShow()
             AF.upload(multipartFormData: { multipartFormData in
                       for imgData in data {
-                                          multipartFormData.append(imgData , withName:  "file_data[]", fileName: "\(Date().timeIntervalSince1970).jpg", mimeType: "image/jpg")
+                                          multipartFormData.append(imgData , withName:  "images[]", fileName: "\(Date().timeIntervalSince1970).jpg", mimeType: "image/jpg")
                                       }
                            
-                            multipartFormData.append(identifiedImageData , withName:  "identified", fileName: "\(Date().timeIntervalSince1970).jpg", mimeType: "image/jpg")
-                            
+                           
                             for (key, value) in params {
                            
                                     let str = "\(value)"
@@ -433,7 +432,12 @@ class ServiceClass: NSObject {
   
     
     //MARK:- Survey
-  
+    func hitServiceMultipleImage(_ params:[String : Any],data: [Data], completion:@escaping completionBlockType)
+    {
+        let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.upload_Photos)"
+        let headers: HTTPHeaders = ["Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+            self.multipleImageUpload(urlString, params: params, data: data, headers: headers, completion: completion)
+    }
     func hitServiceForOTPSend(_ params:[String : Any], completion:@escaping completionBlockType)
         {
             let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.send_OTP)"
@@ -455,6 +459,13 @@ class ServiceClass: NSObject {
            
         let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
             self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+        }
+    func hitServicesForPRefrenceUSer(_ params:[String : Any], completion:@escaping completionBlockType)
+        {
+            let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.prefrence_User)"
+           
+        let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+            self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
         }
     func hitServiceForCompleteProfile2(_ params:[String : Any], completion:@escaping completionBlockType)
         {
@@ -478,6 +489,13 @@ class ServiceClass: NSObject {
             self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
         }
     
+    func hitServiceForServerLogin(_ params:[String : Any], completion:@escaping completionBlockType)
+        {
+            let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.signup_Social)"
+           
+        let headers: HTTPHeaders = [:]
+            self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+        }
     func hitServiceForLogin(_ params:[String : Any], completion:@escaping completionBlockType)
         {
             let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.login)"

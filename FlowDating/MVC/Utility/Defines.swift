@@ -33,7 +33,7 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 //MARK:- Service Keys
 
 struct ServiceKeys{
-    
+    static let isPermissionEnabled = "isPermissionEnabled"
     static let user_id = "user_id"
     static let vendor_id = "vendor_id"
     static let isFirstTime = "isFirstTime"
@@ -45,7 +45,7 @@ struct ServiceKeys{
     static let token = "token"
     static let user_name = "user_name"
     static let email = "email"
-    
+    static let profile_Screen = "profile_Screen"
     static let profile_image = "profile_image"
     static let phone_no = "phone_no"
     
@@ -85,13 +85,18 @@ struct ServiceUrls
 //    static let baseUrl = "http://34.238.160.251:3002/register_user"
 
     
-    static let baseUrl = "http://192.168.1.115/flow_dating_app/public/api/"
+    static let baseUrl = "http://73.octaldevs.com/flawdating/public/api/"
+//        "http://192.168.1.115/flow_dating_app/public/api/"
+//
+//    Dev url
+//
     static let home = "explore"
     static let regiser_New_User = "/auth/register"
     static let check_Mobile_Registered = "/auth/email-mobile-exists"
 //    static let login = "v1/login"
     static let login = "apiLogin"
 
+    static let upload_Photos = "upload_photos"
  
     static let hitSurvey = "complete_questionnaire"
     static let send_OTP = "send_login_otp"
@@ -101,7 +106,8 @@ struct ServiceUrls
     static let complete_profile = "complete_profile"
     static let complete_profile_prefrence = "complete_profile_preference"
    
-
+    static let signup_Social = "social_login"
+static let prefrence_User = "preference_users"
 
     
 

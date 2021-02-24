@@ -37,7 +37,7 @@ class MultiplePictureUploadVC: UIViewController,UIImagePickerControllerDelegate,
         super.viewDidLoad()
         let collectionLayout = UICollectionViewFlowLayout()
         collectionLayout.itemSize = CGSize(width: self.view.frame.width/4, height: self.view.frame.width/4)
-              collectionLayout.minimumInteritemSpacing = 1
+              collectionLayout.minimumInteritemSpacing = 0
         collectionLayout.scrollDirection = .vertical
               imageCollectionView.collectionViewLayout = collectionLayout
         imageCollectionView.dataSource = self
@@ -129,6 +129,22 @@ class MultiplePictureUploadVC: UIViewController,UIImagePickerControllerDelegate,
         self.present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func saveAndContinueAction(_ sender: Any) {
+        if imageDatas.count > 0 {
+            imageUpload()
+            
+        }
+        else {
+            Common.showAlert(alertMessage: "Please upload atleast one image", alertButtons: ["Ok"]) { (bt) in
+            }
+        }
+       
+    }
+    @IBAction func profileVerificationAction(_ sender: Any) {
+        openViewController(controller: VC_SubmitVerification.self, storyBoard: .mainStoryBoard) { (vc) in
+
+        }
+    }
 }
 
 
@@ -146,7 +162,7 @@ extension MultiplePictureUploadVC : UITextFieldDelegate {
     //            amountArray.append(amtStr)
 }
 
-extension MultiplePictureUploadVC:UICollectionViewDelegate,UICollectionViewDataSource {
+extension MultiplePictureUploadVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        return 5
     }
@@ -166,7 +182,7 @@ extension MultiplePictureUploadVC:UICollectionViewDelegate,UICollectionViewDataS
        
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         imgcell = collectionView.cellForItem(at: indexPath) as! InchargeImageCollectionViewCell
@@ -176,5 +192,33 @@ extension MultiplePictureUploadVC:UICollectionViewDelegate,UICollectionViewDataS
         
     
 }
+    func imageUpload(){
+        let params =  [String : Any]()
+     
+     
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServiceMultipleImage(params, data: imageDatas, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                Common.showAlert(alertMessage: parseData["message"].stringValue, alertButtons: ["Ok"]) { (bt) in
+                    self.openViewController(controller: CompleteypuProfileVC4.self, storyBoard: .mainStoryBoard) { (vc) in
 
+                    }
+                }
+               
+                }
+             else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
+    }
+    
 }

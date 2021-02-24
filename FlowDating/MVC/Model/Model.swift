@@ -8,33 +8,73 @@
 import Foundation
 import SwiftyJSON
 
-//class AllUserData{
-//    var id:String!
-//    var firebase_id:String!
-//    var name:String!
-//    var email:String!
-//    var mobile: :String!
-//    var gender:
-//                "age": 32,
-//                "zodiac_sign": "Aquarius",
-//                "compatibility": "74%",
-//                "profile_pic": "http://192.168.1.115/flow_dating_app/public/uploads/users/161304269071.jpeg",
-//                "dob": "1989-02-01",
-//                "about": "",
-//                "subscription_plan": false,
-//                "miles": 0,
-//                "status": true,
-//                "photo_url": "http://192.168.1.115/flow_dating_app/public/uploads/users/2",
-//                "photos": [
-//                    {
-//                        "id": 1,
-//                        "user_id": 2,
-//                        "type": 0,
-//                        "name": "161363803567.jpg",
-//                        "created_at": "2021-02-18T08:47:15.000000Z",
-//                        "updated_at": "2021-02-18T08:47:15.000000Z",
-//                        "deleted_at": null
-//}
+class AllUserData{
+    var id:String!
+    var firebase_id:String!
+    var name:String!
+    var email:String!
+    var mobile : String!
+    var gender:String!
+    var age: String!
+    var zodiac_sign:String!
+    var compatibility:String!
+    var profile_pic:String!
+    var dob:String!
+    var about:String!
+    var subscription_plan:Bool!
+    var miles:String!
+    var status: Bool!
+    var is_verified:Bool!
+    var photo_url:String!
+    var photos = [AllPhotos]()
+    init() { }
+    
+    init(fromJson json: JSON!){
+        if json.isEmpty{
+            return
+        }
+        let arrayPhotos = json["photos"].arrayValue
+        id = json["id"].stringValue
+        firebase_id = json["firebase_id"].stringValue
+        name   = json["name"].stringValue
+        email = json["name"].stringValue
+        mobile = json["mobile"].stringValue
+        gender  = json["gender"].stringValue
+        age     = json["age"].stringValue
+        zodiac_sign  = json["zodiac_sign"].stringValue
+        compatibility   = json["compatibility"].stringValue
+        profile_pic  = json["profile_pic"].stringValue
+        dob = json["dob"].stringValue
+        about = json["about"].stringValue
+        subscription_plan = json["subscription_plan"].boolValue
+        miles = json["miles"].stringValue
+        status = json["status"].boolValue
+        is_verified = json["is_verified"].boolValue
+        photo_url = json["photo_url"].stringValue
+        for value in arrayPhotos {
+            let sortByData = AllPhotos(fromJson: value)
+            self.photos.append(sortByData)
+        }
+    }
+}
+class AllPhotos {
+    
+
+var user_id:String!
+var type: String!
+var name:String!
+init() { }
+
+init(fromJson json: JSON!){
+    if json.isEmpty{
+        return
+    }
+    user_id = json["user_id"].stringValue
+    type = json["type"].stringValue
+    name = json["name"].stringValue
+}
+}
+
 class CompleteProfile {
     
     var id   : String!
@@ -94,7 +134,7 @@ class User{
     var subscription_plan:Bool!
     var name:String!
     var gender:String!
- 
+    var profile_complete:String!
     var id   : String!
     var email:String!
     var status:String!
@@ -122,6 +162,7 @@ class User{
         if json.isEmpty{
             return
         }
+        profile_complete    = json["profile_complete"].stringValue
         updated_at          = json["updated_at"].stringValue
         latitude            = json["latitude"].stringValue
 //        device_type         = json["device_type"].stringValue

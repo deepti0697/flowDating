@@ -6,6 +6,8 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -16,23 +18,33 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1183934808703316</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.542877390026-35qkmgl7dav6oj65452hpm3urbvj7mc9</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Program requires GPS to track cars and job orders</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Program requires GPS to track cars and job orders</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Program requires GPS to track cars and job orders</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>This app uses your Microphone to allow Voice over IP communication with the Program Admin system</string>
-	<key>CFBundleGetInfoString</key>
-	<string></string>
-	
 	<key>Camera</key>
 	<string>\</string>
+	<key>FacebookAppID</key>
+	<string>1183934808703316</string>
+	<key>FacebookDisplayName</key>
+	<string>FlowDating</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>Main nib file base name (iPhone</key>
@@ -43,11 +55,19 @@
 		<true/>
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>YES</string>
+	<string>FlowDating requires Media  </string>
 	<key>NSCameraUsageDescription</key>
-	<string>YES</string>
+	<string>FlowDating requires Camera</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>FlowDating requires GPS to track User </string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>FlowDating requires GPS to track User </string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>FlowDating requires GPS to track User </string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app uses your Microphone to allow Voice over IP communication with the Program Admin system</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>YES</string>
+	<string>FlowDating requires Photos</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>sf_compact_display_regular.ttf</string>

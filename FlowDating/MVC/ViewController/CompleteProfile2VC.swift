@@ -50,6 +50,7 @@ class CompleteProfile2VC: UIViewController {
         lbl_Distance.setTitleColor(.lightGray, for: .normal)
 //        lbl_Distance.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         lbl_Distance.setTitle("0" + " Months", for: .normal)
+        lbl_Distance.titleLabel?.font = UIFont(name: "sf_ui_display_light.ttf", size: 10)
         lbl_Distance.center = setUISliderThumbValueWithLabel(slider: distanceRangeSlider.self)
         distanceRangeSlider.addSubview(lbl_Distance)
         lbl_Distance.isHidden = true
@@ -66,7 +67,7 @@ class CompleteProfile2VC: UIViewController {
             lbl_Distance.setTitle("\(x ?? 0) Km.", for: .normal)
         }
         else {
-            lbl_Distance.setTitle("\(x ?? 0) miles.", for: .normal)
+            lbl_Distance.setTitle("\(x ?? 0) miles", for: .normal)
         }
         
         self.distance_lbl_Txt = (x)
@@ -109,8 +110,8 @@ class CompleteProfile2VC: UIViewController {
         genderSelected = 2
         bothBtn.setImage(#imageLiteral(resourceName: "male-and-female-gender-symbols-1"), for: .normal)
         femaleBtn.setImage(#imageLiteral(resourceName: "woman"), for: .normal)
-        bothBtn.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
-        bothBtn.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
+        bothBtn.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+        bothBtn.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
         femaleBtn.layer.borderColor = UIColor.lightGray.cgColor
         femaleBtn.setTitleColor(.lightGray, for: .normal)
         maleBtn.layer.borderColor = UIColor.lightGray.cgColor
@@ -123,8 +124,8 @@ class CompleteProfile2VC: UIViewController {
 //        sender.selectedbtn()
         sender.setImage(#imageLiteral(resourceName: "man"), for: .normal)
         femaleBtn.setImage(#imageLiteral(resourceName: "woman"), for: .normal)
-        sender.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
-        sender.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
+        sender.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+        sender.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
         femaleBtn.layer.borderColor = UIColor.lightGray.cgColor
         femaleBtn.setTitleColor(.lightGray, for: .normal)
         bothBtn.layer.borderColor = UIColor.lightGray.cgColor
@@ -139,8 +140,8 @@ class CompleteProfile2VC: UIViewController {
         genderSelected  = 0
         maleBtn.setImage(#imageLiteral(resourceName: "man-1"), for: .normal)
         sender.setImage(#imageLiteral(resourceName: "woman-2"), for: .normal)
-        sender.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
-        sender.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
+        sender.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+        sender.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
         maleBtn.layer.borderColor = UIColor.lightGray.cgColor
         maleBtn.setTitleColor(.lightGray, for: .normal)
         bothBtn.layer.borderColor = UIColor.lightGray.cgColor
@@ -191,7 +192,8 @@ class CompleteProfile2VC: UIViewController {
             print_debug("response: \(parseData)")
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
-                self.openViewController(controller: CompleteypuProfileVC4.self, storyBoard: .mainStoryBoard) { (vc) in
+                AppHelper.setStringForKey("0", key: ServiceKeys.profile_Screen)
+                self.openViewController(controller: MultiplePictureUploadVC.self, storyBoard: .mainStoryBoard) { (vc) in
                 }
                 }
              else {

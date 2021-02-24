@@ -43,16 +43,13 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
         txt_four.delegate = self
         
         lbl.text = "Please enter 4 digit OTP send to"
-        self.locationManager.requestAlwaysAuthorization()
+//        self.locationManager.requestAlwaysAuthorization()
 
         // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
+//        self.locationManager.requestWhenInUseAuthorization()
 
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
+      
+       
        
         // Do any additional setup after loading the view.
     }
@@ -61,7 +58,39 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
         self.timer?.invalidate()
         self.timer = nil
     }
-    
+    func Location(){
+        let locStatus = CLLocationManager.authorizationStatus()
+          switch locStatus {
+             case .notDetermined:
+                locationManager.requestWhenInUseAuthorization()
+//            location()
+             return
+             case .denied, .restricted:
+                let alert = UIAlertController(title: "Location Services are disabled", message: "Please enable Location Services in your Settings", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(okAction)
+                present(alert, animated: true, completion: nil)
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                           return
+                       }
+
+                       if UIApplication.shared.canOpenURL(settingsUrl) {
+                           UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                               print("Settings opened: \(success)") // Prints true
+                           })
+                       }
+//                location()
+             return
+             case .authorizedAlways, .authorizedWhenInUse:
+//                location()
+             break
+          @unknown default:
+            locationManager.requestWhenInUseAuthorization()
+        
+          break
+            
+          }
+    }
     override func viewWillAppear(_ animated: Bool) {
        
         super.viewWillAppear(animated)
@@ -70,6 +99,12 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
         // self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.lbl_mbl.text =  "+\(countryCode)  \(self.mobile)"
         self.startOtpTimer()
+    Location()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         
     }
     
@@ -237,7 +272,8 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
                 self.timer?.invalidate()
                 AppHelper.setStringForKey(user.api_token, key: ServiceKeys.token)
                AppHelper.setStringForKey(user.email, key: ServiceKeys.email)
-               
+                AppHelper.setStringForKey(user.profile_complete, key: ServiceKeys.profile_Screen)
+          
                 AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
              
                 self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
@@ -274,7 +310,7 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
                 self.timer?.invalidate()
                 AppHelper.setStringForKey(user.api_token, key: ServiceKeys.token)
                AppHelper.setStringForKey(user.email, key: ServiceKeys.email)
-               
+                AppHelper.setStringForKey(user.profile_complete, key: ServiceKeys.profile_Screen)
                 AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
 //                self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
                     appdelegate.setHomeView()

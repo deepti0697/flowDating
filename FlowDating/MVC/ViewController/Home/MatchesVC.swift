@@ -16,6 +16,7 @@ class MatchesVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     @IBAction func swiftchAction(_ sender: UISwitch) {

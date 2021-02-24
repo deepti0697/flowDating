@@ -97,6 +97,7 @@ class SocialLoginHelper: UIViewController,GIDSignInDelegate{
   
 //}
 
+@available(iOS 13.0, *)
 extension SocialLoginHelper : ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding{
     // MARK:- delegate for Apple sign in
     func handleLogInWithAppleIDButtonPress() {
@@ -118,6 +119,7 @@ extension SocialLoginHelper : ASAuthorizationControllerDelegate, ASAuthorization
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             // Create an account in your system.
             let userIdentifier = appleIDCredential.user
+            let id  = appleIDCredential.identityToken
             let userFirstName = appleIDCredential.fullName?.givenName
             let userLastName = appleIDCredential.fullName?.familyName
             let userEmail = appleIDCredential.email
@@ -146,3 +148,4 @@ extension SocialLoginHelper : ASAuthorizationControllerDelegate, ASAuthorization
         return self.view.window!
     }
 }
+

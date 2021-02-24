@@ -118,6 +118,7 @@ class Cell_Message: UITableViewCell {
         lbl_newmessagesCount.clipsToBounds = true
         img_Picture.layer.borderColor = UIColor.init(red: 161/255.0, green: 7/255.0, blue: 32/255.0, alpha: 1.0).cgColor
         img_Picture.layer.borderWidth = 2
+        img_Picture.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
         
     }
 }

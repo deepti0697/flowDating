@@ -66,7 +66,7 @@ class TinderCard: UIView {
               addGestureRecognizer(tapGestureRecognizer)
         
         let backGroundView = UIView(frame:bounds)
-        backGroundView.backgroundColor = .red
+        backGroundView.backgroundColor = .clear
         
         backGroundView.clipsToBounds = true;
         addSubview(backGroundView)
@@ -77,7 +77,7 @@ class TinderCard: UIView {
 //        backGroundImageView .sd_setImage(with: URL.init(string: parse["image"] as? String ?? ""), completed: nil)
 //        backGroundImageView.contentMode = .scaleAspectFill
         let backGroundImageView = UIImageView(frame:backGroundView.bounds)
-                backGroundImageView.backgroundColor = .red
+                backGroundImageView.backgroundColor = .clear
                 backGroundImageView.tag = 1
         var parse:String?
         if value.photos.count < 1 {
@@ -92,7 +92,7 @@ class TinderCard: UIView {
            
             let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             let imageUrl = URL(string: urlString ?? "")
-            backGroundImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "Image -18"), options: .continueInBackground) { (img, err, cacheType, url) in
+            backGroundImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "Image -31"), options: .continueInBackground) { (img, err, cacheType, url) in
             }
         }
         //        backGroundImageView.image = #imageLiteral(resourceName: "bg")

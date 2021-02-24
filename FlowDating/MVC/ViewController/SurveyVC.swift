@@ -18,7 +18,9 @@ class SurveyVC: UIViewController {
     var clarityValue = 0
     var decisionValue = 0
     var interesetedValue  = 0
-    
+    var doYouWantKids = 0
+    var isKidsWant = false
+    @IBOutlet weak var yesKidsOutlt: UIButton!
     @IBOutlet weak var twoOC: UIButton!
     @IBOutlet weak var baseview2: UIView!
     @IBOutlet weak var oneAC: UIButton!
@@ -26,6 +28,10 @@ class SurveyVC: UIViewController {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var threeOC: UIButton!
     
+    @IBOutlet weak var nearFuture: UIButton!
+    @IBOutlet weak var yesKidswantOutlt: UIButton!
+    @IBOutlet weak var noKidsWantOutlt: UIButton!
+    @IBOutlet weak var noKidsOutlt: UIButton!
     @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextView: GradientView!
     @IBOutlet weak var previousView: GradientView!
@@ -72,7 +78,7 @@ class SurveyVC: UIViewController {
              lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider.self)
              slider.addSubview(lbl_Distance)
         let collectionLayout = UICollectionViewFlowLayout()
-        collectionLayout.itemSize = CGSize(width: self.view.frame.width, height:60)
+        collectionLayout.itemSize = CGSize(width: self.view.frame.width, height:40)
               collectionLayout.minimumInteritemSpacing = 1
         collectionLayout.scrollDirection = .vertical
         lbl_Distance.isHidden = true
@@ -113,11 +119,7 @@ class SurveyVC: UIViewController {
     }
     
     
-    @IBAction func youHaveNoKidsAction(_ sender: Any) {
-        
-    }
-    @IBAction func youhaveKidsAction(_ sender: Any) {
-    }
+   
     func buttonRounded(){
 //        oneAC.backgroundColor =
        
@@ -166,6 +168,77 @@ class SurveyVC: UIViewController {
     
     }
     
+    @IBAction func doYouHaveKids(_ sender: Any) {
+      
+        isKidsWant = true
+            
+               yesKidsOutlt.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
+        yesKidsOutlt.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
+        noKidsOutlt.layer.borderColor = UIColor.lightGray.cgColor
+        noKidsOutlt.setTitleColor(.lightGray, for: .normal)
+    }
+    
+    @IBAction func doyhavenotKids(_ sender: Any) {
+        
+          isKidsWant = false
+        
+          noKidsOutlt.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
+          noKidsOutlt.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
+          yesKidsOutlt.layer.borderColor = UIColor.lightGray.cgColor
+          yesKidsOutlt.setTitleColor(.lightGray, for: .normal)
+        
+    }
+    
+    @IBAction func yesKidsWantAct(_ sender: Any) {
+        doYouWantKids = 1
+        isKidsWant = true
+            
+               yesKidswantOutlt.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
+        yesKidswantOutlt.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
+        noKidsOutlt.layer.borderColor = UIColor.lightGray.cgColor
+        noKidsOutlt.setTitleColor(.lightGray, for: .normal)
+        nearFuture.layer.borderColor = UIColor.lightGray.cgColor
+        nearFuture.setTitleColor(.lightGray, for: .normal)
+    }
+    @IBAction func kidsWantsInFutureAct(_ sender: UIButton) {
+        doYouWantKids = 2
+     
+       
+        nearFuture.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+        
+        nearFuture.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
+       
+        yesKidswantOutlt.layer.borderColor = UIColor.lightGray.cgColor
+        yesKidswantOutlt.setTitleColor(.lightGray, for: .normal)
+        noKidsWantOutlt.layer.borderColor = UIColor.lightGray.cgColor
+        noKidsWantOutlt.setTitleColor(.lightGray, for: .normal)
+    
+    }
+    
+    @IBAction func kidsWantIntFutureNo(_ sender: Any) {
+        doYouWantKids = 0
+        noKidsWantOutlt.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+        noKidsWantOutlt.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
+        yesKidswantOutlt.layer.borderColor = UIColor.lightGray.cgColor
+        yesKidswantOutlt.setTitleColor(.lightGray, for: .normal)
+        nearFuture.layer.borderColor = UIColor.lightGray.cgColor
+        nearFuture.setTitleColor(.lightGray, for: .normal)
+    }
+   
+    @IBAction func youhaveKidsAction(_ sender: Any) {
+        
+       
+       
+        nearFuture.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+        
+        nearFuture.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
+       
+        yesKidswantOutlt.layer.borderColor = UIColor.lightGray.cgColor
+        yesKidswantOutlt.setTitleColor(.lightGray, for: .normal)
+        noKidsWantOutlt.layer.borderColor = UIColor.lightGray.cgColor
+        noKidsWantOutlt.setTitleColor(.lightGray, for: .normal)
+       
+    }
     @IBAction func switchAction(_ sender: UISwitch) {
         if sender.isOn {
             self.slider.minimumValue = 121
@@ -182,6 +255,7 @@ class SurveyVC: UIViewController {
             lbl_Distance.setTitle("47 Inches", for: .normal)
             slider.setValue(47, animated: false)
         }
+        lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider)
 //        vehicleHeightSliderValueChanged(slider)
 //        sender.isOn = !sender.isOn
     }
@@ -226,6 +300,9 @@ class SurveyVC: UIViewController {
             self.scaleView.isHidden = false
             self.topLabel.text = "what is your Height"
             self.switchonAndOffView.isHidden = false
+            slider.setValue(121, animated: false)
+            self.distance = 0
+            lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider)
             self.oneAC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.oneAC.setTitleColor(.white, for: .normal)
             self.twoOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
@@ -237,8 +314,11 @@ class SurveyVC: UIViewController {
             self.topLabel.text = "how good looking you are"
             self.slider.minimumValue = 1
             self.slider.maximumValue = 10
-//                lbl_Distance.setTitle("5", for: .normal)
+                slider.setValue(1, animated: false)
+                lbl_Distance.setTitle("1", for: .normal)
             self.switchonAndOffView.isHidden = true
+                self.distance = 1
+                lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider)
             self.twoOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.twoOC.setTitleColor(.white, for: .normal)
             self.oneAC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
@@ -251,10 +331,11 @@ class SurveyVC: UIViewController {
             
             self.scaleView.isHidden = true
 //            self.topLabel.text = "how good looking you are"
-            self.slider.minimumValue = 1
-            self.slider.maximumValue = 10
+//            self.slider.minimumValue = 1
+//            self.slider.maximumValue = 10
             self.switchonAndOffView.isHidden = true
-            slider.setValue(1, animated: false)
+//            slider.setValue(1, animated: false)
+         
             self.threeOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.threeOC.setTitleColor(.white, for: .normal)
             self.fourOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
@@ -271,6 +352,8 @@ class SurveyVC: UIViewController {
             self.lbl_Distance.setTitle("1", for: .normal)
             slider.setValue(1, animated: false)
             self.switchonAndOffView.isHidden = true
+            self.distance = 1
+            lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider)
             self.fourOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.fourOC.setTitleColor(.white, for: .normal)
             self.fiveOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
@@ -284,6 +367,10 @@ class SurveyVC: UIViewController {
             self.topLabel.text = "How important is other person’s wealth to you"
             self.slider.minimumValue = 1
             self.slider.maximumValue = 10
+            self.lbl_Distance.setTitle("1", for: .normal)
+            slider.setValue(1, animated: false)
+            self.distance = 1
+            lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider)
             self.fiveOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.fiveOC.setTitleColor(.white, for: .normal)
             self.fourOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
@@ -294,6 +381,7 @@ class SurveyVC: UIViewController {
         case 6:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = true
+            
             self.sixOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.sixOC.setTitleColor(.white, for: .normal)
             self.sevenOc.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
@@ -410,12 +498,30 @@ class SurveyVC: UIViewController {
             self.previousView.isHidden = false
             self.stackViewHeightConstraint.constant = 110
             switch currentValue {
-            case 6,7:
+            case 1:
+                if distance <= 0 {
+                    Common.showAlert(alertMessage: "Please select your Height", alertButtons: ["Ok"]) { (bt) in
+                    }
+                }
+                else {
+                    hitSurvey(param: setParameters(str: currentValue))
+                }
+            case 6:
                 if relevantSelectedIndexArray.count >= 1 {
                     hitSurvey(param: setParameters(str: currentValue))
                 }
+            
                 else {
-                    Common.showAlert(alertMessage: "Please Select minimum 1", alertButtons: ["Ok"]) { (bt) in
+                    Common.showAlert(alertMessage: "Please select minimum 1", alertButtons: ["Ok"]) { (bt) in
+                    }
+                }
+            case 7 :
+                if qualitiesArray.count >= 1 {
+                    hitSurvey(param: setParameters(str: currentValue))
+                }
+            
+                else {
+                    Common.showAlert(alertMessage: "Please select minimum 1", alertButtons: ["Ok"]) { (bt) in
                     }
                 }
             case 8:
@@ -423,7 +529,7 @@ class SurveyVC: UIViewController {
                     hitSurvey(param: setParameters(str: currentValue))
                 }
                 else {
-                    Common.showAlert(alertMessage: "Please Select minimum 4", alertButtons: ["Ok"]) { (bt) in
+                    Common.showAlert(alertMessage: "Please select minimum 4", alertButtons: ["Ok"]) { (bt) in
                     }
                 }
             
@@ -670,8 +776,11 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
             params["good_looking"] = self.distance
             return params
         case 3:
-            params["kids"] = false
-            params["kids_in_future"] = "2"
+            
+                params["kids"] = isKidsWant
+            
+            
+            params["kids_in_future"] = doYouWantKids
             return params
             
         case 4:

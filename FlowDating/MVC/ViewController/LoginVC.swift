@@ -11,6 +11,7 @@ import  GoogleSignIn
 import CoreLocation
 class LoginVC: UIViewController {
 
+    @IBOutlet weak var appleLoginImageView: UIImageView!
     @IBOutlet weak var appleIDButton: UIButton!
     @IBOutlet weak var txt_Mobile: UITextField!
     override func viewDidLoad() {
@@ -23,6 +24,8 @@ class LoginVC: UIViewController {
     let locationManager = CLLocationManager()
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        Location()
+        setupLoginWithAppleButton()
     }
     @IBAction func backButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -61,6 +64,16 @@ class LoginVC: UIViewController {
             
           }
     }
+    private func setupLoginWithAppleButton() {
+            if #available(iOS 13.0, *) {
+                self.appleLoginImageView.isHidden = false
+                //Show sign-in with apple button. Create button here via code if you need.
+            } else {
+                // Fallback on earlier versions
+                //Hide your sign in with apple button here.
+                self.appleLoginImageView.isHidden = true
+            }
+        }
     @IBAction func faceBookloginAction(_ sender: Any) {
         SocialLoginHelper.shared.handleLogInWithFacebookButtonPress()
                 SocialLoginHelper.shared.completionHandler = { (token, userinfo) in
@@ -76,6 +89,24 @@ class LoginVC: UIViewController {
 //                    [String:Any]
                     self.socialLogin(param: params as [String : Any])
 //                    self.socialLoginFromServer(userInfo: userinfo)
+                }
+    }
+    
+    @available(iOS 13.0, *)
+    @IBAction func appleLoginAction(_ sender: Any) {
+        SocialLoginHelper.shared.handleLogInWithAppleIDButtonPress()
+                SocialLoginHelper.shared.completionHandler = { (token, userinfo) in
+                    print(userinfo)
+                    let params = [ "social_type":"apple",
+                                  "social_id":userinfo["id"],
+                                  "device_type":"iOS",
+                                  "device_token" : AppHelper.getStringForKey(ServiceKeys.device_token),
+                                  "app_version":build_Version,
+                                  "os_version": ios_version,
+                                  "latitude" : self.latitude,
+                                  "longitude" : self.longitude]
+//                    [String:Any]
+                    self.socialLogin(param: params as [String : Any])
                 }
     }
     @IBAction func opensignupVC(_ sender: Any) {
@@ -156,7 +187,7 @@ extension LoginVC: GIDSignInDelegate {
                         "os_version": ios_version,
                         "latitude" : self.latitude,
                         "longitude" : self.longitude,
-                        "social_id" : user.authentication.idToken] as [String : Any]
+                        "social_id" : user.userID ?? ""] as [String : Any]
          
 //            self.socialLoginAction(parm: dict as NSDictionary)
             socialLogin(param: dict)
@@ -165,6 +196,7 @@ extension LoginVC: GIDSignInDelegate {
             print("\(error.localizedDescription)")
         }
     }
+    
     func socialLogin(param:[String:Any]){
    
         AppManager.init().hudShow()

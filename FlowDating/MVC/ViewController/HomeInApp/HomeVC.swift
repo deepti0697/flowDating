@@ -17,6 +17,7 @@ import UIKit
 import SwiftyJSON
 class HomeVC: ViewController {
     
+    @IBOutlet weak var switchOutlt: UISwitch!
     var currentPhotos = 0
     @IBOutlet weak var bottomViewC: UIView!
 //    @IBOutlet weak var pageControll: UIPageControl!
@@ -62,6 +63,16 @@ class HomeVC: ViewController {
         currrentPAge = 1
         currentIndex = 0
         loadCardValues()
+        switchOutlt.tintColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
+        switchOutlt.onTintColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+        if #available(iOS 13.0, *) {
+            switchOutlt.subviews[0].subviews[0].backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
+        } else if #available(iOS 12.0, *) {
+            self.switchOutlt.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
+        }
+        
+//        switchOutlt.layer.cornerRadius = 16.0;
+        
 //        callAPIforcandidateProfile()
 //
 //        if  AppDelegate.sharedInstance.isLocationPermissionOn
@@ -95,7 +106,7 @@ class HomeVC: ViewController {
      
         
     }
-    
+ 
     @IBAction func openProfileVC(_ sender: Any) {
         openViewController(controller: MeVC.self, storyBoard: .homeStoryboard) { (vc) in
 
@@ -276,7 +287,7 @@ class HomeVC: ViewController {
     
    
     @IBAction func switchONOFFAC(_ sender: UISwitch) {
-        if !sender.isOn {
+        if sender.isOn {
             appdelegate.setHomeView()
         }
     }

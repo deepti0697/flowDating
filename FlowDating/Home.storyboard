@@ -130,9 +130,12 @@
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="35"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor1">
+                                                            <color key="value" red="0.58039215686274503" green="0.20000000000000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQo-nD-McO">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQo-nD-McO">
                                                     <rect key="frame" x="85" y="81" width="10" height="10"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                     <constraints>
@@ -216,10 +219,10 @@
                                             <action selector="openProfileAction:" destination="QV0-5u-8Cb" eventType="touchUpInside" id="E5y-lY-cwE"/>
                                         </connections>
                                     </button>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JyD-8N-oai">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JyD-8N-oai">
                                         <rect key="frame" x="355" y="44.5" width="51" height="31"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="onTintColor" red="0.58039215690000001" green="0.0" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="onTintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="swiftchAction:" destination="QV0-5u-8Cb" eventType="valueChanged" id="Kkq-dC-Kls"/>
                                         </connections>
@@ -366,7 +369,7 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group -7" translatesAutoresizingMaskIntoConstraints="NO" id="tOb-GY-8q4">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1894" translatesAutoresizingMaskIntoConstraints="NO" id="tOb-GY-8q4">
                                                     <rect key="frame" x="329" y="60.5" width="45" height="45"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shannon Kate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Beq-fe-9Ny">
@@ -490,10 +493,10 @@
                                             <action selector="openProfileAction:" destination="glP-lP-B4y" eventType="touchUpInside" id="gXG-Ht-7R9"/>
                                         </connections>
                                     </button>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GRq-qi-uYg">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRq-qi-uYg">
                                         <rect key="frame" x="355" y="44.5" width="51" height="31"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="onTintColor" red="0.58039215690000001" green="0.0" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="onTintColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="swiftchAction:" destination="glP-lP-B4y" eventType="valueChanged" id="Urn-8N-5l4"/>
                                         </connections>
@@ -577,7 +580,7 @@
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="20"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benjamin Carl, 24" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Al2-OQ-D2d">
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benjamin Carl, 24" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Al2-OQ-D2d">
                                                             <rect key="frame" x="10" y="213" width="225" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="22" id="BZX-Ae-EAd"/>
@@ -587,7 +590,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haugong ,4 miles away" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n6-aZ-SbV">
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haugong ,4 miles away" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n6-aZ-SbV">
                                                             <rect key="frame" x="10" y="235" width="228" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="22" id="jbB-mq-5nj"/>
@@ -597,14 +600,14 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1894" translatesAutoresizingMaskIntoConstraints="NO" id="spt-7J-Ybc">
-                                                            <rect key="frame" x="10" y="158" width="45" height="45"/>
+                                                            <rect key="frame" x="10" y="217" width="45" height="45"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="2Z1-K1-XD1"/>
                                                                 <constraint firstAttribute="width" constant="45" id="Ynh-JR-R6h"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="85% Matched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yX-oc-rHd">
-                                                            <rect key="frame" x="60" y="171.5" width="90" height="18"/>
+                                                            <rect key="frame" x="60" y="230.5" width="90" height="18"/>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -613,6 +616,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="4n6-aZ-SbV" firstAttribute="leading" secondItem="qjy-mb-5oc" secondAttribute="leading" constant="10" id="4Bd-rH-Hed"/>
+                                                        <constraint firstAttribute="bottom" secondItem="spt-7J-Ybc" secondAttribute="bottom" constant="10" id="ApG-qS-dn7"/>
                                                         <constraint firstItem="4n6-aZ-SbV" firstAttribute="top" secondItem="Al2-OQ-D2d" secondAttribute="bottom" id="Df1-8D-1bx"/>
                                                         <constraint firstItem="5yX-oc-rHd" firstAttribute="leading" secondItem="spt-7J-Ybc" secondAttribute="trailing" constant="5" id="SXd-XX-lmO"/>
                                                         <constraint firstItem="Al2-OQ-D2d" firstAttribute="leading" secondItem="qjy-mb-5oc" secondAttribute="leading" constant="10" id="Yld-F3-fd6"/>
@@ -620,7 +624,6 @@
                                                         <constraint firstAttribute="trailing" secondItem="4n6-aZ-SbV" secondAttribute="trailing" constant="7" id="kPr-ae-1nf"/>
                                                         <constraint firstAttribute="bottom" secondItem="4n6-aZ-SbV" secondAttribute="bottom" constant="15" id="l3E-Bw-7E1"/>
                                                         <constraint firstItem="spt-7J-Ybc" firstAttribute="leading" secondItem="qjy-mb-5oc" secondAttribute="leading" constant="10" id="rK8-CY-K60"/>
-                                                        <constraint firstItem="Al2-OQ-D2d" firstAttribute="top" secondItem="spt-7J-Ybc" secondAttribute="bottom" constant="10" id="s91-n0-3c3"/>
                                                         <constraint firstItem="Gt9-G0-UhE" firstAttribute="top" secondItem="qjy-mb-5oc" secondAttribute="top" id="t4Q-Cb-iME"/>
                                                         <constraint firstItem="Gt9-G0-UhE" firstAttribute="leading" secondItem="qjy-mb-5oc" secondAttribute="leading" id="tx6-KN-070"/>
                                                         <constraint firstAttribute="bottom" secondItem="Gt9-G0-UhE" secondAttribute="bottom" id="vGd-z4-mSZ"/>
@@ -666,10 +669,10 @@
                                             <constraint firstAttribute="height" constant="45" id="HVt-rA-vBR"/>
                                         </constraints>
                                     </imageView>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dIY-Op-BjS">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dIY-Op-BjS">
                                         <rect key="frame" x="355" y="44.5" width="51" height="31"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="onTintColor" red="0.58039215690000001" green="0.0" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="onTintColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="swiftchAction:" destination="clt-Qf-83K" eventType="valueChanged" id="FTO-0v-41i"/>
                                         </connections>
@@ -719,7 +722,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7RQ-8a-cFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1347.8260869565217" y="352.23214285714283"/>
+            <point key="canvasLocation" x="363.768115942029" y="311.38392857142856"/>
         </scene>
         <!--Messages-->
         <scene sceneID="Jxv-HJ-TlL">
@@ -759,7 +762,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1e-Ne-FXM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="437.68115942028987" y="352.23214285714283"/>
+            <point key="canvasLocation" x="501" y="514"/>
         </scene>
         <!--Messages-->
         <scene sceneID="qR2-J4-D2E">
@@ -1362,7 +1365,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXr-5u-yLh">
-                                                            <rect key="frame" x="28" y="12" width="44.5" height="19"/>
+                                                            <rect key="frame" x="28" y="12" width="42.5" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="19" id="mtz-b8-Azs"/>
                                                             </constraints>

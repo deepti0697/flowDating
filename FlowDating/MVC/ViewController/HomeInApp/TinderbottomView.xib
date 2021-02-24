@@ -84,7 +84,7 @@
                             <rect key="frame" x="10" y="15" width="122.5" height="28"/>
                         </pageControl>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="85 % Match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEE-pf-lpW">
-                            <rect key="frame" x="377" y="98" width="72" height="28"/>
+                            <rect key="frame" x="377" y="94" width="72" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="lBn-M4-SM1"/>
                             </constraints>
@@ -113,7 +113,7 @@
                         <constraint firstItem="1OJ-wF-0yK" firstAttribute="centerY" secondItem="5zz-4O-gdk" secondAttribute="centerY" id="uGp-sx-Yuv"/>
                         <constraint firstItem="URT-Ib-qFG" firstAttribute="centerY" secondItem="D3R-rx-RFf" secondAttribute="centerY" id="ur3-0j-gx9"/>
                         <constraint firstItem="D3R-rx-RFf" firstAttribute="leading" secondItem="1OJ-wF-0yK" secondAttribute="trailing" constant="10" id="wxQ-co-LbA"/>
-                        <constraint firstItem="GEE-pf-lpW" firstAttribute="top" secondItem="HBT-4v-BMv" secondAttribute="bottom" constant="5" id="yW9-7A-f97"/>
+                        <constraint firstItem="GEE-pf-lpW" firstAttribute="top" secondItem="HBT-4v-BMv" secondAttribute="bottom" constant="1" id="yW9-7A-f97"/>
                     </constraints>
                 </view>
             </subviews>

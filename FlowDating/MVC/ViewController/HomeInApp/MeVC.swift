@@ -15,7 +15,7 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tbl: UITableView!
     @IBOutlet weak var imgProfile: UIImageView!
     
-    var imgArray = ["Path -7","Path 440-1","Teleportation","shooting-star","survey","Group 47"]
+    var imgArray = ["Path -7","Path 440-1","Teleportation","survey","shooting-star","Group 47"]
     var valueArray = ["My Profile","My Preferences","Teleportion","Survey","Membership","Settings"]
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tbl.delegate = self
         tbl.dataSource = self
         
-        imgProfile.contentMode = .scaleToFill
+//        imgProfile.contentMode = .scaleToFill
         // Do any additional setup after loading the view.
     }
     
@@ -34,7 +34,7 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         self.navigationController?.navigationBar.isHidden = true
       
-        
+        imgProfile.contentMode =  UIView.ContentMode.scaleToFill
         //loctaion.text = user
 //        imgProfile.sd_setImage(with: URL.init(string: user.image ?? ""), completed: nil)
 //        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))

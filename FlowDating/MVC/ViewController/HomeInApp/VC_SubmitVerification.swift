@@ -97,7 +97,7 @@ class VC_SubmitVerification: UIViewController,UIImagePickerControllerDelegate, U
 
     @IBAction func btn_retake(_ sender: Any) {
         verification1 = true
-
+        clickPicture()
     }
     
 }
@@ -107,6 +107,6 @@ extension VC_SubmitVerification{
     // move this api to sign up screen
     
     func apiCallUploadPicture(){
-        
+        self.navigationController?.popViewController(animated: true)
     }
 }

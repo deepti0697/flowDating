@@ -23,6 +23,7 @@ class CompleteProfile2VC: UIViewController {
     @IBOutlet weak var bothBtn: UIButton!
     @IBOutlet weak var femaleBtn: UIButton!
     
+    @IBOutlet weak var backBtnOutlt: UIButton!
     @IBOutlet weak var ageRangeSlider: RangeSeekSlider!
     
     override func viewDidLoad() {
@@ -82,7 +83,14 @@ class CompleteProfile2VC: UIViewController {
     }
 
     @IBAction func nextButtonAction(_ sender: Any) {
-        completeUserProfile1()
+        if x ?? 0 <= 0 {
+            Common.showAlert(alertMessage: "Please select your distance Range", alertButtons: ["Ok"]) { (bt) in
+            }
+        }
+        else {
+            completeUserProfile1()
+        }
+        
     }
     
     @IBAction func switchAction(_ sender: UISwitch) {
@@ -170,7 +178,7 @@ class CompleteProfile2VC: UIViewController {
         params["max_age"] = Int(ageRangeSlider.selectedMaxValue)
         
        
-        params["distance"] = self.distance_lbl_Txt
+        params["distance"] = self.x
         if isSwitchOn {
             params["distance_type"] = "km"
             

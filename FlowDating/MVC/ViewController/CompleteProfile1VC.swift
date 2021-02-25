@@ -161,6 +161,7 @@ extension CompleteProfile1VC:UITextFieldDelegate {
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 AppHelper.setStringForKey("2", key: ServiceKeys.profile_Screen)
                 self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
+//                    vc.backBtnOutlt.isHidden = false
                 }
                 }
              else {

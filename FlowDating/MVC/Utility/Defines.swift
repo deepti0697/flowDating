@@ -109,7 +109,7 @@ struct ServiceUrls
     static let signup_Social = "social_login"
 static let prefrence_User = "preference_users"
 
-    
+    static let likeDisLikeUser = "users_like_dislike"
 
 }
 struct ErrorCodes

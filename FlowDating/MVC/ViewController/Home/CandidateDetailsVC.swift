@@ -10,7 +10,12 @@ import UIKit
 
 class CandidateDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-//    @IBOutlet weak var likeButtonView: UIView!
+    @IBOutlet weak var totalMatchLbl: UILabel!
+    @IBOutlet weak var aboutMeLbl: UILabel!
+    @IBOutlet weak var horoScopeLbl: UILabel!
+    @IBOutlet weak var distanceLbl: UILabel!
+    @IBOutlet weak var userNameLbl: UILabel!
+    //    @IBOutlet weak var likeButtonView: UIView!
   //  @IBOutlet weak var public_collection: UICollectionView!
   //  @IBOutlet weak var private_collection: UICollectionView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -22,6 +27,7 @@ class CandidateDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var pagecontrol: UIPageControl!
     var slides:[ImageViewPage] = []
     var personUserid : Int = 0
+    var userDetail =  AllUserData()
 //    var user : UserModel = UserModel()
     var person_name = ""
     var cellcount = 0
@@ -41,7 +47,12 @@ class CandidateDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSo
         // Do any additional setup after loading the view.
     }
     
-    
+    func setup(){
+//        self.nam
+        self.userNameLbl.text = self.userDetail.name
+        self.aboutMeLbl.text = self.userDetail.about
+//        self.totalMatchLbl.text = self.userDetail
+    }
     @IBAction func backButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

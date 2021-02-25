@@ -195,8 +195,8 @@ class SurveyVC: UIViewController {
             
                yesKidswantOutlt.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
         yesKidswantOutlt.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
-        noKidsOutlt.layer.borderColor = UIColor.lightGray.cgColor
-        noKidsOutlt.setTitleColor(.lightGray, for: .normal)
+        noKidsWantOutlt.layer.borderColor = UIColor.lightGray.cgColor
+        noKidsWantOutlt.setTitleColor(.lightGray, for: .normal)
         nearFuture.layer.borderColor = UIColor.lightGray.cgColor
         nearFuture.setTitleColor(.lightGray, for: .normal)
     }
@@ -525,7 +525,7 @@ class SurveyVC: UIViewController {
                     }
                 }
             case 8:
-                if relevantSelectedIndexArray.count < 5 {
+                if otherPersonQualities.count < 5 {
                     hitSurvey(param: setParameters(str: currentValue))
                 }
                 else {

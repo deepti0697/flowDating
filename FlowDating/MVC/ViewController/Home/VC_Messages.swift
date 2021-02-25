@@ -105,6 +105,7 @@ extension VC_Messages : UITableViewDelegate,UITableViewDataSource{
 }
 class Cell_Message: UITableViewCell {
     
+    @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var lbl_userName: UILabel!
     @IBOutlet weak var lbl_About: UILabel!
     @IBOutlet weak var lbl_newmessagesCount: UILabel!
@@ -113,6 +114,14 @@ class Cell_Message: UITableViewCell {
     @IBOutlet weak var view_Online: UIView!
     @IBOutlet weak var lbl_LastOnline: UILabel!
     
+    override  func awakeFromNib() {
+        super.awakeFromNib()
+        borderView.layer.cornerRadius = borderView.frame.size.width/2
+        borderView.clipsToBounds = true
+
+        borderView.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
+        borderView.layer.borderWidth = 1.0
+    }
     func cellLoad(Index: Int,lang:String){
         lbl_newmessagesCount.layer.cornerRadius = lbl_newmessagesCount.frame.height/2
         lbl_newmessagesCount.clipsToBounds = true

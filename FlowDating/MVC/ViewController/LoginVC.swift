@@ -26,6 +26,11 @@ class LoginVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         Location()
         setupLoginWithAppleButton()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
     @IBAction func backButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -40,18 +45,20 @@ class LoginVC: UIViewController {
              return
              case .denied, .restricted:
                 let alert = UIAlertController(title: "Location Services are disabled", message: "Please enable Location Services in your Settings", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(okAction)
-                present(alert, animated: true, completion: nil)
-                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                           return
-                       }
+//                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                               return
+                           }
 
-                       if UIApplication.shared.canOpenURL(settingsUrl) {
-                           UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                               print("Settings opened: \(success)") // Prints true
-                           })
-                       }
+                           if UIApplication.shared.canOpenURL(settingsUrl) {
+                               UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                   print("Settings opened: \(success)") // Prints true
+                               })
+                           }
+                })))
+                present(alert, animated: true, completion: nil)
+               
 //                location()
              return
              case .authorizedAlways, .authorizedWhenInUse:
@@ -214,9 +221,18 @@ extension LoginVC: GIDSignInDelegate {
                 AppHelper.setStringForKey(user.profile_complete, key: ServiceKeys.profile_Screen)
           
                 AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
-             
-                self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
+                if user.profile_complete == "0" {
+                    appdelegate.setHomeVC()
+                }
+                if user.profile_complete == "1"{
+                    self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
 
+
+                    }
+                }
+                else {
+                self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
+                }
                     
                 }
                 }

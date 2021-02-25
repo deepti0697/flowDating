@@ -14,8 +14,8 @@ class InchargeImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imgeView: UIImageView!
     override  func awakeFromNib() {
         super.awakeFromNib()
-        imgeView.contentMode =  UIView.ContentMode.scaleAspectFit
-        selectedImageView.contentMode =  UIView.ContentMode.scaleAspectFit
+//        imgeView.contentMode =  UIView.ContentMode.scaleAspectFit
+//        selectedImageView.contentMode =  UIView.ContentMode.scaleAspectFit
         
     }
     func confirgureCell(response:UIImage){

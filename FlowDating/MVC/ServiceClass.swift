@@ -467,6 +467,13 @@ class ServiceClass: NSObject {
         let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
             self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
         }
+    func hitServicesForLikeAndDislikeUsers(_ params:[String : Any], completion:@escaping completionBlockType)
+        {
+            let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.likeDisLikeUser)"
+           
+        let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+            self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+        }
     func hitServiceForCompleteProfile2(_ params:[String : Any], completion:@escaping completionBlockType)
         {
             let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.complete_profile_prefrence)"

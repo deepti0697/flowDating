@@ -19,7 +19,14 @@ class TinderbottomView: UIView {
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var imgFlag: UIImageView!
     @IBOutlet weak var nmPerson: UILabel!
-   
+    override  func awakeFromNib() {
+        super.awakeFromNib()
+        if #available(iOS 14.0, *) {
+            pageControl.backgroundStyle = .minimal
+        } else {
+            // Fallback on earlier versions
+        }
+    }
    
     /*
     // Only override draw() if you perform custom drawing.

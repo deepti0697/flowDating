@@ -1,17 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "asset-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "asset-1@2x.png",
+      "filename" : "mysterygray@3x copy-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "asset-1@3x.png",
+      "filename" : "mysterygray@3x copy.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

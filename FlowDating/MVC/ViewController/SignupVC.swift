@@ -32,6 +32,11 @@ class SignupVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         Location()
         setupLoginWithAppleButton()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
     
     func Location(){
@@ -43,18 +48,20 @@ class SignupVC: UIViewController {
              return
              case .denied, .restricted:
                 let alert = UIAlertController(title: "Location Services are disabled", message: "Please enable Location Services in your Settings", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(okAction)
-                present(alert, animated: true, completion: nil)
-                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                           return
-                       }
+//                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                               return
+                           }
 
-                       if UIApplication.shared.canOpenURL(settingsUrl) {
-                           UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                               print("Settings opened: \(success)") // Prints true
-                           })
-                       }
+                           if UIApplication.shared.canOpenURL(settingsUrl) {
+                               UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                   print("Settings opened: \(success)") // Prints true
+                               })
+                           }
+                })))
+                present(alert, animated: true, completion: nil)
+               
 //                location()
              return
              case .authorizedAlways, .authorizedWhenInUse:
@@ -180,12 +187,20 @@ extension SignupVC {
           
                 AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
              
-                self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
+                if user.profile_complete == "0" {
+                    appdelegate.setHomeVC()
+                }
+                if user.profile_complete == "1"{
+                    self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
 
-                    
+
+                    }
+                }
+                else {
+                self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
                 }
                 }
-                
+            }
              else {
                 
                 guard let dicErr = errorDict?["msg"] as? String else {
@@ -238,4 +253,12 @@ extension SignupVC : GIDSignInDelegate {
     }
     
     
+}
+extension SignupVC:CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        self.latitude = locValue.latitude
+        self.longitude = locValue.longitude
+    }
 }

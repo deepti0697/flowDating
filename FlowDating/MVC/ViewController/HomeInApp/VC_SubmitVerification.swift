@@ -58,8 +58,8 @@ class VC_SubmitVerification: UIViewController,UIImagePickerControllerDelegate, U
             img1.isHidden = true
             img2.isHidden = false
             img3.isHidden = false
-            lbl1.text = "Do they match?"
-            lbl2.text = "If your photo looks like the sample then submit it for verification.it should only take a minute or two for the results."
+            lbl1.text = "Do they Match?"
+            lbl2.text = "If your photo looks like the sample then submit it for verification. Flow will notify you as soon as your profile is verified."
             btn_retake.isHidden = false
             btn_Submit.setTitle("Submit", for: .normal)
 

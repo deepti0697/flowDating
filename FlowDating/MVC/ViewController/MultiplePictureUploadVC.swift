@@ -36,7 +36,7 @@ class MultiplePictureUploadVC: UIViewController,UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         let collectionLayout = UICollectionViewFlowLayout()
-        collectionLayout.itemSize = CGSize(width: self.imageCollectionView.frame.width/3.5, height: self.imageCollectionView.frame.width/3.5)
+        collectionLayout.itemSize = CGSize(width: self.imageCollectionView.frame.width/4, height: self.imageCollectionView.frame.width/4)
               collectionLayout.minimumInteritemSpacing = 5
         collectionLayout.minimumInteritemSpacing = 5
         collectionLayout.scrollDirection = .vertical

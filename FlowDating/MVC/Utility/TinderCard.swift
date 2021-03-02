@@ -20,6 +20,8 @@ protocol TinderCardDelegate: NSObjectProtocol {
     func cardGoesDown(card: TinderCard)
     func currentCardStatus(card: TinderCard, distance: CGFloat)
      func tapedoncard()
+    func leftMethodTapped()
+    func rightMethodTapped()
 }
 
 class TinderCard: UIView {
@@ -58,19 +60,29 @@ class TinderCard: UIView {
         
         originalPoint = center
         
-        
+        let touchArea = CGSize(width: 80, height: self.frame.height)
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
         addGestureRecognizer(panGestureRecognizer)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.taped))
               addGestureRecognizer(tapGestureRecognizer)
-        
+        let leftView = UIView(frame: CGRect(origin: .zero, size: touchArea))
+            let rightView = UIView(frame: CGRect(origin: CGPoint(x: self.frame.width - touchArea.width, y: 0), size: touchArea))
+
+            leftView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(leftViewTapped)))
+            rightView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(rightViewTapped)))
+
+            leftView.backgroundColor = .blue
+            rightView.backgroundColor = .blue
+
+            
         let backGroundView = UIView(frame:bounds)
         backGroundView.backgroundColor = .clear
         
         backGroundView.clipsToBounds = true;
         addSubview(backGroundView)
-        
+    backGroundView.addSubview(leftView)
+    backGroundView.addSubview(rightView)
 //        let backGroundImageView = UIImageView(frame:backGroundView.bounds)
 //        backGroundImageView.backgroundColor = AppBackgroungcolor
 //        let parse = value.public_photo?[0] as! NSDictionary
@@ -193,6 +205,13 @@ class TinderCard: UIView {
         
     }
     
+    @objc func leftViewTapped() {
+        delegate?.leftMethodTapped()
+    }
+
+    @objc func rightViewTapped() {
+        delegate?.rightMethodTapped()
+    }
     @objc func beingDragged(_ gestureRecognizer: UIPanGestureRecognizer) {
         
         xCenter = gestureRecognizer.translation(in: self).x

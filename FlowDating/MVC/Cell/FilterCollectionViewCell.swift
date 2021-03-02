@@ -11,9 +11,7 @@ import UIKit
 class FilterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var collectionImageView: UIImageView!
-    @IBAction func buttonACtion(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-    }
+  
   
     @IBOutlet weak var lblSubject: UILabel!
 }

@@ -24,7 +24,8 @@ class HomeVC: ViewController {
     @IBOutlet weak var btnClose: UIButton!
     var tempArray = [AllUserData]()
     @IBOutlet weak var btnPoke: UIButton!
-    @IBOutlet weak var btnLike: UIButton!
+    @IBOutlet weak var openprofile: UIImageView!
+   
     @IBOutlet weak var tinderView: UIView!
     var currentLoadedCardsArray = [TinderCard]()
     var allCardsArray = [TinderCard]()
@@ -91,7 +92,8 @@ class HomeVC: ViewController {
         }
         
     }
-    @IBOutlet weak var openprofile: UIImageView!
+    
+ 
     func sendDatafilter(reset: Bool, data: NSDictionary) {
         self.callAPIforExplore(reset: reset, dict: data)
     }
@@ -124,29 +126,7 @@ class HomeVC: ViewController {
         
     
     @IBAction func btnAction(_ sender: Any) {
-        let dummyCard = currentLoadedCardsArray.first
-        //du
-        let total_photos = dummyCard?.totalPhotosCount
-        if total_photos ?? 0 > 1 && currentPhotos <= total_photos ?? 0 - 1 {
-            if currentPhotos != total_photos! - 1 {
-                currentPhotos = currentPhotos + 1
-                if let uiview = dummyCard?.viewWithTag(2) as? TinderbottomView {
-                    uiview.pageControl.currentPage = currentPhotos
-                }
-                if let imageview = dummyCard?.viewWithTag(1) as? UIImageView{
-                    if let imageStr =  tempArray[0].photos[currentPhotos].name{
-                        print(imageStr)
-                        
-                        let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-                        let imageUrl = URL(string: urlString ?? "")
-                        imageview.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "Image -18"), options: .continueInBackground) { (img, err, cacheType, url) in
-                        }
-                    }
-                
-                }
-                
-            }
-        }
+      
      
         
     }
@@ -246,9 +226,9 @@ class HomeVC: ViewController {
     func loadCardValues() {
         
         if valueArray.count > 0 {
-            btnLike.isHidden = false
-            btnClose.isHidden = false
-            btnPoke.isHidden = false
+//            btnLike.isHidden = false
+//            btnClose.isHidden = false
+//            btnPoke.isHidden = false
             
             let capCount = (valueArray.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : valueArray.count
             
@@ -275,9 +255,9 @@ class HomeVC: ViewController {
         }
         else {
             currentLoadedCardsArray.removeAll()
-            btnLike.isHidden = true
-            btnClose.isHidden = true
-            btnPoke.isHidden = true
+//            btnLike.isHidden = true
+//            btnClose.isHidden = true
+//            btnPoke.isHidden = true
             
             for card in tinderView.subviews{
                 card.removeFromSuperview()
@@ -663,6 +643,57 @@ class HomeVC: ViewController {
 
 
 extension HomeVC : TinderCardDelegate{
+    func leftMethodTapped() {
+        let dummyCard = currentLoadedCardsArray.first
+        //du
+        let total_photos = dummyCard?.totalPhotosCount
+        if total_photos! > 1 &&  currentPhotos <= total_photos! - 1 {
+            if currentPhotos > 0 {
+                
+                currentPhotos = currentPhotos - 1
+                if let uiview = dummyCard?.viewWithTag(2) as? TinderbottomView {
+                    uiview.pageControl.currentPage = currentPhotos
+                }
+                if let imageview = dummyCard?.viewWithTag(1) as? UIImageView{
+                    if let imageStr =  tempArray[0].photos[currentPhotos].name{
+                        print(imageStr)
+                        
+                        let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                        let imageUrl = URL(string: urlString ?? "")
+                        imageview.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "Image -18"), options: .continueInBackground) { (img, err, cacheType, url) in
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func rightMethodTapped() {
+        let dummyCard = currentLoadedCardsArray.first
+        //du
+        let total_photos = dummyCard?.totalPhotosCount
+        if total_photos ?? 0 > 1 && currentPhotos <= total_photos ?? 0 - 1 {
+            if currentPhotos != total_photos! - 1 {
+                currentPhotos = currentPhotos + 1
+                if let uiview = dummyCard?.viewWithTag(2) as? TinderbottomView {
+                    uiview.pageControl.currentPage = currentPhotos
+                }
+                if let imageview = dummyCard?.viewWithTag(1) as? UIImageView{
+                    if let imageStr =  tempArray[0].photos[currentPhotos].name{
+                        print(imageStr)
+                        
+                        let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                        let imageUrl = URL(string: urlString ?? "")
+                        imageview.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "Image -18"), options: .continueInBackground) { (img, err, cacheType, url) in
+                        }
+                    }
+                
+                }
+                
+            }
+        }
+    }
+    
     
     // action called when the card goes to the left.
     func cardGoesUp(card: TinderCard) {

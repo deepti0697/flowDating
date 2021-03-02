@@ -80,7 +80,16 @@ class SignupVC: UIViewController {
     
     @IBAction func signupAction(_ sender: Any) {
         if Validate.shared.validateLogin(vc: self) {
-            self.otpLogin()
+            if ( txt_mobile.text?.count)! >= 7  {
+                self.otpLogin()
+            }
+            else {
+                
+                Common.showAlert(alertMessage: "Please enter atleast 7 digits Number", alertButtons: ["Ok"]) { (bt) in
+                }
+               
+            }
+          
         }
     }
     @IBAction func faceBookloginAction(_ sender: Any) {

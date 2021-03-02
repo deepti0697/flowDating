@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-
+import AVFoundation
 
 class MultiplePictureUploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -32,13 +32,15 @@ class MultiplePictureUploadVC: UIViewController,UIImagePickerControllerDelegate,
     var isComingFromEdit = false
  
   
-    
+    func checkCameraPermission(){
+     
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let collectionLayout = UICollectionViewFlowLayout()
-        collectionLayout.itemSize = CGSize(width: self.imageCollectionView.frame.width/4, height: self.imageCollectionView.frame.width/4)
-              collectionLayout.minimumInteritemSpacing = 5
-        collectionLayout.minimumInteritemSpacing = 5
+        collectionLayout.itemSize = CGSize(width: self.imageCollectionView.frame.width/3.5, height: self.imageCollectionView.frame.width/3.5)
+              collectionLayout.minimumInteritemSpacing = 0
+        collectionLayout.minimumInteritemSpacing = 0
         collectionLayout.scrollDirection = .vertical
               imageCollectionView.collectionViewLayout = collectionLayout
         imageCollectionView.dataSource = self
@@ -165,7 +167,7 @@ extension MultiplePictureUploadVC : UITextFieldDelegate {
 
 extension MultiplePictureUploadVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 5
+       return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -186,9 +188,38 @@ extension MultiplePictureUploadVC:UICollectionViewDelegate,UICollectionViewDataS
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        imgcell = collectionView.cellForItem(at: indexPath) as! InchargeImageCollectionViewCell
-//        if imgcell.imgeView.image == #imageLiteral(resourceName: "Union 5")  {
-        setImageForComplaint(imageSec: "1", cel: imgcell)
+        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+            imgcell = collectionView.cellForItem(at: indexPath) as! InchargeImageCollectionViewCell
+    //        if imgcell.imgeView.image == #imageLiteral(resourceName: "Union 5")  {
+            setImageForComplaint(imageSec: "1", cel: imgcell)
+        } else {
+            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted: Bool) -> Void in
+               if granted == true {
+                self.imgcell = collectionView.cellForItem(at: indexPath) as! InchargeImageCollectionViewCell
+        //        if imgcell.imgeView.image == #imageLiteral(resourceName: "Union 5")  {
+                self.setImageForComplaint(imageSec: "1", cel: self.imgcell)
+               } else {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Camera Services are disabled", message: "Please enable Location Services in your Settings", preferredStyle: .alert)
+    //                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                                   return
+                               }
+
+                               if UIApplication.shared.canOpenURL(settingsUrl) {
+                                   UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                       print("Settings opened: \(success)") // Prints true
+                                   })
+                               }
+                    })))
+                    self.present(alert, animated: true, completion: nil)
+                }
+               
+               }
+           })
+        }
+       
 //        }
         
     

@@ -9,6 +9,7 @@ import UIKit
 import SwiftyJSON
 class SurveyVC: UIViewController {
     
+    @IBOutlet weak var switchHeight: UISwitch!
     var isSwitchOn = true
     var distance = 0
     var relevantSelectedIndexArray = [Int]()
@@ -63,7 +64,7 @@ class SurveyVC: UIViewController {
     var personalityArray = ["Extravert","Introvert"]
     var observableArray = ["I trust tested and focus on facts","I trust my intuition and better keep my options open"]
     var decisionsArray = ["Emotions","Rationality"]
-    var flexibilityArray = [" Lets stick to the plan and clarity","Lets go with the flow and face the unknown"]
+    var flexibilityArray = [" Lets stick to the plan and clarity","Lets keep my options open and face the unknown"]
 
     var lbl_Distance = UIButton()
     override func viewDidLoad() {
@@ -103,6 +104,13 @@ class SurveyVC: UIViewController {
             self.previousView.isHidden = false
             self.stackViewHeightConstraint.constant = 110
         }
+        switchHeight.tintColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
+                switchHeight.onTintColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+                if #available(iOS 13.0, *) {
+                    switchHeight.subviews[0].subviews[0].backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
+                } else if #available(iOS 12.0, *) {
+                    self.switchHeight.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
+    }
     }
     override func viewWillLayoutSubviews() {
            super.viewWillLayoutSubviews()
@@ -287,7 +295,7 @@ class SurveyVC: UIViewController {
        func setUISliderThumbValueWithLabel(slider: UISlider) -> CGPoint {
            let slidertTrack : CGRect = slider.trackRect(forBounds: slider.bounds)
            let sliderFrm : CGRect = slider .thumbRect(forBounds: slider.bounds, trackRect: slidertTrack, value: slider.value)
-           return CGPoint(x: sliderFrm.origin.x + slider.frame.origin.x + 16, y: slider.frame.origin.y - 40)
+           return CGPoint(x: sliderFrm.origin.x + slider.frame.origin.x + 16, y: slider.frame.origin.y - 100)
        }
 
       
@@ -298,7 +306,7 @@ class SurveyVC: UIViewController {
             self.colcnView.isHidden = true
             self.kidsView.isHidden = true
             self.scaleView.isHidden = false
-            self.topLabel.text = "what is your Height"
+            self.topLabel.text = "What is your height?"
             self.switchonAndOffView.isHidden = false
             slider.setValue(121, animated: false)
             self.distance = 0
@@ -311,7 +319,8 @@ class SurveyVC: UIViewController {
             case 2:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = false
-            self.topLabel.text = "how good looking you are"
+            self.topLabel.text = "What is your honest opinion on how good looking you are?"
+
             self.slider.minimumValue = 1
             self.slider.maximumValue = 10
                 slider.setValue(1, animated: false)
@@ -346,7 +355,7 @@ class SurveyVC: UIViewController {
         case 4:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = false
-            self.topLabel.text = "how wealthy you are"
+            self.topLabel.text = "What is your honest opinion on how wealthy you are?"
             self.slider.minimumValue = 1
             self.slider.maximumValue = 10
             self.lbl_Distance.setTitle("1", for: .normal)
@@ -413,7 +422,7 @@ class SurveyVC: UIViewController {
             self.sevenOc.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.sevenOc.setTitleColor(.black, for: .normal)
             self.colcnView.isHidden = false
-            self.collectionLabel.text = "Choose 4 out of 8 given qualities that you most appreciate in the other person"
+            self.collectionLabel.text = "Choose 4 out of 8 given qualities that you most appreciate in other person"
             value = 8
         case 9:
             self.kidsView.isHidden = true
@@ -448,7 +457,7 @@ class SurveyVC: UIViewController {
             self.tenOC.setTitleColor(.black, for: .normal)
             self.twelveOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.twelveOC.setTitleColor(.black, for: .normal)
-            self.collectionLabel.text = "Based on what you usually make decisions? "
+            self.collectionLabel.text = "What is decision making usually based on ? "
             self.colcnView.isHidden = false
             value = 11
         case 12:
@@ -460,7 +469,7 @@ class SurveyVC: UIViewController {
             self.tenOC.setTitleColor(.black, for: .normal)
             self.elevenOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.elevenOC.setTitleColor(.black, for: .normal)
-            self.collectionLabel.text = "Do you prefer clarity, closure and always stick to the plan or rather go with the flow, keep your options open and be always flexible? "
+            self.collectionLabel.text = "Do you prefer clarity, closure and always sick to the plan or rather keep your options open and always be flexible? "
             self.colcnView.isHidden = false
             value = 12
         default:
@@ -477,7 +486,7 @@ class SurveyVC: UIViewController {
             self.scaleView.isHidden = false
             self.topLabel.text = "what is your Height"
             self.switchonAndOffView.isHidden = false
-            self.oneAC.backgroundColor = UIColor(red: 134/255, green: 0/255, blue: 90/255, alpha: 1)
+            self.oneAC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 205/255, alpha: 1)
             self.oneAC.setTitleColor(.white, for: .normal)
             self.twoOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
             self.twoOC.setTitleColor(.black, for: .normal)
@@ -516,7 +525,7 @@ class SurveyVC: UIViewController {
                     }
                 }
             case 7 :
-                if qualitiesArray.count >= 1 {
+                if selectedQualitiesArray.count >= 1 {
                     hitSurvey(param: setParameters(str: currentValue))
                 }
             
@@ -525,7 +534,7 @@ class SurveyVC: UIViewController {
                     }
                 }
             case 8:
-                if otherPersonQualities.count < 5 {
+                if otherPersonQualities.count >= 4{
                     hitSurvey(param: setParameters(str: currentValue))
                 }
                 else {

@@ -42,6 +42,14 @@ class CompleteProfile2VC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         distanceRangeSlider.minimumValue = 0
         distanceRangeSlider.maximumValue = 100
+        distanceSwitch.tintColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
+        distanceSwitch.onTintColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+        if #available(iOS 13.0, *) {
+            distanceSwitch.subviews[0].subviews[0].backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
+        } else if #available(iOS 12.0, *) {
+            self.distanceSwitch.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
+        }
+        
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
@@ -65,10 +73,10 @@ class CompleteProfile2VC: UIViewController {
         self.lbl_Distance.isHidden = false
          x = Int(round(sender.value))
         if isSwitchOn {
-            lbl_Distance.setTitle("\(x ?? 0) Km.", for: .normal)
+            lbl_Distance.setTitle("\(x ?? 0) miles.", for: .normal)
         }
         else {
-            lbl_Distance.setTitle("\(x ?? 0) miles", for: .normal)
+            lbl_Distance.setTitle("\(x ?? 0) km", for: .normal)
         }
         
         self.distance_lbl_Txt = (x)
@@ -83,13 +91,13 @@ class CompleteProfile2VC: UIViewController {
     }
 
     @IBAction func nextButtonAction(_ sender: Any) {
-        if x ?? 0 <= 0 {
-            Common.showAlert(alertMessage: "Please select your distance Range", alertButtons: ["Ok"]) { (bt) in
-            }
-        }
-        else {
+//        if x ?? 0 <= 0 {
+//            Common.showAlert(alertMessage: "Please select your distance Range", alertButtons: ["Ok"]) { (bt) in
+//            }
+//        }
+//        else {
             completeUserProfile1()
-        }
+//        }
         
     }
     
@@ -98,7 +106,7 @@ class CompleteProfile2VC: UIViewController {
             distanceRangeSlider.minimumValue = 0
             distanceRangeSlider.maximumValue = 100
             isSwitchOn = true
-            lbl_Distance.setTitle("\(x ?? 0) Km.", for: .normal)
+            lbl_Distance.setTitle("\(x ?? 0) miles.", for: .normal)
           
              
             
@@ -109,7 +117,7 @@ class CompleteProfile2VC: UIViewController {
             isSwitchOn = false
             distanceRangeSlider.minimumValue = 0
             distanceRangeSlider.maximumValue = 62.1371
-            lbl_Distance.setTitle("\(x ?? 0) miles.", for: .normal)
+            lbl_Distance.setTitle("\(x ?? 0) km.", for: .normal)
         }
     }
     
@@ -178,13 +186,13 @@ class CompleteProfile2VC: UIViewController {
         params["max_age"] = Int(ageRangeSlider.selectedMaxValue)
         
        
-        params["distance"] = self.x
+        params["distance"] = "3"
         if isSwitchOn {
-            params["distance_type"] = "km"
+            params["distance_type"] = "miles"
             
         }
         else {
-            params["distance_type"] = "miles"
+            params["distance_type"] = "km"
         }
         if genderSelected == 1 {
         params["interested_in"] = "male"

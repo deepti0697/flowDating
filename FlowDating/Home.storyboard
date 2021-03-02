@@ -628,7 +628,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="85% Matched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yX-oc-rHd">
-                                                            <rect key="frame" x="60" y="230.5" width="90" height="18"/>
+                                                            <rect key="frame" x="60" y="230.5" width="95.5" height="18"/>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -940,13 +940,6 @@
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1894" translatesAutoresizingMaskIntoConstraints="NO" id="xWs-g1-hSn">
-                                                            <rect key="frame" x="344" y="-0.5" width="50" height="50"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="50" id="21g-5I-7d2"/>
-                                                                <constraint firstAttribute="height" constant="50" id="dAd-ZI-qsU"/>
-                                                            </constraints>
-                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="US2-2i-fPi">
                                                             <rect key="frame" x="20" y="34" width="0.0" height="21"/>
                                                             <constraints>
@@ -965,8 +958,8 @@
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmb-tM-68r">
-                                                            <rect key="frame" x="15" y="102" width="379" height="125"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmb-tM-68r">
+                                                            <rect key="frame" x="15" y="101" width="379" height="125"/>
                                                             <string key="text">aksjhfgk kahgsdiufhia dkfh isuhfih kdfhiouahdfoi ioasdbvoiauerhfi lksbviahgfi divhaifhk asjdbviuaerhih sdkjvbaoidhviuahsdivhaifghiab dsvkh ai...</string>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1013,6 +1006,13 @@
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Group 1894" translatesAutoresizingMaskIntoConstraints="NO" id="xWs-g1-hSn">
+                                                            <rect key="frame" x="322" y="5" width="50" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="21g-5I-7d2"/>
+                                                                <constraint firstAttribute="height" constant="50" id="dAd-ZI-qsU"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="k0U-Ha-Xl1" firstAttribute="top" secondItem="US2-2i-fPi" secondAttribute="bottom" constant="-1" id="14T-94-a1R"/>
@@ -1149,14 +1149,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="JUF-dw-ZkD"/>
                     <connections>
-                        <outlet property="aboutMeLbl" destination="Nmb-tM-68r" id="BIb-gT-RiK"/>
-                        <outlet property="distanceLbl" destination="nv6-XR-574" id="fut-N7-X0h"/>
-                        <outlet property="horoScopeLbl" destination="Hts-bC-UjN" id="cNR-We-iTM"/>
                         <outlet property="pagecontrol" destination="6fG-1u-mkI" id="KkP-jJ-oHc"/>
                         <outlet property="scrollView" destination="0Iw-4J-G1s" id="c2Z-Iy-r8w"/>
                         <outlet property="tbl" destination="AQi-xW-cWC" id="Uot-PZ-ugd"/>
-                        <outlet property="totalMatchLbl" destination="G16-cY-rE6" id="6fX-lG-U0J"/>
-                        <outlet property="userNameLbl" destination="IsI-ex-T9c" id="bNA-kE-cFg"/>
                         <outlet property="viewbottom" destination="fPF-Bb-No8" id="GU1-8X-Fhj"/>
                     </connections>
                 </viewController>
@@ -1173,13 +1168,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image -31" translatesAutoresizingMaskIntoConstraints="NO" id="KR5-OY-ZwZ">
-                                <rect key="frame" x="0.0" y="100" width="414" height="265"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="414"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="265" id="4Wp-4J-7SG"/>
+                                    <constraint firstAttribute="width" secondItem="KR5-OY-ZwZ" secondAttribute="height" id="kKh-wn-azA"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alica, Rose , 24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbI-Jl-vsU">
-                                <rect key="frame" x="13" y="325" width="138" height="30"/>
+                                <rect key="frame" x="13" y="474" width="138" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="K3M-qH-QPf"/>
                                 </constraints>
@@ -1188,7 +1183,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6ZN-2h-6AY">
-                                <rect key="frame" x="0.0" y="373" width="414" height="489"/>
+                                <rect key="frame" x="0.0" y="522" width="414" height="340"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MECELL" rowHeight="55" id="05r-0H-z19" customClass="DetailsCell" customModule="FlowDating" customModuleProvider="target">
@@ -1273,7 +1268,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X97-cS-Oa7">
-                                <rect key="frame" x="352" y="325" width="46" height="30"/>
+                                <rect key="frame" x="352" y="474" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Sd5-3Z-Mnx"/>
                                     <constraint firstAttribute="width" constant="46" id="b1q-fd-Ady"/>

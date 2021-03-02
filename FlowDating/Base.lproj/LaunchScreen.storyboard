@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -14,26 +14,26 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="RXZ-lT-u1c">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="RXZ-lT-u1c" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Bly-UI-lk0"/>
-                            <constraint firstItem="RXZ-lT-u1c" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="cl1-R6-EEp"/>
-                            <constraint firstItem="RXZ-lT-u1c" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lYl-CN-XLk"/>
-                            <constraint firstItem="RXZ-lT-u1c" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="phz-AJ-3aj"/>
+                            <constraint firstAttribute="trailing" secondItem="RXZ-lT-u1c" secondAttribute="trailing" id="bdz-3P-Um6"/>
+                            <constraint firstItem="RXZ-lT-u1c" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="eMO-MY-eig"/>
+                            <constraint firstItem="RXZ-lT-u1c" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="j98-x9-85y"/>
+                            <constraint firstAttribute="bottom" secondItem="RXZ-lT-u1c" secondAttribute="bottom" id="uQv-CD-fp9"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="-436" y="68"/>
         </scene>
     </scenes>
     <resources>

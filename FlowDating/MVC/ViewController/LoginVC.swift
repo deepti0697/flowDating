@@ -81,6 +81,7 @@ class LoginVC: UIViewController {
                 self.appleLoginImageView.isHidden = true
             }
         }
+    
     @IBAction func faceBookloginAction(_ sender: Any) {
         SocialLoginHelper.shared.handleLogInWithFacebookButtonPress()
                 SocialLoginHelper.shared.completionHandler = { (token, userinfo) in
@@ -126,11 +127,12 @@ class LoginVC: UIViewController {
         handleGoogleAuthentication()
     }
     @IBAction func loginAction(_ sender: Any) {
-        if  (txt_Mobile.text?.count)! > 7 {
+        if  ( txt_Mobile.text?.count)! >= 7  {
+            
             otpLogin()
         }
         else {
-            Common.showAlert(alertMessage: Messages.Valid_NUMBER.rawValue, alertButtons: ["Ok"]) { (bt) in
+            Common.showAlert(alertMessage: Messages.Valid_NUMBER1.rawValue, alertButtons: ["Ok"]) { (bt) in
             }
         }
       
@@ -220,19 +222,19 @@ extension LoginVC: GIDSignInDelegate {
                AppHelper.setStringForKey(user.email, key: ServiceKeys.email)
                 AppHelper.setStringForKey(user.profile_complete, key: ServiceKeys.profile_Screen)
           
-                AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
-                if user.profile_complete == "0" {
-                    appdelegate.setHomeVC()
-                }
-                if user.profile_complete == "1"{
+//                AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
+//                if user.profile_complete == "0" {
+//                    appdelegate.setHomeVC()
+//                }
+//                if user.profile_complete == "1"{
                     self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
 
-
-                    }
-                }
-                else {
-                self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
-                }
+//
+//                    }
+//                }
+//                else {
+//                self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
+//                }
                     
                 }
                 }

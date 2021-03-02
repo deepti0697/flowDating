@@ -40,12 +40,12 @@ class Validate: NSObject {
               
                 return false
             }
-            else if ( !validation.phoneNoValidation(txtFieldPhone: vc.txt_mobile.text!) ) && (validation.phoneNumberLengthValidation(pNumber: vc.txt_mobile.text!))  {
-                self.showMessage(message: "Please Enter Valid Mobile No.")
-           
-              
-                return false
-            }
+//          else  if  (( txt_Mobile.text?.count)! < 7 && ( txt_Mobile.text?.count)! > 15)  {
+//                self.showMessage(message: "Please enter atleast 7 digits Number")
+//
+//
+//                return false
+//            }
             else {
                 return true
             }

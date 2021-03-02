@@ -31,7 +31,7 @@ import FirebaseMessaging
         self.registerForRemoteNotification()
         
         Messaging.messaging().delegate = self
-        
+//        sleep(5)
         self.GetFCMToken()
         if  (AppHelper.getStringForKey(ServiceKeys.token) == "") {
             if AppHelper.getBoolForKey(ServiceKeys.isPermissionEnabled) {

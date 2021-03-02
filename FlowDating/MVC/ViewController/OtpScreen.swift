@@ -144,7 +144,7 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
     func timeFormatted(_ totalSeconds: Int) -> String {
         let seconds: Int = totalSeconds % 60
         let minutes: Int = (totalSeconds / 60) % 60
-        return String(format: "Expired in %02d:%02d", minutes, seconds)
+        return String(format: "Expires in %02d:%02d", minutes, seconds)
     }
     
     @IBAction func actionBack(_ sender: Any){

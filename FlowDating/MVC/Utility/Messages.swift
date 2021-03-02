@@ -37,6 +37,7 @@ enum Messages : String {
     case NEW_PASSWORD_EMPTY     = "Please enter new password."
     case EMAIL_NUMBER           = "Please enter mobile number. "
     case Valid_NUMBER           = "Please enter valid mobile number. "
+    case Valid_NUMBER1           = "Please enter atleast 7 digits Number"
     case QUERY_TITLE            = "Please enter title. "
     case TICK_ALLOW          = "Please agree to terms and conditions & policy "
     //Password

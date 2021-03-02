@@ -222,20 +222,18 @@ extension LoginVC: GIDSignInDelegate {
                AppHelper.setStringForKey(user.email, key: ServiceKeys.email)
                 AppHelper.setStringForKey(user.profile_complete, key: ServiceKeys.profile_Screen)
           
-//                AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
-//                if user.profile_complete == "0" {
-//                    appdelegate.setHomeVC()
-//                }
-//                if user.profile_complete == "1"{
+                AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
+                if user.profile_complete == "0" {
+                    appdelegate.setHomeVC()
+                }
+                if user.profile_complete == "1"{
                     self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
+                    }
+                }
+                else {
+                self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
+                }
 
-//
-//                    }
-//                }
-//                else {
-//                self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
-//                }
-                    
                 }
                 }
                 

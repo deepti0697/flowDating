@@ -352,7 +352,7 @@ class HomeVC: ViewController {
         currentIndex = currentIndex + 1
         //    print("sumit",cardInfo.id)
         //        self.callforBlock(user: cardInfo.id)
-        self.callAPIforcandidateProfile(status: "like", userID: cardInfo.id)
+        self.callAPIforcandidateProfile(status: "liked", userID: cardInfo.id)
         if (currentIndex == valueArray.count) {
             if total > currrentPAge {
                 currentIndex = 0

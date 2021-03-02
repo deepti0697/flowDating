@@ -447,8 +447,8 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill the below information for Signup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkZ-oy-3In">
-                                                                <rect key="frame" x="34" y="43.5" width="277.5" height="21.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill the below information for Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkZ-oy-3In">
+                                                                <rect key="frame" x="32" y="43.5" width="281.5" height="21.5"/>
                                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -1302,6 +1302,7 @@
                         <outlet property="lbl" destination="cga-57-aEa" id="4qX-rA-vCs"/>
                         <outlet property="lbl_expireTime" destination="GWh-uZ-rve" id="Glz-ha-6jq"/>
                         <outlet property="lbl_mbl" destination="1YW-qI-NQV" id="3eU-0a-pKj"/>
+                        <outlet property="resendBtnOutlt" destination="A7P-XL-6iE" id="ylV-0t-mnd"/>
                         <outlet property="txt_four" destination="Vqy-oo-ja2" id="u9N-9a-tcv"/>
                         <outlet property="txt_one" destination="lRU-QA-SKI" id="piY-gW-8dA"/>
                         <outlet property="txt_three" destination="Hhi-Ib-UhJ" id="r57-xP-T8I"/>
@@ -1452,7 +1453,7 @@
                                                                                                 </connections>
                                                                                             </button>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeL-Qy-0ag">
-                                                                                                <rect key="frame" x="0.0" y="6" width="53" height="19"/>
+                                                                                                <rect key="frame" x="0.0" y="5.5" width="48" height="19.5"/>
                                                                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="16"/>
                                                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <nil key="highlightedColor"/>
@@ -1838,13 +1839,13 @@
                                                         <rect key="frame" x="0.0" y="135" width="345" height="100"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZr-ut-aNN">
-                                                                <rect key="frame" x="76.5" y="0.0" width="192" height="33"/>
+                                                                <rect key="frame" x="72.5" y="0.0" width="200.5" height="33.5"/>
                                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="28"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill the below informatioon for login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vF3-Q9-Mvm">
-                                                                <rect key="frame" x="31.5" y="43" width="282.5" height="21"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill the below information for login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vF3-Q9-Mvm">
+                                                                <rect key="frame" x="42.5" y="43.5" width="260" height="21.5"/>
                                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -1960,7 +1961,7 @@
                                                                                 <rect key="frame" x="127.5" y="10" width="50" height="30"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQO-km-f7F">
-                                                                                        <rect key="frame" x="15" y="7" width="20.5" height="16.5"/>
+                                                                                        <rect key="frame" x="15.5" y="6.5" width="19.5" height="17"/>
                                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="14"/>
                                                                                         <color key="textColor" red="0.60392156860000001" green="0.64705882349999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
@@ -2110,13 +2111,13 @@
                                                                 <rect key="frame" x="0.0" y="25" width="345" height="25"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRX-Wl-qt3">
-                                                                        <rect key="frame" x="53" y="0.0" width="170.5" height="25"/>
+                                                                        <rect key="frame" x="57" y="0.0" width="162.5" height="25"/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="16"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFT-aR-Gep">
-                                                                        <rect key="frame" x="225.5" y="-4" width="62" height="33"/>
+                                                                        <rect key="frame" x="221.5" y="-4.5" width="62" height="34"/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="18"/>
                                                                         <state key="normal" title="Sign up">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2489,7 +2490,7 @@
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5l-OF-ZHz" customClass="RangeSeekSlider" customModule="RangeSeekSlider">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="50"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                                <color key="tintColor" red="0.52549019610000003" green="0.0" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                                <color key="tintColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="50" id="T31-gs-O4J"/>
                                                                                                 </constraints>
@@ -2513,7 +2514,7 @@
                                                                                                         <real key="value" value="3"/>
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="colorBetweenHandles">
-                                                                                                        <color key="value" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                                        <color key="value" red="0.58039215686274503" green="0.20000000000000001" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="enableStep" value="NO"/>
                                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
@@ -2547,14 +2548,14 @@
                                                                                             </userDefinedRuntimeAttribute>
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </view>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6R3-oV-OJo">
-                                                                                        <rect key="frame" x="296.5" y="23" width="23.5" height="17"/>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6R3-oV-OJo">
+                                                                                        <rect key="frame" x="303.5" y="23" width="16.5" height="17"/>
                                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZG8-zZ-tC4">
-                                                                                        <rect key="frame" x="10" y="23" width="8.5" height="17"/>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZG8-zZ-tC4">
+                                                                                        <rect key="frame" x="10" y="23" width="15" height="17"/>
                                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <nil key="highlightedColor"/>
@@ -2588,7 +2589,7 @@
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tes-yr-J7Q" customClass="RangeSeekSlider" customModule="RangeSeekSlider">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="30"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                                <color key="tintColor" red="0.52549019610000003" green="0.0" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                                <color key="tintColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="30" id="cNA-1T-7AT"/>
                                                                                                 </constraints>
@@ -2603,7 +2604,7 @@
                                                                                                         <color key="value" red="0.58039215690000001" green="0.20000000000000001" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="handleBorderColor">
-                                                                                                        <color key="value" red="0.58039215690000001" green="0.20000000000000001" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                                        <color key="value" red="0.58039215686274503" green="0.20000000000000001" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="minValue">
                                                                                                         <real key="value" value="0.0"/>
@@ -2612,7 +2613,7 @@
                                                                                                         <real key="value" value="3"/>
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="colorBetweenHandles">
-                                                                                                        <color key="value" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                                        <color key="value" red="0.58039215686274503" green="0.20000000000000001" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="enableStep" value="NO"/>
                                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
@@ -2908,6 +2909,7 @@
                         <outlet property="baseview2" destination="UFX-yO-kEz" id="nne-Ns-BGG"/>
                         <outlet property="bothBtn" destination="lQa-hs-OF3" id="GWt-2e-rjn"/>
                         <outlet property="distanceRangeSlider" destination="q7x-q4-cpW" id="SA1-Hv-0Td"/>
+                        <outlet property="distanceSliderValue" destination="tes-yr-J7Q" id="IRm-io-vex"/>
                         <outlet property="distanceSwitch" destination="kl4-IJ-yi4" id="YQt-kv-pvz"/>
                         <outlet property="femaleBtn" destination="7b9-6t-z9s" id="coB-pT-oBe"/>
                         <outlet property="maleBtn" destination="2EE-jH-pJN" id="PHw-6w-C58"/>
@@ -3027,16 +3029,16 @@
                                 <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mx0-vn-B1G">
-                                        <rect key="frame" x="0.0" y="15" width="375" height="332"/>
+                                        <rect key="frame" x="0.0" y="15" width="375" height="312"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HTU-qT-qYX">
-                                                <rect key="frame" x="15" y="20" width="345" height="297"/>
+                                                <rect key="frame" x="15" y="20" width="345" height="277"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4v-kC-ueY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="297"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="277"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="LcJ-1K-2Vi">
-                                                                <rect key="frame" x="15" y="20" width="315" height="262"/>
+                                                                <rect key="frame" x="15" y="20" width="315" height="242"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YER-iv-QA7">
                                                                         <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
@@ -3056,10 +3058,10 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6H-N3-S5X">
-                                                                        <rect key="frame" x="0.0" y="66" width="315" height="80"/>
+                                                                        <rect key="frame" x="0.0" y="66" width="315" height="60"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are one step closer to find your true love. If you want to increase your chances even more, please fill 12 questions survey" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxo-3j-ZcR">
-                                                                                <rect key="frame" x="0.0" y="13" width="307" height="54"/>
+                                                                                <rect key="frame" x="0.0" y="3" width="307" height="54"/>
                                                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="15"/>
                                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
@@ -3069,12 +3071,12 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="trailing" secondItem="Xxo-3j-ZcR" secondAttribute="trailing" constant="8" id="L8N-Xj-RKU"/>
                                                                             <constraint firstItem="Xxo-3j-ZcR" firstAttribute="centerY" secondItem="T6H-N3-S5X" secondAttribute="centerY" id="Pc9-6l-hef"/>
-                                                                            <constraint firstAttribute="height" constant="80" id="V2f-4d-lbn"/>
+                                                                            <constraint firstAttribute="height" constant="60" id="V2f-4d-lbn"/>
                                                                             <constraint firstItem="Xxo-3j-ZcR" firstAttribute="leading" secondItem="T6H-N3-S5X" secondAttribute="leading" id="mro-Aj-ORX"/>
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sD-dR-dx8">
-                                                                        <rect key="frame" x="0.0" y="162" width="315" height="100"/>
+                                                                        <rect key="frame" x="0.0" y="142" width="315" height="100"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PE-hH-hHl" customClass="GradientView" customModule="FlowDating" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="27.5" width="151" height="45"/>
@@ -3311,7 +3313,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7u-KT-67K">
                                                 <rect key="frame" x="29.5" y="210" width="316" height="30"/>
                                                 <subviews>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Dd-Xl-Uoy">
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Dd-Xl-Uoy">
                                                         <rect key="frame" x="133.5" y="-0.5" width="51" height="31"/>
                                                         <color key="onTintColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3320,13 +3322,13 @@
                                                         </connections>
                                                     </switch>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inches" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAI-0V-ujU">
-                                                        <rect key="frame" x="192.5" y="8" width="35.5" height="14"/>
+                                                        <rect key="frame" x="192.5" y="8" width="37.5" height="14.5"/>
                                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whT-yD-Vai">
-                                                        <rect key="frame" x="104" y="8" width="19.5" height="14"/>
+                                                        <rect key="frame" x="104" y="8" width="19.5" height="14.5"/>
                                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -3525,13 +3527,13 @@
                                         <rect key="frame" x="0.0" y="55" width="375" height="382"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have kids?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hci-pZ-qCE">
-                                                <rect key="frame" x="10" y="20" width="355" height="16.5"/>
+                                                <rect key="frame" x="10" y="20" width="355" height="17"/>
                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0td-1l-Y1k">
-                                                <rect key="frame" x="10" y="41.5" width="355" height="50"/>
+                                                <rect key="frame" x="10" y="42" width="355" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv9-8Q-9Fi">
                                                         <rect key="frame" x="0.0" y="0.0" width="160" height="50"/>
@@ -3612,16 +3614,16 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want kids in the future?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6j-3X-goF">
-                                                <rect key="frame" x="10" y="111.5" width="195" height="16.5"/>
+                                                <rect key="frame" x="10" y="112" width="195" height="17"/>
                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OH0-Yc-WJw">
-                                                <rect key="frame" x="10" y="143" width="355" height="50"/>
+                                                <rect key="frame" x="10" y="144" width="355" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1g-sX-Vgb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="50"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="dtQ-QS-bue"/>
@@ -3653,89 +3655,87 @@
                                                             <action selector="kidsWantIntFutureNo:" destination="Th4-3S-Dzb" eventType="touchUpInside" id="5ks-yo-WGP"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xK-i0-NyG">
-                                                        <rect key="frame" x="195.5" y="0.0" width="159.5" height="50"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSp-lP-NeS">
+                                                        <rect key="frame" x="105.5" y="0.0" width="248.5" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="xed-eP-1B5"/>
+                                                            <constraint firstAttribute="height" constant="50" id="fVa-3R-niq"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
-                                                        <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
-                                                        <inset key="imageEdgeInsets" minX="-7" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="Yes">
-                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <state key="selected" title="Female" image="female_active">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Yes, but not in the near future">
+                                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth1">
+                                                                <real key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor1">
-                                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth1">
-                                                                <real key="value" value="1"/>
+                                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="yesKidsWantAct:" destination="Th4-3S-Dzb" eventType="touchUpInside" id="ug0-ct-jfm"/>
+                                                            <action selector="kidsWantsInFutureAct:" destination="Th4-3S-Dzb" eventType="touchUpInside" id="fFb-li-vmC"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="U1g-sX-Vgb" firstAttribute="leading" secondItem="OH0-Yc-WJw" secondAttribute="leading" id="0F6-d0-QHf"/>
+                                                    <constraint firstItem="tSp-lP-NeS" firstAttribute="centerY" secondItem="OH0-Yc-WJw" secondAttribute="centerY" id="813-vE-ppE"/>
                                                     <constraint firstAttribute="height" constant="50" id="FJl-ms-6bi"/>
-                                                    <constraint firstItem="2xK-i0-NyG" firstAttribute="width" secondItem="U1g-sX-Vgb" secondAttribute="width" id="K8u-pr-AaD"/>
-                                                    <constraint firstItem="2xK-i0-NyG" firstAttribute="centerY" secondItem="OH0-Yc-WJw" secondAttribute="centerY" id="YYA-OS-qS5"/>
-                                                    <constraint firstAttribute="trailing" secondItem="2xK-i0-NyG" secondAttribute="trailing" id="dv4-hj-uae"/>
-                                                    <constraint firstItem="U1g-sX-Vgb" firstAttribute="width" secondItem="OH0-Yc-WJw" secondAttribute="width" multiplier="0.45" id="mih-th-Xzc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="tSp-lP-NeS" secondAttribute="trailing" constant="1" id="eLX-0O-Fd8"/>
+                                                    <constraint firstItem="U1g-sX-Vgb" firstAttribute="width" secondItem="OH0-Yc-WJw" secondAttribute="width" multiplier="0.25" id="mih-th-Xzc"/>
                                                     <constraint firstItem="U1g-sX-Vgb" firstAttribute="centerY" secondItem="OH0-Yc-WJw" secondAttribute="centerY" id="t7z-dJ-74g"/>
+                                                    <constraint firstItem="tSp-lP-NeS" firstAttribute="width" secondItem="OH0-Yc-WJw" secondAttribute="width" multiplier="0.7" id="xea-Sf-8Tz"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSp-lP-NeS">
-                                                <rect key="frame" x="10" y="213" width="225" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="fVa-3R-niq"/>
-                                                </constraints>
-                                                <state key="normal" title="Yes, but not in the near future">
-                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xK-i0-NyG">
+                                                <rect key="frame" x="10" y="209" width="89" height="50"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Yes">
+                                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected" title="Female" image="female_active">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth1">
-                                                        <real key="value" value="1"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor1">
-                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth1">
+                                                        <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="kidsWantsInFutureAct:" destination="Th4-3S-Dzb" eventType="touchUpInside" id="fFb-li-vmC"/>
+                                                    <action selector="yesKidsWantAct:" destination="Th4-3S-Dzb" eventType="touchUpInside" id="ug0-ct-jfm"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="tSp-lP-NeS" firstAttribute="leading" secondItem="HUD-tn-Liz" secondAttribute="leading" constant="10" id="3zn-ZN-ZPq"/>
-                                            <constraint firstItem="tSp-lP-NeS" firstAttribute="width" secondItem="HUD-tn-Liz" secondAttribute="width" multiplier="0.6" id="4Uj-lE-29y"/>
                                             <constraint firstItem="OH0-Yc-WJw" firstAttribute="leading" secondItem="HUD-tn-Liz" secondAttribute="leading" constant="10" id="9It-dl-uiK"/>
                                             <constraint firstAttribute="trailing" secondItem="0td-1l-Y1k" secondAttribute="trailing" constant="10" id="9cb-9v-idp"/>
                                             <constraint firstItem="0td-1l-Y1k" firstAttribute="leading" secondItem="HUD-tn-Liz" secondAttribute="leading" constant="10" id="ALN-NO-R3p"/>
                                             <constraint firstItem="p6j-3X-goF" firstAttribute="top" secondItem="0td-1l-Y1k" secondAttribute="bottom" constant="20" id="CE1-sI-Yoh"/>
+                                            <constraint firstItem="2xK-i0-NyG" firstAttribute="leading" secondItem="U1g-sX-Vgb" secondAttribute="leading" id="D7b-XH-dul"/>
+                                            <constraint firstItem="2xK-i0-NyG" firstAttribute="height" secondItem="U1g-sX-Vgb" secondAttribute="height" id="Fri-Vf-oOM"/>
                                             <constraint firstAttribute="trailing" secondItem="hci-pZ-qCE" secondAttribute="trailing" constant="10" id="Gzc-Hc-Aem"/>
                                             <constraint firstItem="p6j-3X-goF" firstAttribute="leading" secondItem="hci-pZ-qCE" secondAttribute="leading" id="Kzf-aM-fy7"/>
                                             <constraint firstItem="hci-pZ-qCE" firstAttribute="leading" secondItem="HUD-tn-Liz" secondAttribute="leading" constant="10" id="M28-5r-faV"/>
+                                            <constraint firstItem="2xK-i0-NyG" firstAttribute="width" secondItem="U1g-sX-Vgb" secondAttribute="width" id="S8d-dc-ddQ"/>
                                             <constraint firstAttribute="trailing" secondItem="OH0-Yc-WJw" secondAttribute="trailing" constant="10" id="Xjv-CO-UYZ"/>
                                             <constraint firstItem="OH0-Yc-WJw" firstAttribute="top" secondItem="p6j-3X-goF" secondAttribute="bottom" constant="15" id="bDk-4o-E5Y"/>
-                                            <constraint firstItem="tSp-lP-NeS" firstAttribute="top" secondItem="OH0-Yc-WJw" secondAttribute="bottom" constant="20" id="mak-kR-jBv"/>
+                                            <constraint firstItem="2xK-i0-NyG" firstAttribute="top" secondItem="OH0-Yc-WJw" secondAttribute="bottom" constant="15" id="wbz-Ux-Jny"/>
                                             <constraint firstItem="hci-pZ-qCE" firstAttribute="top" secondItem="HUD-tn-Liz" secondAttribute="top" constant="20" id="x1v-a2-i7V"/>
                                             <constraint firstItem="0td-1l-Y1k" firstAttribute="top" secondItem="hci-pZ-qCE" secondAttribute="bottom" constant="5" id="yhS-tR-n4O"/>
                                         </constraints>
@@ -3820,13 +3820,13 @@
                                         <rect key="frame" x="0.0" y="45" width="375" height="392"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have kids?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prP-rG-eJ0">
-                                                <rect key="frame" x="10" y="20" width="355" height="19"/>
+                                                <rect key="frame" x="10" y="20" width="355" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FYP-zn-zco">
-                                                <rect key="frame" x="0.0" y="54" width="375" height="338"/>
+                                                <rect key="frame" x="0.0" y="54.5" width="375" height="337.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jRH-Mb-UeB">
                                                     <size key="itemSize" width="349" height="66"/>
@@ -5127,7 +5127,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="84" id="kji-BX-TQd"/>
                                             </constraints>
-                                            <string key="text">Copy the gesture in the photo below and make selfy. We'll compare it with your profile pictures. if they match then your profile will be verified.</string>
+                                            <string key="text">Copy the gesture in the photo below and make selfy. We'll compare it with your profile picture. if they match then your profile will be verified.</string>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>

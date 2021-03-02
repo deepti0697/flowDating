@@ -50,7 +50,7 @@ class VC_SubmitVerification: UIViewController,UIImagePickerControllerDelegate, U
             img3.isHidden = true
 
             lbl1.text = "Copy This Gesture"
-            lbl2.text = "Copy the gesture in the photo below. We'll compare them and if they match your profile will be verified and you can continue using FlowDating as normal."
+            lbl2.text = "Copy the gesture in the photo below and make selfy. We'll compare it with your profile picture. if they match then your profile will be verified."
             btn_retake.isHidden = true
             btn_Submit.setTitle("I'm ready", for: .normal)
 

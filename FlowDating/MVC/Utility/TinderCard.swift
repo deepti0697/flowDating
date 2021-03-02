@@ -245,10 +245,10 @@ class TinderCard: UIView {
     }
     func updateOverlay(_ distance: CGFloat) {
         
-        // imageViewStatus.image = distance > 0 ? UIImage (named: "tick")
-        //   : UIImage (named: "remove")
+         imageViewStatus.image = distance > 0 ? UIImage (named: "tick")
+           : UIImage (named: "remove")
         
-        // overLayImage.image = distance > 0 ? #imageLiteral(resourceName: "overlay_like") : #imageLiteral(resourceName: "overlay_skip")
+         overLayImage.image = distance > 0 ? #imageLiteral(resourceName: "asset-2") : #imageLiteral(resourceName: "SHurt")
         imageViewStatus.alpha = min(abs(distance) / 100, 0.5)
         overLayImage.alpha = min(abs(distance) / 100, 0.5)
         delegate?.currentCardStatus(card: self, distance: distance)
@@ -325,8 +325,8 @@ class TinderCard: UIView {
     // right click action
     func rightClickAction() {
         
-        // imageViewStatus.image = UIImage (named: "tick")
-        // overLayImage.image = #imageLiteral(resourceName: "overlay_like")
+         imageViewStatus.image = UIImage (named: "checkbox")
+         overLayImage.image = #imageLiteral(resourceName: "SHurt")
         let finishPoint = CGPoint(x: center.x + frame.size.width * 2, y: center.y)
         imageViewStatus.alpha = 0.5
         overLayImage.alpha = 0.5
@@ -344,11 +344,12 @@ class TinderCard: UIView {
     }
     // left click action
     func leftClickAction() {
-        
+        imageViewStatus.image = UIImage (named: "checkbox")
+        overLayImage.image = #imageLiteral(resourceName: "SHurt")
        
-        imageViewStatus.image = UIImage (named: "remove")
-        
-        // overLayImage.image = #imageLiteral(resourceName: "overlay_skip")
+//        imageViewStatus.image = UIImage (named: "remove")
+//
+//         overLayImage.image = #imageLiteral(resourceName: "overlay_skip")
         let finishPoint = CGPoint(x: center.x - frame.size.width * 2, y: center.y)
         imageViewStatus.alpha = 0.5
         overLayImage.alpha = 0.5

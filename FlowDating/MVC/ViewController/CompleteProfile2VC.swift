@@ -23,6 +23,7 @@ class CompleteProfile2VC: UIViewController {
     @IBOutlet weak var bothBtn: UIButton!
     @IBOutlet weak var femaleBtn: UIButton!
     
+    @IBOutlet weak var distanceSliderValue: RangeSeekSlider!
     @IBOutlet weak var backBtnOutlt: UIButton!
     @IBOutlet weak var ageRangeSlider: RangeSeekSlider!
     
@@ -186,7 +187,7 @@ class CompleteProfile2VC: UIViewController {
         params["max_age"] = Int(ageRangeSlider.selectedMaxValue)
         
        
-        params["distance"] = "3"
+        params["distance"] = Int(distanceSliderValue.selectedMaxValue)
         if isSwitchOn {
             params["distance_type"] = "miles"
             

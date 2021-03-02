@@ -12,6 +12,7 @@ import SwiftyJSON
 import CoreLocation
 class OtpScreen: UIViewController,UITextFieldDelegate {
     
+    @IBOutlet weak var resendBtnOutlt: UIButton!
     @IBOutlet weak var lbl_mbl: UILabel!
     @IBOutlet weak var lbl_expireTime: UILabel!
     @IBOutlet weak var btn_save: UIButton!
@@ -42,7 +43,7 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
         txt_three.delegate = self
         txt_four.delegate = self
         
-        lbl.text = "Please enter 4 digit OTP send to"
+        lbl.text = "Please enter 4 digit OTP sent to"
 //        self.locationManager.requestAlwaysAuthorization()
 
         // For use in foreground
@@ -123,6 +124,7 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
     }
     // MARK : Timer
     private func startOtpTimer() {
+        self.resendBtnOutlt.isUserInteractionEnabled = false
             self.totalTime = 120
             self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         }
@@ -135,8 +137,9 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
             } else {
                 if let timer = self.timer {
                     timer.invalidate()
+                    self.resendBtnOutlt.isUserInteractionEnabled = true
                     self.timer = nil
-//                    btn_save.isEnabled = false
+                    btn_save.isEnabled = false
                     
                 }
             }
@@ -220,9 +223,16 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
         timer?.invalidate()
     }
     @IBAction func action_save(_ sender: Any) {
+        let strOtp = "\(txt_one.text ?? "")\(txt_two.text ?? "")\(txt_three.text ?? "")\(txt_four.text ?? "")"
+        if strOtp.count < 4 {
+            AppManager.init().showAlertSingle(kAppName, message:  "Please enter valid OTP.", buttonTitle: "Ok") {
+
+                        }
+        }
+        else {
         if ((timer?.isValid) != nil) {
         timer?.invalidate()
-//        let strOtp = "\(txt_one.text ?? "")\(txt_two.text ?? "")\(txt_three.text ?? "")\(txt_four.text ?? "")"
+//
         var params = [String:Any]()
         params["mobile"] = "91-\(self.mobile)"
         params["device_type"] = OS
@@ -248,6 +258,7 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
         
     }
         }
+        
         else {
             AppManager.init().showAlertSingle(kAppName, message:  "Your OTP is Expire now, Please Resend Otp again.", buttonTitle: "Ok") {
 
@@ -255,7 +266,7 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
         }
     }
  
-    
+    }
     func otpSignup(pamaters:[String:Any]){
      
        

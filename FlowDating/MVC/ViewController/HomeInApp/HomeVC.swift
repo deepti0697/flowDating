@@ -14,27 +14,26 @@ let  TOPYAXIS = 75;
 import UIKit
 import SwiftyJSON
 class HomeVC: ViewController {
-
     
     @IBOutlet weak var switchOutlt: UISwitch!
-    var currentPhotos = 0
     @IBOutlet weak var bottomViewC: UIView!
-    //    @IBOutlet weak var pageControll: UIPageControl!
     @IBOutlet weak var curveView: UIView!
     @IBOutlet weak var btnClose: UIButton!
     var tempArray = [AllUserData]()
+    
     @IBOutlet weak var btnPoke: UIButton!
     @IBOutlet weak var openprofile: UIImageView!
-//   var dislikeArray = 
+    var dislikeArray =  [AllUserData]()
     @IBOutlet weak var tinderView: UIView!
     var currentLoadedCardsArray = [TinderCard]()
+    var currentPhotos = 0
     var allCardsArray = [TinderCard]()
     var currentIndex = 0
     var valueArray = [AllUserData]()
     var currrentPAge : Int = 1
     var total : Int = 0
     var typefav:String = ""
-  
+    var isRewind = false
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -65,7 +64,7 @@ class HomeVC: ViewController {
         DispatchQueue.main.async {
             self.callAPIforExplore(reset: false, dict: [:])
         }
-      
+        
     }
     
     @IBAction func openProfileVC(_ sender: Any) {
@@ -87,13 +86,19 @@ class HomeVC: ViewController {
             DispatchQueue.main.async {
                 self.navigationController?.pushViewController(filter, animated: false)
             }
-            
-            
         }
         
     }
     
- 
+  
+    
+    @IBAction func btnretryAction(_ sender: Any) {
+        if dislikeArray.count > 0 {
+        self.isRewind = true
+        currentIndex = 0
+        loadCardValues()
+    }
+    }
     func sendDatafilter(reset: Bool, data: NSDictionary) {
         self.callAPIforExplore(reset: reset, dict: data)
     }
@@ -123,15 +128,15 @@ class HomeVC: ViewController {
             }
         }
     }
-        
+    
     
     @IBAction func btnAction(_ sender: Any) {
-      
-     
+        
+        
         
     }
     
-  
+    
     @IBAction func action_filter(_ sender: Any) {
         //        let subcription_plan = CommonMethod().getUserDefaults(key: Constant.key_subcription_plan) as! Int
         //        if subcription_plan == 0{
@@ -157,9 +162,8 @@ class HomeVC: ViewController {
     
     @IBAction func actionPoke(_ sender: Any) {
         let card = currentLoadedCardsArray.first
+        card?.cardGoesUp()
         
-        card?.leftClickAction()
-    
         
     }
     @IBAction func actionLike(_ sender: Any) {
@@ -223,30 +227,73 @@ class HomeVC: ViewController {
             appdelegate.setHomeView()
         }
     }
+    
     func loadCardValues() {
         
         if valueArray.count > 0 {
-//            btnLike.isHidden = false
-//            btnClose.isHidden = false
-//            btnPoke.isHidden = false
+            //            btnLike.isHidden = false
+            //            btnClose.isHidden = false
+            //            btnPoke.isHidden = false
             
             let capCount = (valueArray.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : valueArray.count
-            
-            for (i,value) in valueArray.enumerated() {
-                let newCard = createTinderCard(at: i,value:value)
-                allCardsArray.append(newCard)
-                if i < capCount {
-                    currentLoadedCardsArray.append(newCard)
+            if isRewind {
+                
+                //                            for (i,value) in dislikeArray.enumerated() {
+                isRewind = false
+                if dislikeArray.count > 1 {
+                    let newCard1 = createTinderCard(at: dislikeArray.count - 2,value:dislikeArray[dislikeArray.count - 2])
+                    allCardsArray.append(newCard1)
+                    currentLoadedCardsArray.insert(newCard1, at: 0)
+                    tinderView.addSubview(currentLoadedCardsArray[0])
+                    let newCard = createTinderCard(at: dislikeArray.count - 1,value:dislikeArray[dislikeArray.count - 1])
+                    allCardsArray.append(newCard)
+                    currentLoadedCardsArray.insert(newCard, at: 1)
+//                    tinderView.insertSubview(currentLoadedCardsArray[1], at: 1)
+                    tinderView.insertSubview(newCard, belowSubview: currentLoadedCardsArray[0])
+                   
+                    dislikeArray.removeAll()
+                }
+                else {
+                    let newCard = createTinderCard(at: dislikeArray.count - 1,value:dislikeArray[dislikeArray.count - 1])
+                    allCardsArray.append(newCard)
+                    currentLoadedCardsArray.insert(newCard, at: 0)
+                    tinderView.addSubview(currentLoadedCardsArray[0])
+                    dislikeArray.removeAll()
+                    
+                }
+//                for (i,_) in currentLoadedCardsArray.enumerated() {
+//                    //                    if i > 0 {
+//                    ////                        if dislikeArray == 1 {
+//                    ////
+//                    ////                        }
+//                    //                       // tinderView.insertSubview(currentLoadedCardsArray[i], at: 0)
+//                    //                        tinderView.insertSubview(currentLoadedCardsArray[i], belowSubview: currentLoadedCardsArray[i - 1])
+//                    //                    }else {
+//                    //                        tinderView.insertSubview(currentLoadedCardsArray[i], at: 0)
+//                    //                    }
+//
+//                }
+                
+            }
+            else {
+                for (i,value) in valueArray.enumerated() {
+                    let newCard = createTinderCard(at: i,value:value)
+                    allCardsArray.append(newCard)
+                    
+                    if i < capCount {
+                        currentLoadedCardsArray.append(newCard)
+                    }
+                }
+                for (i,_) in currentLoadedCardsArray.enumerated() {
+                    if i > 0 {
+                        tinderView.insertSubview(currentLoadedCardsArray[i], belowSubview: currentLoadedCardsArray[i - 1])
+                    }else {
+                        tinderView.addSubview(currentLoadedCardsArray[i])
+                    }
                 }
             }
             
-            for (i,_) in currentLoadedCardsArray.enumerated() {
-                if i > 0 {
-                    tinderView.insertSubview(currentLoadedCardsArray[i], belowSubview: currentLoadedCardsArray[i - 1])
-                }else {
-                    tinderView.addSubview(currentLoadedCardsArray[i])
-                }
-            }
+            
             
             //  if valueArray.count  > 1 {
             animateCardAfterSwiping()
@@ -255,9 +302,9 @@ class HomeVC: ViewController {
         }
         else {
             currentLoadedCardsArray.removeAll()
-//            btnLike.isHidden = true
-//            btnClose.isHidden = true
-//            btnPoke.isHidden = true
+            //            btnLike.isHidden = true
+            //            btnClose.isHidden = true
+            //            btnPoke.isHidden = true
             
             for card in tinderView.subviews{
                 card.removeFromSuperview()
@@ -280,7 +327,9 @@ class HomeVC: ViewController {
         
         print("currentLoadedCardsArray ------",currentLoadedCardsArray.count)
         currentLoadedCardsArray.remove(at: 0)
+        if tempArray.count > 0 {
         tempArray.remove(at: 0)
+        }
         //  comp_user_id = (valueArray[currentIndex] as! NSDictionary).value(forKey: "user_id") as? String ?? ""
         // if (txt_search.text?.count ?? 0 == 0){
         // currentIndex = currentIndex + 1
@@ -300,7 +349,57 @@ class HomeVC: ViewController {
         //typefav = "favourite"
         let cardInfo = valueArray[currentIndex]
         currentIndex = currentIndex + 1
-        self.callAPIforcandidateProfile(status: "disliked", userID: cardInfo.id)
+//        dislikeArray.append(cardInfo)
+        self.callAPIforcandidateProfile(status: "liked", userID: cardInfo.id)
+        if (currentIndex == valueArray.count) {
+            if total > currrentPAge {
+                // btnLike.isHidden = false
+                // btnDislike.isHidden = false
+                currentIndex = 0
+                currrentPAge = currrentPAge + 1
+                DispatchQueue.main.async {
+                    self.callAPIforExplore(reset: false, dict: [:])
+                }
+            }
+            
+        }
+        
+        
+        animateCardAfterSwiping()
+    }
+    func removeObjectAndAddNewValuesForSuperLike() {
+        currentPhotos = 0
+        //emojiView.rateValue =  2.5
+        UIView.animate(withDuration: 0.3) {
+            // self.buttonUndo.alpha = 0
+        }
+        
+        print("currentLoadedCardsArray ------",currentLoadedCardsArray.count)
+        currentLoadedCardsArray.remove(at: 0)
+        if tempArray.count > 0 {
+        tempArray.remove(at: 0)
+        }
+        //  comp_user_id = (valueArray[currentIndex] as! NSDictionary).value(forKey: "user_id") as? String ?? ""
+        // if (txt_search.text?.count ?? 0 == 0){
+        // currentIndex = currentIndex + 1
+        
+        // currentIndex = currentIndex + 1
+        
+        //        if (currentIndex + currentLoadedCardsArray.count) < allCardsArray.count {
+        //            let card = allCardsArray[currentIndex + currentLoadedCardsArray.count]
+        //            var frame = card.frame
+        //            frame.origin.y = CGFloat(MAX_BUFFER_SIZE * SEPERATOR_DISTANCE)
+        //            card.frame = frame
+        //            currentLoadedCardsArray.append(card)
+        //            tinderView.insertSubview(currentLoadedCardsArray[MAX_BUFFER_SIZE - 1], belowSubview: currentLoadedCardsArray[MAX_BUFFER_SIZE - 2])
+        //        }
+        // }
+        print(currentIndex)
+        //typefav = "favourite"
+        let cardInfo = valueArray[currentIndex]
+        currentIndex = currentIndex + 1
+//        dislikeArray.append(cardInfo)
+        self.callAPIforSuperLike(userID: cardInfo.id)
         if (currentIndex == valueArray.count) {
             if total > currrentPAge {
                 // btnLike.isHidden = false
@@ -329,7 +428,9 @@ class HomeVC: ViewController {
         
         print("currentLoadedCardsArray ------",currentLoadedCardsArray.count)
         currentLoadedCardsArray.remove(at: 0)
+        if tempArray.count > 0 {
         tempArray.remove(at: 0)
+        }
         // currentLoadedCardsArray.remove(at: 0)
         //  print("allCardsArray----",allCardsArray.count )
         //   print("currentLoadedCardsArray----",currentLoadedCardsArray.count )
@@ -352,7 +453,8 @@ class HomeVC: ViewController {
         currentIndex = currentIndex + 1
         //    print("sumit",cardInfo.id)
         //        self.callforBlock(user: cardInfo.id)
-        self.callAPIforcandidateProfile(status: "liked", userID: cardInfo.id)
+        dislikeArray.append(cardInfo)
+        self.callAPIforcandidateProfile(status: "disliked", userID: cardInfo.id)
         if (currentIndex == valueArray.count) {
             if total > currrentPAge {
                 currentIndex = 0
@@ -367,7 +469,7 @@ class HomeVC: ViewController {
         
         
         //          if currentLoadedCardsArray.count == 0 && txt_search.text?.count ?? 0 > 0 {
-        //            //  txt_search.text = ""
+        //             //  txt_search.text = ""
         //              //userList()
         //          }
         
@@ -428,7 +530,7 @@ class HomeVC: ViewController {
     
     
     
-    func noRecordFound(str:String){
+    func noRecordFound(str:String) {
         
         if let foundView = view.viewWithTag(99999999) {
             foundView.removeFromSuperview()
@@ -454,6 +556,32 @@ class HomeVC: ViewController {
         
         AppManager.init().hudShow()
         ServiceClass.sharedInstance.hitServicesForLikeAndDislikeUsers(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                //
+            }
+            
+            else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
+        
+    }
+    func callAPIforSuperLike(userID:String) {
+        var params =  [String : Any]()
+        params["status"] = "requested"
+        params["user_id"] = userID
+        params["type"] =  "invite"
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServicesForsuperLike(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
             print_debug("response: \(parseData)")
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
@@ -643,6 +771,12 @@ class HomeVC: ViewController {
 
 
 extension HomeVC : TinderCardDelegate{
+    func cardGoesUP(card: TinderCard) {
+        DispatchQueue.main.async {
+            self.removeObjectAndAddNewValuesForSuperLike()
+        }
+    }
+    
     func leftMethodTapped() {
         let dummyCard = currentLoadedCardsArray.first
         //du
@@ -687,7 +821,7 @@ extension HomeVC : TinderCardDelegate{
                         imageview.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "Image -18"), options: .continueInBackground) { (img, err, cacheType, url) in
                         }
                     }
-                
+                    
                 }
                 
             }
@@ -696,7 +830,7 @@ extension HomeVC : TinderCardDelegate{
     
     
     // action called when the card goes to the left.
-    func cardGoesUp(card: TinderCard) {
+    func cardGoesleft(card: TinderCard) {
         DispatchQueue.main.async {
             self.removeObjectAndAddNewValuesfromAdded()
         }
@@ -707,7 +841,7 @@ extension HomeVC : TinderCardDelegate{
         
     }
     // action called when the card goes to the right.
-    func cardGoesDown(card: TinderCard) {
+    func cardGoesRight(card: TinderCard) {
         DispatchQueue.main.async {
             self.removeObjectAndAddNewValues()
         }

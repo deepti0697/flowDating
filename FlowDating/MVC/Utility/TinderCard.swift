@@ -17,8 +17,9 @@ import UIKit
 import SDWebImage
 protocol TinderCardDelegate: NSObjectProtocol {
     
-    func cardGoesUp(card: TinderCard)
-    func cardGoesDown(card: TinderCard)
+    func cardGoesUP(card:TinderCard)
+    func cardGoesleft(card: TinderCard)
+    func cardGoesRight(card: TinderCard)
     func currentCardStatus(card: TinderCard, distance: CGFloat)
      func tapedoncard()
     func leftMethodTapped()
@@ -316,16 +317,16 @@ class TinderCard: UIView {
     
     func cardGoesUp() {
         imageViewStatus.image = UIImage (named: "checkbox")
-        overLayImage.image = #imageLiteral(resourceName: "SHurt")
+        overLayImage.image = #imageLiteral(resourceName: "Group -7")
         imageViewStatus.alpha = 0.5
         overLayImage.alpha = 0.5
-        //  let finishPoint = CGPoint(x: 2 * xCenter + originalPoint.x, y: -frame.size.height*2)
+          let finishPoint = CGPoint(x: 2 * xCenter + originalPoint.x, y: -frame.size.height*2)
         DispatchQueue.main.async {
             UIView.animate(withDuration: 1.0, animations: {
-                       self.center = self.originalPoint
+                       self.center = finishPoint
                        self.transform = CGAffineTransform(rotationAngle: 0)
-                       self.imageViewStatus.alpha = 0
-                       self.overLayImage.alpha = 0
+                       self.imageViewStatus.alpha = 1
+                       self.overLayImage.alpha = 1
                        self.delegate?.currentCardStatus(card: self, distance:0)
                    }, completion: {(_) in
                         self.removeFromSuperview()
@@ -333,7 +334,7 @@ class TinderCard: UIView {
         }
        
          isLiked = false
-         delegate?.cardGoesUp(card: self)
+         delegate?.cardGoesUP(card: self)
         print("WATCHOUT LEFT")
     }
     
@@ -354,7 +355,7 @@ class TinderCard: UIView {
             self.removeFromSuperview()
         })
         isLiked = true
-        delegate?.cardGoesDown(card: self)
+        delegate?.cardGoesRight(card: self)
         print("WATCHOUT RIGHT ACTION")
     }
     // left click action
@@ -380,7 +381,7 @@ class TinderCard: UIView {
                           })
                }
         isLiked = false
-        delegate?.cardGoesUp(card: self)
+        delegate?.cardGoesleft(card: self)
         print("WATCHOUT LEFT ACTION")
     }
     

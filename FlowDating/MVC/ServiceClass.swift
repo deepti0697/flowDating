@@ -90,7 +90,64 @@ class ServiceClass: NSObject {
             }
             
         }
+    func hitServiceWithUrlStringforLikeDislike( urlString:String, parameters:[String:AnyObject],headers:HTTPHeaders,completion:@escaping completionBlockType)
+    {
+        if Reachability.forInternetConnection()!.isReachable()
+        {
+            print(headers)
+            print(urlString)
+            print(parameters)
+            hudShow()
+            AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers : headers)
+                .responseJSON { response in
+                    self.hudHide()
+                    guard case .success(let rawJSON) = response.result else {
+                        print("SomeThing wrong")
+                        
+                        var errorDict:[String:Any] = [String:Any]()
+                        errorDict[ServiceKeys.keyErrorCode] = ErrorCodes.errorCodeFailed
+                        errorDict[ServiceKeys.keyErrorMessage] = "SomeThing wrong"
+                        completion(ResponseType.kResponseTypeFail,JSON(),errorDict as AnyObject);
+                        return
+                    }
+                    if rawJSON is [String: Any] {
+                        let json = JSON(rawJSON)
+                        print(json)
+                        
+                        if  json["status"].intValue == 200 {
+                            completion(ResponseType.kresponseTypeSuccess,json,nil)
+                        }
+                        else {
+                            var errorDict:[String:Any] = [String:Any]()
+                            errorDict[ServiceKeys.keyErrorCode] = ErrorCodes.errorCodeFailed
+                            errorDict[ServiceKeys.keyErrorMessage] = json["message"].stringValue
+                            errorDict[ServiceKeys.keyErrorDic] = json["errors"].dictionary
+                            
+                            print(json["error_code"].stringValue)
+                            
+                            if json["error_code"].stringValue == "delete_user"{
+                                SVProgressHUD.dismiss()
+                            }
+                            else {
+                                completion(ResponseType.kResponseTypeFail,JSON(),errorDict as AnyObject);
+                            }
+                        }
+                    }
+            }
+        }
+        else {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                let errorDict = NSMutableDictionary()
+                errorDict.setObject(ErrorCodes.errorCodeInternetProblem, forKey: ServiceKeys.keyErrorCode as NSCopying)
+                errorDict.setObject("Check your internet connectivity", forKey: ServiceKeys.keyErrorMessage as NSCopying)
+                completion(ResponseType.kResponseTypeFail,JSON(),errorDict as NSDictionary)
+            }
+            
+        }
         
+    }
+    
         
         func hitServiceWithUrlStringWithErrorList( urlString:String, parameters:[String:AnyObject],headers:HTTPHeaders,completion:@escaping completionBlockType)
           {
@@ -470,6 +527,13 @@ class ServiceClass: NSObject {
     func hitServicesForLikeAndDislikeUsers(_ params:[String : Any], completion:@escaping completionBlockType)
         {
             let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.likeDisLikeUser)"
+           
+        let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+            self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+        }
+    func hitServicesForsuperLike(_ params:[String : Any], completion:@escaping completionBlockType)
+        {
+            let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.request_User)"
            
         let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
             self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)

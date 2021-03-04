@@ -134,10 +134,13 @@ final class CustomTapCardView: TapCardView {
   }
   
   private func getPageControl() -> UIPageControl {
-    
-    let pageControl = UIPageControl(frame: CGRect(origin: .zero, size: CGSize(width: bounds.width*0.8, height: 40)))
+
+    let pageControl = UIPageControl()
+    pageControl.frame = CGRect(x: 5, y: self.frame.height - 40, width:  150, height: 40)
     pageControl.pageIndicatorTintColor = UIColor.darkGray.withAlphaComponent(0.6)
-    pageControl.center = CGPoint(x: bounds.width/2, y: bounds.height-20)
+//    pageControl.center = CGPoint(x: bounds.width/2, y: bounds.height-20)
+//    pageControl.center = CGPoint(x: bounds.width/2, y: bounds.height-20)
+    
     pageControl.numberOfPages = numberOfPage
     pageControl.currentPage = 0
     pageControl.isUserInteractionEnabled = false

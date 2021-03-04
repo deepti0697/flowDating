@@ -9,7 +9,15 @@ import UIKit
 import SwiftyJSON
 class SurveyVC: UIViewController {
     
+    
+    @IBOutlet weak var maximumSliderBottomValue: UILabel!
+    @IBOutlet weak var minimumSliderBottomLbl: UILabel!
     @IBOutlet weak var switchHeight: UISwitch!
+    var heightStoreValue:Float = 121
+    var goodLookingStoreValue:Float = 1
+    var howWealthyStoreValue:Float = 1
+    var otherPersonWealthyStoreValue:Float = 1
+    var inchValue = "3'11"
     var isSwitchOn = false
     var distance = 0
     var relevantSelectedIndexArray = [Int]()
@@ -46,6 +54,7 @@ class SurveyVC: UIViewController {
     @IBOutlet weak var sevenOc: UIButton!
     @IBOutlet weak var sixOC: UIButton!
     @IBOutlet weak var fiveOC: UIButton!
+    
     var value = -1 {
         didSet {
             collctnView.reloadData()
@@ -72,9 +81,9 @@ class SurveyVC: UIViewController {
         super.viewDidLoad()
         //        buttonRounded()
         //        lbl_Distance.backgroundColor = .yellow
-        lbl_Distance.frame = CGRect(x: 0,y: 32,width: 100,height: 15)
+        lbl_Distance.frame = CGRect(x: 0,y: 32,width: 120,height: 15)
         lbl_Distance.setTitleColor(.lightGray, for: .normal)
-        lbl_Distance.titleLabel?.font =  UIFont(name: "sf_ui_display_light.ttf", size: 12)
+        lbl_Distance.titleLabel?.font =  UIFont(name: "sf_ui_display_light.ttf", size: 8)
         //             lbl_Distance.Font = UIFont.systemFont(ofSize: 12, weight: .light)
         //        lbl_Distance.setTitle("121 CM", for: .normal)
         lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider.self)
@@ -254,16 +263,18 @@ class SurveyVC: UIViewController {
     @IBAction func switchAction(_ sender: UISwitch) {
         if sender.isOn {
             isSwitchOn = true
-//            self.slider.minimumValue = 47
-//            self.slider.maximumValue = 77
             self.slider.minimumValue = 121
             self.slider.maximumValue = 220
+            self.minimumSliderBottomLbl.text = "3'11 INCHES"
+            self.maximumSliderBottomValue.text = "7'2 INCHES"
             lbl_Distance.setTitle("3'11 INCHES", for: .normal)
             slider.setValue(121, animated: false)
         }
         else {
             self.slider.minimumValue = 121
             self.slider.maximumValue = 220
+            self.minimumSliderBottomLbl.text = "121 CM"
+            self.maximumSliderBottomValue.text = "220 CM"
             isSwitchOn = false
             //            self.slider.
             slider.setValue(121, animated: false)
@@ -285,17 +296,38 @@ class SurveyVC: UIViewController {
         self.distance = (x)
         lbl_Distance.center = setUISliderThumbValueWithLabel(slider: sender)
         switch self.currentValue {
-        case 2,4,5:
-            lbl_Distance.setTitle("\(x)", for: .normal)
-        default:
+        case 1:
             if !isSwitchOn{
+                self.heightStoreValue = Float(x)
                 lbl_Distance.setTitle("\(x) CM", for: .normal)
             }
             else {
                
                 print(showFootAndInchesFromCm(x))
-                lbl_Distance.setTitle( "\(showFootAndInchesFromCm(x)) INCHES", for: .normal)
+                self.inchValue = "\(showFootAndInchesFromCm(x))"
+                lbl_Distance.setTitle( "\(inchValue) INCHES", for: .normal)
             }
+            
+           
+        case 2:
+            lbl_Distance.setTitle("\(x)     ", for: .normal)
+            self.goodLookingStoreValue = Float(x)
+        case 4:
+            lbl_Distance.setTitle("\(x)     ", for: .normal)
+            self.howWealthyStoreValue = Float(x)
+        case 5:
+            lbl_Distance.setTitle("\(x)     ", for: .normal)
+            self.otherPersonWealthyStoreValue = Float(x)
+        default:
+//            if !isSwitchOn{
+//                lbl_Distance.setTitle("\(x) CM", for: .normal)
+//            }
+//            else {
+//
+//                print(showFootAndInchesFromCm(x))
+//                lbl_Distance.setTitle( "\(showFootAndInchesFromCm(x)) INCHES", for: .normal)
+//            }
+        break
             
         }
         
@@ -304,7 +336,7 @@ class SurveyVC: UIViewController {
     func setUISliderThumbValueWithLabel(slider: UISlider) -> CGPoint {
         let slidertTrack : CGRect = slider.trackRect(forBounds: slider.bounds)
         let sliderFrm : CGRect = slider .thumbRect(forBounds: slider.bounds, trackRect: slidertTrack, value: slider.value)
-        return CGPoint(x: sliderFrm.origin.x + slider.frame.origin.x + 16, y: slider.frame.origin.y - 100)
+        return CGPoint(x: sliderFrm.origin.x + slider.frame.origin.x + 20, y: slider.frame.origin.y - 100)
     }
     
     
@@ -315,10 +347,26 @@ class SurveyVC: UIViewController {
             self.colcnView.isHidden = true
             self.kidsView.isHidden = true
             self.scaleView.isHidden = false
+            self.slider.minimumValue = 121
+            self.slider.maximumValue = 220
+            
             self.topLabel.text = "What is your height?"
             self.switchonAndOffView.isHidden = false
-            slider.setValue(121, animated: false)
-            self.distance = 0
+//            slider.setValue(self.heightStoreValue, animated: false)
+            if !isSwitchOn{
+                self.minimumSliderBottomLbl.text = "121 CM"
+                self.maximumSliderBottomValue.text = "220 CM"
+                lbl_Distance.setTitle("\(Int(self.heightStoreValue)) CM", for: .normal)
+                slider.setValue(heightStoreValue, animated: false)
+            }
+            else {
+                self.minimumSliderBottomLbl.text = "3'11 INCHES"
+                self.maximumSliderBottomValue.text = "7'2 INCHES"
+                lbl_Distance.setTitle("\(self.inchValue) INCHES", for: .normal)
+                slider.setValue(Float(self.inchValue) ?? 0.0, animated: false)
+            }
+            
+//            self.distance = 0
             lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider)
             self.oneAC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.oneAC.setTitleColor(.white, for: .normal)
@@ -329,13 +377,16 @@ class SurveyVC: UIViewController {
             self.kidsView.isHidden = true
             self.scaleView.isHidden = false
             self.topLabel.text = "What is your honest opinion on how good looking you are?"
-            
+            self.minimumSliderBottomLbl.text = "1"
+            self.maximumSliderBottomValue.text = "10"
             self.slider.minimumValue = 1
             self.slider.maximumValue = 10
-            slider.setValue(1, animated: false)
-            lbl_Distance.setTitle("1", for: .normal)
+            slider.setValue( 1, animated: false)
+            lbl_Distance.setTitle("\(Int(self.goodLookingStoreValue))       ", for: .normal)
             self.switchonAndOffView.isHidden = true
-            self.distance = 1
+//            self.distance = 1
+            
+            slider.setValue(self.goodLookingStoreValue, animated: false)
             lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider)
             self.twoOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.twoOC.setTitleColor(.white, for: .normal)
@@ -353,7 +404,48 @@ class SurveyVC: UIViewController {
             //            self.slider.maximumValue = 10
             self.switchonAndOffView.isHidden = true
             //            slider.setValue(1, animated: false)
-            
+            if isKidsWant {
+                yesKidsOutlt.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
+                yesKidsOutlt.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
+                noKidsOutlt.layer.borderColor = UIColor.lightGray.cgColor
+                noKidsOutlt.setTitleColor(.lightGray, for: .normal)
+            }
+            else {
+                noKidsOutlt.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
+                noKidsOutlt.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
+                yesKidsOutlt.layer.borderColor = UIColor.lightGray.cgColor
+                yesKidsOutlt.setTitleColor(.lightGray, for: .normal)
+            }
+            if doYouWantKids == 1 {
+                isKidsWant = true
+                
+                yesKidswantOutlt.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
+                yesKidswantOutlt.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
+                noKidsWantOutlt.layer.borderColor = UIColor.lightGray.cgColor
+                noKidsWantOutlt.setTitleColor(.lightGray, for: .normal)
+                nearFuture.layer.borderColor = UIColor.lightGray.cgColor
+                nearFuture.setTitleColor(.lightGray, for: .normal)
+            }
+            else if doYouWantKids == 2 {
+                
+                nearFuture.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+                
+                nearFuture.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
+                
+                yesKidswantOutlt.layer.borderColor = UIColor.lightGray.cgColor
+                yesKidswantOutlt.setTitleColor(.lightGray, for: .normal)
+                noKidsWantOutlt.layer.borderColor = UIColor.lightGray.cgColor
+                noKidsWantOutlt.setTitleColor(.lightGray, for: .normal)
+            }
+            else {
+                doYouWantKids = 0
+                noKidsWantOutlt.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+                noKidsWantOutlt.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
+                yesKidswantOutlt.layer.borderColor = UIColor.lightGray.cgColor
+                yesKidswantOutlt.setTitleColor(.lightGray, for: .normal)
+                nearFuture.layer.borderColor = UIColor.lightGray.cgColor
+                nearFuture.setTitleColor(.lightGray, for: .normal)
+            }
             self.threeOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.threeOC.setTitleColor(.white, for: .normal)
             self.fourOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
@@ -367,10 +459,13 @@ class SurveyVC: UIViewController {
             self.topLabel.text = "What is your honest opinion on how wealthy you are?"
             self.slider.minimumValue = 1
             self.slider.maximumValue = 10
-            self.lbl_Distance.setTitle("1", for: .normal)
+            self.minimumSliderBottomLbl.text = "1"
+            self.maximumSliderBottomValue.text = "10"
+            self.lbl_Distance.setTitle("\(Int(howWealthyStoreValue))      ", for: .normal)
             slider.setValue(1, animated: false)
             self.switchonAndOffView.isHidden = true
-            self.distance = 1
+            slider.setValue(self.howWealthyStoreValue, animated: false)
+//            self.distance = 1
             lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider)
             self.fourOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.fourOC.setTitleColor(.white, for: .normal)
@@ -385,9 +480,12 @@ class SurveyVC: UIViewController {
             self.topLabel.text = "How important is other person’s wealth to you?"
             self.slider.minimumValue = 1
             self.slider.maximumValue = 10
-            self.lbl_Distance.setTitle("1", for: .normal)
+            self.minimumSliderBottomLbl.text = "1"
+            self.maximumSliderBottomValue.text = "10"
+            self.lbl_Distance.setTitle("\(Int(otherPersonWealthyStoreValue))      ", for: .normal)
             slider.setValue(1, animated: false)
-            self.distance = 1
+//            self.distance = 1
+            slider.setValue(self.otherPersonWealthyStoreValue, animated: false)
             lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider)
             self.fiveOC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
             self.fiveOC.setTitleColor(.white, for: .normal)
@@ -495,13 +593,13 @@ class SurveyVC: UIViewController {
             self.scaleView.isHidden = false
             self.topLabel.text = "What is your height? "
             self.switchonAndOffView.isHidden = false
-            self.oneAC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 205/255, alpha: 1)
-            self.oneAC.setTitleColor(.white, for: .normal)
-            self.twoOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
-            self.twoOC.setTitleColor(.black, for: .normal)
-            self.slider.minimumValue = 121
-            self.slider.maximumValue = 220
+//            self.oneAC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 205/255, alpha: 1)
+//            self.oneAC.setTitleColor(.white, for: .normal)
+//            self.twoOC.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+//            self.twoOC.setTitleColor(.black, for: .normal)
+          
             self.currentValue = currentValue - 1
+            self.setUIView(caseValue: currentValue)
             
             return
         }
@@ -516,8 +614,7 @@ class SurveyVC: UIViewController {
             appdelegate.setHomeVC()
         }
         else {
-            self.previousView.isHidden = false
-            self.stackViewHeightConstraint.constant = 110
+          
             switch currentValue {
             case 1:
                 if distance <= 0 {
@@ -525,10 +622,16 @@ class SurveyVC: UIViewController {
                     }
                 }
                 else {
+                    self.previousView.isHidden = false
+                    self.stackViewHeightConstraint.constant = 110
+                    setUIView(caseValue: currentValue)
                     hitSurvey(param: setParameters(str: currentValue))
                 }
             case 6:
                 if relevantSelectedIndexArray.count >= 1 {
+                    self.previousView.isHidden = false
+                    self.stackViewHeightConstraint.constant = 110
+                    setUIView(caseValue: currentValue)
                     hitSurvey(param: setParameters(str: currentValue))
                 }
                 
@@ -538,6 +641,9 @@ class SurveyVC: UIViewController {
                 }
             case 7 :
                 if selectedQualitiesArray.count >= 1 {
+                    self.previousView.isHidden = false
+                    self.stackViewHeightConstraint.constant = 110
+                    setUIView(caseValue: currentValue)
                     hitSurvey(param: setParameters(str: currentValue))
                 }
                 
@@ -547,6 +653,9 @@ class SurveyVC: UIViewController {
                 }
             case 8:
                 if otherPersonQualities.count >= 4{
+                    self.previousView.isHidden = false
+                    self.stackViewHeightConstraint.constant = 110
+                    setUIView(caseValue: currentValue)
                     hitSurvey(param: setParameters(str: currentValue))
                 }
                 else {
@@ -681,7 +790,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
         case 6:
             if relevantSelectedIndexArray.count < 3 {
                 if relevantSelectedIndexArray.contains(indexPath.row){
-                    //                relevantSelectedIndexArray.remove(at: indexPath.row)
+                    //relevantSelectedIndexArray.remove(at: indexPath.row)
                     relevantSelectedIndexArray = relevantSelectedIndexArray.filter{ $0 != indexPath.row }
                 }
                 else {
@@ -794,21 +903,20 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
             params["height"] = self.distance
             return params
         case 2:
-            params["good_looking"] = self.distance
+            params["good_looking"] = self.goodLookingStoreValue
             return params
         case 3:
             
             params["kids"] = isKidsWant
             
-            
             params["kids_in_future"] = doYouWantKids
             return params
             
         case 4:
-            params["my_health"] = self.distance
+            params["my_health"] = self.howWealthyStoreValue
             return params
         case 5:
-            params["other_health"] = self.distance
+            params["other_health"] = self.otherPersonWealthyStoreValue
             return params
             
         case 6 :

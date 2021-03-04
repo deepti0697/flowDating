@@ -16,6 +16,7 @@ let SCALE_RANGE : CGFloat = 0.90
 import UIKit
 import SDWebImage
 protocol TinderCardDelegate: NSObjectProtocol {
+    
     func cardGoesUp(card: TinderCard)
     func cardGoesDown(card: TinderCard)
     func currentCardStatus(card: TinderCard, distance: CGFloat)
@@ -198,8 +199,18 @@ class TinderCard: UIView {
 //        v.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
         
     
-        
+//        let screenSize: CGRect = UIScreen.main.bounds
         overLayImage = UIImageView(frame:bounds)
+//       overLayImage.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        overLayImage.translatesAutoresizingMaskIntoConstraints = false
+            // set contentMode to center image
+        overLayImage.contentMode = .center
+//       backGroundImageView.center = overLayImage.center
+      
+        self.addConstraint(NSLayoutConstraint(item: overLayImage, attribute: .centerX, relatedBy: .equal, toItem: backGroundImageView, attribute: .centerX, multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: overLayImage, attribute: .centerY, relatedBy: .equal, toItem: backGroundImageView, attribute: .centerY, multiplier: 1, constant: 0))
+            // if you do not set the height and width constrints then myImageView size depends on actual size of image.
+           
         overLayImage.alpha = 0
         addSubview(overLayImage)
         
@@ -248,7 +259,7 @@ class TinderCard: UIView {
          imageViewStatus.image = distance > 0 ? UIImage (named: "tick")
            : UIImage (named: "remove")
         
-         overLayImage.image = distance > 0 ? #imageLiteral(resourceName: "asset-2") : #imageLiteral(resourceName: "SHurt")
+         overLayImage.image = distance > 0 ? #imageLiteral(resourceName: "Group -14") : #imageLiteral(resourceName: "Group -11")
         imageViewStatus.alpha = min(abs(distance) / 100, 0.5)
         overLayImage.alpha = min(abs(distance) / 100, 0.5)
         delegate?.currentCardStatus(card: self, distance: distance)
@@ -257,6 +268,7 @@ class TinderCard: UIView {
     @objc func taped(_ gestureRecognizer: UITapGestureRecognizer)  {
           delegate?.tapedoncard()
       }
+    
     func afterSwipeAction() {
         
         if yCenter > THERESOLD_MARGIN {
@@ -303,22 +315,25 @@ class TinderCard: UIView {
     }
     
     func cardGoesUp() {
-        
+        imageViewStatus.image = UIImage (named: "checkbox")
+        overLayImage.image = #imageLiteral(resourceName: "SHurt")
+        imageViewStatus.alpha = 0.5
+        overLayImage.alpha = 0.5
         //  let finishPoint = CGPoint(x: 2 * xCenter + originalPoint.x, y: -frame.size.height*2)
         DispatchQueue.main.async {
-             UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 1.0, animations: {
                        self.center = self.originalPoint
                        self.transform = CGAffineTransform(rotationAngle: 0)
                        self.imageViewStatus.alpha = 0
                        self.overLayImage.alpha = 0
                        self.delegate?.currentCardStatus(card: self, distance:0)
                    }, completion: {(_) in
-                       // self.removeFromSuperview()
+                        self.removeFromSuperview()
                    })
         }
        
-        // isLiked = false
-        // delegate?.cardGoesUp(card: self)
+         isLiked = false
+         delegate?.cardGoesUp(card: self)
         print("WATCHOUT LEFT")
     }
     

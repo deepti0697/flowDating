@@ -27,6 +27,7 @@ pod 'SDWebImage'
 pod 'Firebase/Analytics'
 pod 'Firebase/Messaging'
 pod 'GoogleSignIn'
+pod "TapCardView"
   target 'FlowDatingTests' do
     inherit! :search_paths
     # Pods for testing

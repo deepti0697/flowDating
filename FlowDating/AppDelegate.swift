@@ -31,7 +31,7 @@ import FirebaseMessaging
         self.registerForRemoteNotification()
         
         Messaging.messaging().delegate = self
-//        sleep(5)
+        sleep(3)
         self.GetFCMToken()
         if  (AppHelper.getStringForKey(ServiceKeys.token) == "") {
             if AppHelper.getBoolForKey(ServiceKeys.isPermissionEnabled) {
@@ -39,7 +39,7 @@ import FirebaseMessaging
             }
             else {
                 let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-                let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile1VC") as! CompleteProfile1VC
+                let vc1 = storyBoard.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
                 let nv4 = UINavigationController(rootViewController: vc1)
 
                 self.window?.rootViewController = nv4
@@ -61,7 +61,7 @@ import FirebaseMessaging
     }
     else if AppHelper.getStringForKey(ServiceKeys.profile_Screen) == "2" {
         let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-        let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile1VC") as! CompleteProfile1VC
+        let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile2VC") as! CompleteProfile2VC
         let nv4 = UINavigationController(rootViewController: vc1)
 //        vc1.backBtnOutlt.isHidden = true
         self.window?.rootViewController = nv4
@@ -69,7 +69,7 @@ import FirebaseMessaging
     }
     else {
             let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-            let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile1VC") as! CompleteProfile1VC
+            let vc1 = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
             let nv4 = UINavigationController(rootViewController: vc1)
 
             self.window?.rootViewController = nv4

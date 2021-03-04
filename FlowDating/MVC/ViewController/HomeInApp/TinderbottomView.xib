@@ -41,13 +41,6 @@
                                 <constraint firstAttribute="height" constant="21" id="xrM-e3-eeB"/>
                             </constraints>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1894" translatesAutoresizingMaskIntoConstraints="NO" id="HBT-4v-BMv">
-                            <rect key="frame" x="390.5" y="25.5" width="45" height="45"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="45" id="bK0-JC-mXU"/>
-                                <constraint firstAttribute="height" constant="45" id="oI2-Pm-NZZ"/>
-                            </constraints>
-                        </imageView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Path -5" translatesAutoresizingMaskIntoConstraints="NO" id="5zz-4O-gdk">
                             <rect key="frame" x="5" y="100" width="30" height="21"/>
                             <constraints>
@@ -87,14 +80,18 @@
                             </constraints>
                         </pageControl>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="85 % Match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEE-pf-lpW">
-                            <rect key="frame" x="377" y="70.5" width="72" height="28"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="28" id="lBn-M4-SM1"/>
-                            </constraints>
+                            <rect key="frame" x="377" y="76" width="72" height="17"/>
                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1894" translatesAutoresizingMaskIntoConstraints="NO" id="8Eh-2D-aus">
+                            <rect key="frame" x="393" y="34" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="8Eh-2D-aus" secondAttribute="height" id="8gH-EO-lkC"/>
+                                <constraint firstAttribute="height" constant="40" id="oef-ie-e59"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -106,17 +103,17 @@
                         <constraint firstItem="SQ0-DH-6su" firstAttribute="leading" secondItem="UtP-7f-ncw" secondAttribute="trailing" constant="10" id="Sqj-vC-626"/>
                         <constraint firstAttribute="height" constant="141" id="WcG-AG-LDX"/>
                         <constraint firstItem="UtP-7f-ncw" firstAttribute="leading" secondItem="kf7-6O-qME" secondAttribute="leading" constant="10" id="ZTG-cE-bkZ"/>
-                        <constraint firstItem="HBT-4v-BMv" firstAttribute="centerX" secondItem="GEE-pf-lpW" secondAttribute="centerX" id="ec5-Nb-t3c"/>
                         <constraint firstItem="URT-Ib-qFG" firstAttribute="leading" secondItem="D3R-rx-RFf" secondAttribute="trailing" constant="5" id="fTt-Vh-tGO"/>
-                        <constraint firstItem="GEE-pf-lpW" firstAttribute="top" secondItem="HBT-4v-BMv" secondAttribute="bottom" id="jIl-0G-4iS"/>
                         <constraint firstItem="PIW-Mr-0wY" firstAttribute="leading" secondItem="kf7-6O-qME" secondAttribute="leading" constant="10" id="jhS-tR-tFV"/>
                         <constraint firstItem="UtP-7f-ncw" firstAttribute="top" secondItem="PIW-Mr-0wY" secondAttribute="bottom" constant="8" id="k3A-Oh-cBm"/>
                         <constraint firstItem="D3R-rx-RFf" firstAttribute="centerY" secondItem="5zz-4O-gdk" secondAttribute="centerY" id="mFA-pA-QPy"/>
                         <constraint firstItem="SQ0-DH-6su" firstAttribute="centerY" secondItem="UtP-7f-ncw" secondAttribute="centerY" id="mgw-TR-PyQ"/>
+                        <constraint firstItem="GEE-pf-lpW" firstAttribute="top" secondItem="8Eh-2D-aus" secondAttribute="bottom" constant="2" id="qO9-0a-jD1"/>
                         <constraint firstItem="5zz-4O-gdk" firstAttribute="leading" secondItem="kf7-6O-qME" secondAttribute="leading" constant="5" id="qxk-4D-Uub"/>
                         <constraint firstItem="1OJ-wF-0yK" firstAttribute="centerY" secondItem="5zz-4O-gdk" secondAttribute="centerY" id="uGp-sx-Yuv"/>
                         <constraint firstItem="URT-Ib-qFG" firstAttribute="centerY" secondItem="D3R-rx-RFf" secondAttribute="centerY" id="ur3-0j-gx9"/>
                         <constraint firstItem="D3R-rx-RFf" firstAttribute="leading" secondItem="1OJ-wF-0yK" secondAttribute="trailing" constant="10" id="wxQ-co-LbA"/>
+                        <constraint firstItem="8Eh-2D-aus" firstAttribute="centerX" secondItem="GEE-pf-lpW" secondAttribute="centerX" id="zVT-n0-FUF"/>
                     </constraints>
                 </view>
             </subviews>
@@ -141,7 +138,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Group 1894" width="48" height="48"/>
+        <image name="Group 1894" width="39" height="39"/>
         <image name="Path -5" width="10.5" height="13.5"/>
         <image name="Path 405" width="22" height="21"/>
         <image name="scorpion-shape-of-zodiac-sign-2" width="17.5" height="14.5"/>

@@ -124,6 +124,7 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
     }
     // MARK : Timer
     private func startOtpTimer() {
+        btn_save.isEnabled = true
         self.resendBtnOutlt.isUserInteractionEnabled = false
             self.totalTime = 120
             self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)

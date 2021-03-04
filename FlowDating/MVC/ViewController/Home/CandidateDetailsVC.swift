@@ -7,24 +7,26 @@
 //
 
 import UIKit
-
-class CandidateDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+import TapCardView
+import SDWebImage
+class CandidateDetailsVC: UIViewController {
     
-    @IBOutlet weak var totalMatchLbl: UILabel!
-    @IBOutlet weak var aboutMeLbl: UILabel!
-    @IBOutlet weak var horoScopeLbl: UILabel!
-    @IBOutlet weak var distanceLbl: UILabel!
-    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var tinderCardView: UIView!
+//    @IBOutlet weak var totalMatchLbl: UILabel!
+//    @IBOutlet weak var aboutMeLbl: UILabel!
+//    @IBOutlet weak var horoScopeLbl: UILabel!
+//    @IBOutlet weak var distanceLbl: UILabel!
+//    @IBOutlet weak var userNameLbl: UILabel!
     //    @IBOutlet weak var likeButtonView: UIView!
   //  @IBOutlet weak var public_collection: UICollectionView!
   //  @IBOutlet weak var private_collection: UICollectionView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var tbl: UITableView!
+//    @IBOutlet weak var scrollView: UIScrollView!
+   
     @IBOutlet weak var viewbottom: UIView!
 //    @IBOutlet weak var btnLike: UIButton!
     var typefav:String = ""
     var image = [#imageLiteral(resourceName: "Image -31"),#imageLiteral(resourceName: "Image -18")]
-    @IBOutlet weak var pagecontrol: UIPageControl!
+//    @IBOutlet weak var pagecontrol: UIPageControl!
     var slides:[ImageViewPage] = []
     var personUserid : Int = 0
     var userDetail =  AllUserData()
@@ -33,14 +35,46 @@ class CandidateDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSo
     var cellcount = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        let numberOfPage = userDetail.photos.count
+        var images: [UIImage] = []
+        for index in  0..<numberOfPage {
+            if let imageStr =  userDetail.photos[index].name{
+                     print(imageStr)
+                     let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                     let imageUrl = URL(string: urlString ?? "")
+                 
+                        let data = try? Data(contentsOf: imageUrl!)
+
+                          let image: UIImage = UIImage(data: data!)!
+                print(image)
+                images.append(image)
+
+                          
+//                image.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: ""), options: .continueInBackground) { (img, err, cacheType, url) in
+//                     }
+               
+                 }
+          
+         
+        }
         
+        let frame = CGRect(x: 0, y: 0, width: self.tinderCardView.frame.size.width, height: self.tinderCardView.frame.size.height)
+        
+        let card = CustomTapCardView(frame: frame, datas: images)
+        card.delegate = self
+
+//        card.center = tinderCardView.center
+        card.layer.cornerRadius = 8.0
+        card.clipsToBounds = true
+        self.tinderCardView.addSubview(card)
+      
         self.modalPresentationStyle = .fullScreen
      
 //        likeButtonView.isHidden = true
         
         
-        pagecontrol.numberOfPages = image.count
-        pagecontrol.currentPage = 0
+//        pagecontrol.numberOfPages = image.count
+//        pagecontrol.currentPage = 0
 //        self.btnLike.isSelected = false
      
         // view.bringSubviewToFront(pagecontrol)
@@ -48,9 +82,9 @@ class CandidateDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func setup(){
-//        self.nam
-        self.userNameLbl.text = self.userDetail.name
-        self.aboutMeLbl.text = self.userDetail.about
+////        self.nam
+//        self.userNameLbl.text = self.userDetail.name
+//        self.aboutMeLbl.text = self.userDetail.about
 //        self.totalMatchLbl.text = self.userDetail
     }
     @IBAction func backButtonAction(_ sender: Any) {
@@ -103,22 +137,10 @@ class CandidateDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSo
 //    self.present(imageView, animated: true, completion: nil)
 //       print("getTag == \(getTag)")
    }
-    func setupSlideScrollView(slides : [ImageViewPage]) {
-        
-        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: scrollView.frame.height)
-        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: scrollView.frame.height)
-        scrollView.isPagingEnabled = true
-        
-        for i in 0 ..< slides.count {
-            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: scrollView.frame.height)
-            scrollView.addSubview(slides[i])
-            pagecontrol.currentPage = i
-        }
-    }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.slides = self.createSlides()
-        self.setupSlideScrollView(slides: self.slides)
+//        self.slides = self.createSlides()
+//        self.setupSlideScrollView(slides: self.slides)
         self.navigationController?.navigationBar.isHidden  = true
     }
     
@@ -152,25 +174,7 @@ class CandidateDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     
     // MARK: - TABLEVIEW
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
-       
-            let cellMatch = tbl.dequeueReusableCell(withIdentifier: "DCELL", for:  indexPath as IndexPath) as! DetailsCell
-            
-            
-            return  cellMatch
-        
-    }
+  
     
     
 //    // MARK: - collectionview
@@ -211,4 +215,20 @@ class CandidateDetailsVC: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     
     // MARK : - API call
+}
+extension CandidateDetailsVC:CardViewDelegate {
+    func tapPosition(type: TapPosition, sender: TapCardView) {
+        print(type)
+        
+        switch type {
+        case .left:
+          break
+        case .right:
+          break
+        case .bottom:
+          break
+        }
+    }
+    
+    
 }

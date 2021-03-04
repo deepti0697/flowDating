@@ -133,6 +133,7 @@ PODS:
   - SVPinView (1.0.11)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (5.0.0)
+  - TapCardView (1.0.6)
   - Toast (3.1.0)
   - Toast-Swift (3.0.1)
 
@@ -154,6 +155,7 @@ DEPENDENCIES:
   - SVPinView
   - SVProgressHUD
   - SwiftyJSON
+  - TapCardView
   - Toast (~> 3.1.0)
   - Toast-Swift (~> 3.0.0)
 
@@ -193,6 +195,7 @@ SPEC REPOS:
     - SVPinView
     - SVProgressHUD
     - SwiftyJSON
+    - TapCardView
     - Toast
     - Toast-Swift
 
@@ -231,9 +234,10 @@ SPEC CHECKSUMS:
   SVPinView: 9b538d0ba68cdb092afe4f0f67ec84cbed079466
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  TapCardView: 3826bb8f53fec35944ce491a8b437453fb608f35
   Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
 
-PODFILE CHECKSUM: 675390b155983f4084c7024b5819898f1f656cb3
+PODFILE CHECKSUM: 1c7f3f93cde35e1518f03d6f7d8334bcff00f62d
 
 COCOAPODS: 1.10.0

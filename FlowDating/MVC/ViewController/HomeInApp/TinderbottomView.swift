@@ -21,6 +21,7 @@ class TinderbottomView: UIView {
     @IBOutlet weak var nmPerson: UILabel!
     override  func awakeFromNib() {
         super.awakeFromNib()
+        
         if #available(iOS 14.0, *) {
             pageControl.backgroundStyle = .minimal
         } else {

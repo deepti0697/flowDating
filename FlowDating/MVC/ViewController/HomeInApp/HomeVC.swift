@@ -25,7 +25,7 @@ class HomeVC: ViewController {
     var tempArray = [AllUserData]()
     @IBOutlet weak var btnPoke: UIButton!
     @IBOutlet weak var openprofile: UIImageView!
-   
+//   var dislikeArray = 
     @IBOutlet weak var tinderView: UIView!
     var currentLoadedCardsArray = [TinderCard]()
     var allCardsArray = [TinderCard]()

@@ -320,8 +320,9 @@ class TinderCard: UIView {
         overLayImage.image = #imageLiteral(resourceName: "Group -7")
         imageViewStatus.alpha = 0.5
         overLayImage.alpha = 0.5
-          let finishPoint = CGPoint(x: 2 * xCenter + originalPoint.x, y: -frame.size.height*2)
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+            let finishPoint = CGPoint(x: 2 * self.xCenter + self.originalPoint.x, y: -frame.size.height*2)
+       
             UIView.animate(withDuration: 1.0, animations: {
                        self.center = finishPoint
                        self.transform = CGAffineTransform(rotationAngle: 0)

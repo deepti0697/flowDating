@@ -11,7 +11,7 @@ import SwiftyJSON
 import AVFoundation
 
 class MultiplePictureUploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-    
+    var isComingFromRegistration = false
     var isArrayImage = true
     var imgcell = InchargeImageCollectionViewCell()
     @IBOutlet weak var imageCollectionView: UICollectionView!
@@ -234,8 +234,13 @@ extension MultiplePictureUploadVC:UICollectionViewDelegate,UICollectionViewDataS
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 Common.showAlert(alertMessage: parseData["message"].stringValue, alertButtons: ["Ok"]) { (bt) in
+                    if self.isComingFromRegistration {
                     self.openViewController(controller: CompleteypuProfileVC4.self, storyBoard: .mainStoryBoard) { (vc) in
 
+                    }
+                    }
+                    else {
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
                

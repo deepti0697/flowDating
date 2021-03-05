@@ -55,7 +55,8 @@ import FirebaseMessaging
         let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
         let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile1VC") as! CompleteProfile1VC
         let nv4 = UINavigationController(rootViewController: vc1)
-
+        vc1.isComingFromRegistration = true
+        vc1.backButtonOutlt.isHidden = true
         self.window?.rootViewController = nv4
         self.window?.makeKeyAndVisible()
     }

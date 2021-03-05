@@ -8,6 +8,109 @@
 import Foundation
 import SwiftyJSON
 
+
+class GetUserProfile{
+  
+          
+        
+    var device_type: String!
+    var app_version:String!
+    var os_version:String!
+    var latitude:String!
+    var longitude:String!
+    var last_activity:String!
+  
+    var is_pause:Bool!
+    var profile_complete:String!
+    var age:String!
+    var id : String!
+    var firebase_id:String!
+    var name : String!
+    var email : String!
+    var mobile: String!
+    var gender :  String!
+    var zodiac_sign: String!
+    var compatibility: String!
+    var profile_pic : String!
+    var dob : String!
+    var about :  String!
+    var subscription_plan:Bool!
+    var miles: String!
+    var status : Bool!
+    var is_verified: Bool!
+    var photos = [AllPhotos]()
+    var prefrence :UserPrefence?
+    init() { }
+    
+    init(fromJson json: JSON!){
+        if json.isEmpty{
+            return
+        }
+        
+        is_pause = json["is_pause"].boolValue
+        device_type = json["device_type"].stringValue
+        app_version = json["app_version"].stringValue
+        os_version  = json["os_version"].stringValue
+        latitude   = json["os_version"].stringValue
+        longitude  = json["longitude"].stringValue
+        last_activity = json["last_activity"].stringValue
+        let arrayPhotos = json["photos"].arrayValue
+        id = json["id"].stringValue
+        firebase_id = json["firebase_id"].stringValue
+        name = json["name"].stringValue
+        email = json["email"].stringValue
+        mobile = json["mobile"].stringValue
+        gender = json["gender"].stringValue
+        age = json["age"].stringValue
+        zodiac_sign = json["zodiac_sign"].stringValue
+        compatibility = json["compatibility"].stringValue
+        profile_pic = json["profile_pic"].stringValue
+        dob = json["dob"].stringValue
+        about = json["about"].stringValue
+        subscription_plan = json["subscription_plan"].boolValue
+        miles = json["miles"].stringValue
+        status = json["status"].boolValue
+        is_verified = json["is_verified"].boolValue
+        
+        
+        
+        for value in arrayPhotos {
+            let sortByData = AllPhotos(fromJson: value)
+            self.photos.append(sortByData)
+        }
+    }
+}
+
+class UserPrefence {
+    var id:String!
+    var user_id:String!
+    var interested_in:String!
+    var min_age:String!
+    var max_age:String!
+    var distance_type:String!
+    var distance:String!
+    var created_at:String!
+    var updated_at:String!
+    var deleted_at:String!
+    init() { }
+    
+    init(fromJson json: JSON!){
+        if json.isEmpty{
+            return
+        }
+        id = json["id"].stringValue
+        user_id = json["user_id"].stringValue
+        interested_in = json["interested_in"].stringValue
+        min_age = json["min_age"].stringValue
+        max_age = json["max_age"].stringValue
+        distance_type = json["distance_type"].stringValue
+        
+        distance = json["distance"].stringValue
+        created_at = json["created_at"].stringValue
+        updated_at = json["updated_at"].stringValue
+        deleted_at = json["deleted_at"].stringValue
+}
+}
 class AllUserData{
     var id:String!
     var firebase_id:String!

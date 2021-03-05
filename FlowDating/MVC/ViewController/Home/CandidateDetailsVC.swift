@@ -9,18 +9,28 @@
 import UIKit
 import TapCardView
 import SDWebImage
+import  SwiftyJSON
+protocol  userActions {
+   func openChat()
+    func dislikeUser()
+    func superLikeUser()
+    func giveHurtToUser()
+}
 class CandidateDetailsVC: UIViewController {
     
+    
+    @IBOutlet weak var reportAndSaveUIVIew: UIView!
     @IBOutlet weak var tinderCardView: UIView!
-//    @IBOutlet weak var totalMatchLbl: UILabel!
-//    @IBOutlet weak var aboutMeLbl: UILabel!
-//    @IBOutlet weak var horoScopeLbl: UILabel!
-//    @IBOutlet weak var distanceLbl: UILabel!
-//    @IBOutlet weak var userNameLbl: UILabel!
-    //    @IBOutlet weak var likeButtonView: UIView!
-  //  @IBOutlet weak var public_collection: UICollectionView!
-  //  @IBOutlet weak var private_collection: UICollectionView!
-//    @IBOutlet weak var scrollView: UIScrollView!
+    var delegate:userActions?
+    @IBOutlet weak var totalMatchLbl: UILabel!
+    @IBOutlet weak var aboutMeLbl: UILabel!
+    @IBOutlet weak var horoScopeLbl: UILabel!
+    @IBOutlet weak var distanceLbl: UILabel!
+    @IBOutlet weak var userNameLbl: UILabel!
+        @IBOutlet weak var likeButtonView: UIView!
+    @IBOutlet weak var public_collection: UICollectionView!
+    @IBOutlet weak var private_collection: UICollectionView!
+    @IBOutlet weak var scrollView: UIScrollView!
    
     @IBOutlet weak var viewbottom: UIView!
 //    @IBOutlet weak var btnLike: UIButton!
@@ -34,6 +44,7 @@ class CandidateDetailsVC: UIViewController {
     var person_name = ""
     var cellcount = 0
     override func viewDidLoad() {
+        self.tabBarController?.tabBar.isHidden = true
         super.viewDidLoad()
         let numberOfPage = userDetail.photos.count
         var images: [UIImage] = []
@@ -55,7 +66,6 @@ class CandidateDetailsVC: UIViewController {
                
                  }
           
-         
         }
         
         let frame = CGRect(x: 0, y: 0, width: self.tinderCardView.frame.size.width, height: self.tinderCardView.frame.size.height)
@@ -80,20 +90,37 @@ class CandidateDetailsVC: UIViewController {
         // view.bringSubviewToFront(pagecontrol)
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
     func setup(){
 ////        self.nam
-//        self.userNameLbl.text = self.userDetail.name
-//        self.aboutMeLbl.text = self.userDetail.about
-//        self.totalMatchLbl.text = self.userDetail
+        self.userNameLbl.text = self.userDetail.name
+        self.aboutMeLbl.text = self.userDetail.about
+        self.totalMatchLbl.text = "\(self.userDetail.compatibility ?? "")% Match"
+        self.distanceLbl.text = "\(self.userDetail.miles ?? "") Miles away"
+        self.horoScopeLbl.text  = "\(self.userDetail.zodiac_sign ?? "")"
     }
     @IBAction func backButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func actionMenu(_ sender: Any) {
-        
+   
+    @IBAction func saveUSerAction(_ sender: Any) {
+        callAPIforSaveUser(userID: userDetail.id)
     }
     
+    @IBAction func reportUserAction(_ sender: Any) {
+        self.reportAndSaveUIVIew.isHidden = true
+    }
+    @IBAction func saveAndReportViewAction(_ sender: UIButton) {
+        if sender.isSelected {
+            self.reportAndSaveUIVIew.isHidden = true
+        }
+        else {
+            self.reportAndSaveUIVIew.isHidden = false
+        }
+        sender.isSelected = !sender.isSelected
+    }
     @IBAction func actionBack(_ sender: Any) {
         DispatchQueue.main.async {
             self.navigationController?.popViewController(animated: false)
@@ -140,18 +167,39 @@ class CandidateDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
 //        self.slides = self.createSlides()
-//        self.setupSlideScrollView(slides: self.slides)
+//        self.setupSlideScrollView(slides: self.slides)\
+        self.reportAndSaveUIVIew.isHidden = true
         self.navigationController?.navigationBar.isHidden  = true
-    }
-    
-    @IBAction func actionUnfav(_ sender: Any) {
-        //        let currentuser = getUser()
-        //               if personUserid == currentuser.id{
-        //                   return
-        //               }
-        //        typefav = "unfavourite"
+        setup()
         
        
+    }
+    func openHomeVc(){
+        
+    }
+    @IBAction func hurtAction(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        vc.comingfromDetail = true
+        delegate?.giveHurtToUser()
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func superLikeAction(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        vc.comingfromDetail = true
+        delegate?.superLikeUser()
+        self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func closeAction(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        vc.comingfromDetail = true
+        delegate?.dislikeUser()
+        self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func openChatAction(_ sender: Any) {
+        
+    }
+    @IBAction func actionUnfav(_ sender: Any) {
     }
     @IBAction func actionFav(_ sender: Any) {
       
@@ -229,6 +277,35 @@ extension CandidateDetailsVC:CardViewDelegate {
           break
         }
     }
-    
+    func callAPIforSaveUser(userID:String) {
+        var params =  [String : Any]()
+        params["user_id"] = userID
+        
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServicesForSaveUsers(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            self.reportAndSaveUIVIew.isHidden = true
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                //
+                let message = parseData["message"].stringValue
+                Common.showAlert(alertMessage: message                                                                                                                                                                          , alertButtons: ["Ok"]) { (bt) in
+                }
+                
+            }
+            
+            else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
+        
+    }
     
 }

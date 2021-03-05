@@ -289,7 +289,8 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
                 AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
              
                 self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
-
+                    vc.isComingFromRegistration = true
+                    vc.backButtonOutlt.isHidden = true
                     
                 }
                 }

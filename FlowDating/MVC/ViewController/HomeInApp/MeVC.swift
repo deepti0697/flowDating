@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var loctaion: UILabel!
@@ -55,12 +55,11 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 //        print("getTag == \(getTag)")
     }
     @IBAction func action_edit(_ sender: Any) {
-//        var mainView: UIStoryboard!
-//        mainView = UIStoryboard(name: "Profile", bundle: nil)
-//        let viewcontroller : ProfileVC = mainView.instantiateViewController(withIdentifier: "Profilemaster") as! ProfileVC
-//        viewcontroller.isedit = true
-//        self.navigationController?.navigationBar.isHidden = false
-//        self.navigationController?.pushViewController(viewcontroller, animated: true)
+        openViewController(controller: MultiplePictureUploadVC.self, storyBoard: .mainStoryBoard) { (vc) in
+            vc.isComingFromRegistration = false
+//            vc.backButtonOutlt.isHidden = false
+        }
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -91,27 +90,31 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
-        if indexPath.row == 6{
+        if indexPath.row == 5{
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
             let filter = storyboard.instantiateViewController(withIdentifier: "VC_Setting") as! VC_Setting
             
             self.navigationController?.pushViewController(filter, animated: true)
         }
-//        if indexPath.row == 2{
-//            let storyboard = UIStoryboard(name: "TabStoryboard", bundle: nil)
-//            let filter = storyboard.instantiateViewController(withIdentifier: "matual") as! MatualFriendVc
-//            filter.frommatual = false
-//            // filter.isModalInPresentation = true
-//            self.navigationController?.pushViewController(filter, animated: true)
-//            
-//        }
-//        if indexPath.row == 1{
-//            let storyboard = UIStoryboard(name: "TabStoryboard", bundle: nil)
-//            let filter = storyboard.instantiateViewController(withIdentifier: "matual") as! MatualFriendVc
-//            filter.frommatual = true
-//            // filter.isModalInPresentation = true
-//            self.navigationController?.pushViewController(filter, animated: true)
-//        }
+        else if indexPath.row == 0 {
+            openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
+                vc.isComingFromRegistration = false
+    //            vc.backButtonOutlt.isHidden = false
+            }
+        }
+       else if indexPath.row == 1{
+        openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
+            vc.isComingFromRegistration = false
+//            vc.backButtonOutlt.isHidden = false
+        }
+        }
+       else if indexPath.row == 3 {
+        openViewController(controller: SurveyVC.self, storyBoard: .mainStoryBoard) { (vc) in
+            vc.isComingFromRegistration = false
+//            vc.backButtonOutlt.isHidden = false
+        }
+       }
+        
 //        if indexPath.row == 3{
 //            let storyboard = UIStoryboard(name: "TabStoryboard", bundle: nil)
 //            let filter = storyboard.instantiateViewController(withIdentifier: "subcription") as! SubcriptionVC
@@ -173,5 +176,26 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
      // Pass the selected object to the new view controller.
      }
      */
-    
+    func GetUserProfile(){
+        let param = [String:Any]()
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServiceForGetSavedUser(param, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+            
+                }
+                
+             else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
+    }
 }

@@ -9,6 +9,9 @@ import UIKit
 import  SwiftyJSON
 class CompleteProfile1VC: UIViewController,UITextViewDelegate {
    
+    @IBOutlet weak var backButtonOutlt: UIButton!
+   
+    var isComingFromRegistration  = true
     let placeholderLabel = UILabel()
     var isMaleSelected  = true
     @IBOutlet weak var setScrollView: UIScrollView!
@@ -41,8 +44,15 @@ class CompleteProfile1VC: UIViewController,UITextViewDelegate {
  
        let toolbar = UIToolbar()
     override func viewWillAppear(_ animated: Bool) {
+       if isComingFromRegistration {
+        self.backButtonOutlt.isHidden = true
+        }
+       else {
+        self.backButtonOutlt.isHidden = false
+       }
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 //        self.baseView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
@@ -94,6 +104,11 @@ class CompleteProfile1VC: UIViewController,UITextViewDelegate {
     @IBAction func birthDateAction(_ sender: Any) {
 //        showDatePicker()
     }
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func maleAction(_ sender: UIButton) {
 //        sender.selectedbtn()
         isMaleSelected = true
@@ -160,10 +175,18 @@ extension CompleteProfile1VC:UITextFieldDelegate {
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 AppHelper.setStringForKey("2", key: ServiceKeys.profile_Screen)
-                self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
-//                    vc.backBtnOutlt.isHidden = false
+                if self.isComingFromRegistration {
+                    self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
+    //                    vc.backBtnOutlt.isHidden = false
+                        vc.isComingFromRegistration = self.isComingFromRegistration
                 }
                 }
+                else {
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+                }
+                
              else {
                 
                 guard let dicErr = errorDict?["msg"] as? String else {

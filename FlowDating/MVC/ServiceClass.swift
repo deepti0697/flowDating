@@ -531,6 +531,13 @@ class ServiceClass: NSObject {
         let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
             self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
         }
+    func hitServicesForSaveUsers(_ params:[String : Any], completion:@escaping completionBlockType)
+        {
+        let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.saveUser)"
+           
+        let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+            self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+        }
     func hitServicesForsuperLike(_ params:[String : Any], completion:@escaping completionBlockType)
         {
             let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.request_User)"
@@ -566,6 +573,21 @@ class ServiceClass: NSObject {
            
         let headers: HTTPHeaders = [:]
             self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+        }
+    
+func hitServiceForGetSavedUser(_ params:[String : Any], completion:@escaping completionBlockType)
+    {
+        let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.getSavedUser)"
+       
+    let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+        self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+    }
+    func hitServiceForGetMyProfile(_ params:[String : Any], completion:@escaping completionBlockType)
+        {
+            let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.getSavedUser)"
+           
+        let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+            self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
         }
     func hitServiceForLogin(_ params:[String : Any], completion:@escaping completionBlockType)
         {

@@ -6,9 +6,16 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class MatchesVC: UIViewController {
+    
     @IBOutlet weak var tableView_messages: UITableView!
+    
+    var getSavedUserData = [AllUserData](){
+        didSet {
+            tableView_messages.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,27 +23,15 @@ class MatchesVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        savedUserApi()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     @IBAction func swiftchAction(_ sender: UISwitch) {
-//        if !sender.isOn {
-//            openViewController(controller: HomeVC.self, storyBoard: .mainStoryBoard) { (vc) in
 
-//            }
-     //   }
     appdelegate.setHomeVC()
        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
     @IBAction func openProfileAction(_ sender: Any) {
         openViewController(controller: MeVC.self, storyBoard: .homeStoryboard) { (vc) in
 
@@ -46,30 +41,20 @@ class MatchesVC: UIViewController {
 
 extension MatchesVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return getSavedUserData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "MatchesTableViewCell") as! MatchesTableViewCell
        
-        
+        cell.configureCell(user: getSavedUserData[indexPath.row])
         
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//
-//
-//            //Code I want to do here Delete
-//
-//
-//
-//
-//
-//
-//    }
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -82,7 +67,44 @@ extension MatchesVC : UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
+      
+            //            let value = valueArray[currentIndex]
+            //            let ids = value.num
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let filter = storyboard.instantiateViewController(withIdentifier: "CandidateDetailsVC") as! CandidateDetailsVC
+        filter.userDetail = self.getSavedUserData[indexPath.row]
+//            filter.delegate = self
+            //            filter.personUserid = ids ?? 0
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(filter, animated: false)
+            }
         
-//        let chatVC = storyBoardTabBar.instantiateViewController(withIdentifier: "chat") as! ChatHistoryVC
 }
+    func savedUserApi(){
+        let param = [String:Any]()
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServiceForGetSavedUser(param, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                self.getSavedUserData.removeAll()
+                for obj in parseData["data"].arrayValue {
+                   let comObj = AllUserData(fromJson:obj)
+                    self.getSavedUserData.append(comObj)
+                }
+              
+                }
+                
+             else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
+    }
 }

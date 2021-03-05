@@ -11,6 +11,8 @@ import SwiftyJSON
 import RangeSeekSlider
 class CompleteProfile2VC: UIViewController {
     var lbl_Distance = UIButton()
+    
+    var isComingFromRegistration = false
     var genderSelected = 1
     var x:Int?
     var isSwitchOn = true
@@ -210,7 +212,13 @@ class CompleteProfile2VC: UIViewController {
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 AppHelper.setStringForKey("0", key: ServiceKeys.profile_Screen)
+                if self.isComingFromRegistration {
                 self.openViewController(controller: MultiplePictureUploadVC.self, storyBoard: .mainStoryBoard) { (vc) in
+                    vc.isComingFromRegistration = true
+                }
+                }
+                else {
+                    self.navigationController?.popViewController(animated: true)
                 }
                 }
              else {

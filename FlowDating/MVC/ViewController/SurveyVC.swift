@@ -10,6 +10,7 @@ import SwiftyJSON
 class SurveyVC: UIViewController {
     
     
+    var isComingFromRegistration = false
     @IBOutlet weak var maximumSliderBottomValue: UILabel!
     @IBOutlet weak var minimumSliderBottomLbl: UILabel!
     @IBOutlet weak var switchHeight: UISwitch!

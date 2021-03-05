@@ -19,8 +19,6 @@ class HomeVC: ViewController {
     @IBOutlet weak var bottomViewC: UIView!
     @IBOutlet weak var curveView: UIView!
     @IBOutlet weak var btnClose: UIButton!
-    var tempArray = [AllUserData]()
-    
     @IBOutlet weak var btnPoke: UIButton!
     @IBOutlet weak var openprofile: UIImageView!
     var dislikeArray =  [AllUserData]()
@@ -34,20 +32,11 @@ class HomeVC: ViewController {
     var total : Int = 0
     var typefav:String = ""
     var isRewind = false
+    var tempArray = [AllUserData]()
+    var comingfromDetail = false
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        self.curveView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
-        //        self.valueArray.removeAll()
         currentLoadedCardsArray.removeAll()
         allCardsArray.removeAll()
         currrentPAge = 1
@@ -64,11 +53,27 @@ class HomeVC: ViewController {
         DispatchQueue.main.async {
             self.callAPIforExplore(reset: false, dict: [:])
         }
+        }
+    
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.curveView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+//        self.tabBarController?.hidesBottomBarWhenPushed = true
+        //        self.valueArray.removeAll()
+//        if !comingfromDetail {
+       
         
     }
     
+    
     @IBAction func openProfileVC(_ sender: Any) {
         openViewController(controller: MeVC.self, storyBoard: .homeStoryboard) { (vc) in
+            
             
         }
     }
@@ -79,13 +84,10 @@ class HomeVC: ViewController {
         if valueArray.count > 0{
             //            let value = valueArray[currentIndex]
             //            let ids = value.num
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let filter = storyboard.instantiateViewController(withIdentifier: "CandidateDetailsVC") as! CandidateDetailsVC
-            filter.userDetail = self.tempArray[0]
-            //            filter.personUserid = ids ?? 0
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(filter, animated: false)
+            openViewController(controller: CandidateDetailsVC.self, storyBoard: .homeStoryboard) { (vc) in
+                vc.userDetail = self.tempArray[0]
             }
+           
         }
         
     }
@@ -778,6 +780,7 @@ extension HomeVC : TinderCardDelegate{
     }
     
     func leftMethodTapped() {
+        if tempArray.count > 0 {
         let dummyCard = currentLoadedCardsArray.first
         //du
         let total_photos = dummyCard?.totalPhotosCount
@@ -800,9 +803,11 @@ extension HomeVC : TinderCardDelegate{
                 }
             }
         }
+        }
     }
     
     func rightMethodTapped() {
+        if tempArray.count > 0 {
         let dummyCard = currentLoadedCardsArray.first
         //du
         let total_photos = dummyCard?.totalPhotosCount
@@ -825,6 +830,7 @@ extension HomeVC : TinderCardDelegate{
                 }
                 
             }
+        }
         }
     }
     
@@ -860,6 +866,28 @@ extension HomeVC : TinderCardDelegate{
         //        }
         
         
+    }
+    
+    
+}
+extension HomeVC:userActions{
+    func openChat() {
+        
+    }
+    
+    func dislikeUser() {
+        let card = currentLoadedCardsArray.first
+        card?.leftClickAction()
+    }
+    
+    func superLikeUser() {
+        let card = currentLoadedCardsArray.first
+        card?.cardGoesUp()
+    }
+    
+    func giveHurtToUser() {
+        let card = currentLoadedCardsArray.first
+        card?.rightClickAction()
     }
     
     

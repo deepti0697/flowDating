@@ -36,6 +36,13 @@ class CompleteypuProfileVC4: UIViewController {
 //        }
         appdelegate.setHomeVC()
     }
+    
+    @IBAction func openSurveyVcAction(_ sender: Any) {
+        openViewController(controller: SurveyVC.self, storyBoard: .mainStoryBoard) { (vc) in
+            vc.isComingFromRegistration = true
+//            vc.backButtonOutlt.isHidden = false
+        }
+    }
     /*
     // MARK: - Navigation
 

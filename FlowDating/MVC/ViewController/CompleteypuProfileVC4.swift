@@ -10,6 +10,7 @@ import UIKit
 class CompleteypuProfileVC4: UIViewController {
 
     @IBOutlet weak var baseview2: UIView!
+    var profileData:GetUserProfile?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,6 +41,7 @@ class CompleteypuProfileVC4: UIViewController {
     @IBAction func openSurveyVcAction(_ sender: Any) {
         openViewController(controller: SurveyVC.self, storyBoard: .mainStoryBoard) { (vc) in
             vc.isComingFromRegistration = true
+            vc.profileDataAvaialable = self.profileData
 //            vc.backButtonOutlt.isHidden = false
         }
     }

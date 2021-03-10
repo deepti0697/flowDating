@@ -229,7 +229,7 @@ extension LoginVC: GIDSignInDelegate {
                 if user.profile_complete == "1"{
                     self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
                         vc.isComingFromRegistration = true
-                        vc.backButtonOutlt.isHidden = true
+//                        vc.backButtonOutlt.isHidden = true
                     }
                 }
                 else {

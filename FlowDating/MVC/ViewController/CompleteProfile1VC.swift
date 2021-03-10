@@ -10,7 +10,31 @@ import  SwiftyJSON
 class CompleteProfile1VC: UIViewController,UITextViewDelegate {
    
     @IBOutlet weak var backButtonOutlt: UIButton!
-   
+    var profileDataAvaialable = GetUserProfile() {
+        didSet {
+            self.displayNameTxt.text = profileDataAvaialable.name
+            self.descriptionTxtView.text = profileDataAvaialable.about
+            if profileDataAvaialable.gender == "male" {
+                isMaleSelected = true
+                maleBtn.setImage(#imageLiteral(resourceName: "man"), for: .normal)
+                femaleBtn.setImage(#imageLiteral(resourceName: "woman"), for: .normal)
+                maleBtn.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+                maleBtn.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
+                femaleBtn.layer.borderColor = UIColor.lightGray.cgColor
+                femaleBtn.setTitleColor(.lightGray, for: .normal)
+        }
+            else {
+                isMaleSelected = false
+                maleBtn.setImage(#imageLiteral(resourceName: "man-1"), for: .normal)
+                femaleBtn.setImage(#imageLiteral(resourceName: "woman-2"), for: .normal)
+                femaleBtn.setTitleColor(UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1), for: .normal)
+                femaleBtn.layer.borderColor = UIColor(red: 168/255, green: 0/255, blue: 255/255, alpha: 1).cgColor
+                maleBtn.layer.borderColor = UIColor.lightGray.cgColor
+                maleBtn.setTitleColor(.lightGray, for: .normal)
+            }
+            self.txtDob.text = profileDataAvaialable.dob
+    }
+    }
     var isComingFromRegistration  = true
     let placeholderLabel = UILabel()
     var isMaleSelected  = true
@@ -39,6 +63,7 @@ class CompleteProfile1VC: UIViewController,UITextViewDelegate {
         placeholderLabel.textColor = UIColor.lightGray
         placeholderLabel.isHidden = !descriptionTxtView.text.isEmpty
         self.descriptionTxtView.delegate = self
+        getUserProfileApi()
         // Do any additional setup after loading the view.
     }
  
@@ -178,6 +203,7 @@ extension CompleteProfile1VC:UITextFieldDelegate {
                 if self.isComingFromRegistration {
                     self.openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
     //                    vc.backBtnOutlt.isHidden = false
+                        vc.profileData = self.profileDataAvaialable
                         vc.isComingFromRegistration = self.isComingFromRegistration
                 }
                 }
@@ -203,5 +229,51 @@ extension CompleteProfile1VC:UITextFieldDelegate {
     func textViewDidChange(_ textView: UITextView) {
           placeholderLabel.isHidden = !descriptionTxtView.text.isEmpty
       }
+    func getUserProfileApi(){
+        let param = [String:Any]()
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServiceForGetMyProfile(param, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                let getData = parseData["data"]
+               
+//                let user = GetUserProfile(fromJson:getData)
+//                print(user)
+                
+                AppHelper.saveJSON(json: getData, key: ServiceKeys.saveUser)
+              
+//             let json =    AppHelper.getJSON(ServiceKeys.saveUser)
+                self.profileDataAvaialable = GetUserProfile(fromJson:getData)
+                
+//                Ser.kAppDelegate.user?.saveUser(userData)
+//                AppHelper.saveUser(user)
+//                Constants.kAppDelegate.user = user
+//                Constants.kAppDelegate.user?.saveUser(userData)
+//                appDelegate.user = user
+//                AppHelper.saveUser(jsonDate ?? Data())
+//                print(appDelegate.user?.name)
+                }
+                
+             else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
+    }
+    func jsonToData(json: Any) -> Data? {
+        do {
+            return try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
+        } catch let myJSONError {
+            print(myJSONError)
+        }
+        return nil;
+    }
 }
 

@@ -73,6 +73,7 @@ extension MatchesVC : UITableViewDelegate,UITableViewDataSource{
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
             let filter = storyboard.instantiateViewController(withIdentifier: "CandidateDetailsVC") as! CandidateDetailsVC
         filter.userDetail = self.getSavedUserData[indexPath.row]
+        filter.isComingFromHome = false
 //            filter.delegate = self
             //            filter.personUserid = ids ?? 0
             DispatchQueue.main.async {

@@ -86,6 +86,7 @@ class HomeVC: ViewController {
             //            let ids = value.num
             openViewController(controller: CandidateDetailsVC.self, storyBoard: .homeStoryboard) { (vc) in
                 vc.userDetail = self.tempArray[0]
+                vc.isComingFromHome = true
             }
            
         }

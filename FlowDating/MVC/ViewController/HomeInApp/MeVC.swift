@@ -15,6 +15,7 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tbl: UITableView!
     @IBOutlet weak var imgProfile: UIImageView!
     
+    var profileData = GetUserProfile()
     var imgArray = ["Path -7","Path 440-1","Teleportation","survey","shooting-star","Group 47"]
     var valueArray = ["My Profile","My Preferences","Teleportion","Survey","Membership","Settings"]
     
@@ -99,18 +100,21 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         else if indexPath.row == 0 {
             openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
                 vc.isComingFromRegistration = false
+                vc.profileDataAvaialable =   self.profileData
     //            vc.backButtonOutlt.isHidden = false
             }
         }
        else if indexPath.row == 1{
         openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in
             vc.isComingFromRegistration = false
+            vc.profileData =   self.profileData
 //            vc.backButtonOutlt.isHidden = false
         }
         }
        else if indexPath.row == 3 {
         openViewController(controller: SurveyVC.self, storyBoard: .mainStoryBoard) { (vc) in
             vc.isComingFromRegistration = false
+            vc.profileDataAvaialable = self.profileData
 //            vc.backButtonOutlt.isHidden = false
         }
        }
@@ -176,14 +180,30 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
      // Pass the selected object to the new view controller.
      }
      */
-    func GetUserProfile(){
+    func getUserProfileApi(){
         let param = [String:Any]()
         AppManager.init().hudShow()
-        ServiceClass.sharedInstance.hitServiceForGetSavedUser(param, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+        ServiceClass.sharedInstance.hitServiceForGetMyProfile(param, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
             print_debug("response: \(parseData)")
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
-            
+                let getData = parseData["data"]
+               
+//                let user = GetUserProfile(fromJson:getData)
+//                print(user)
+                
+                AppHelper.saveJSON(json: getData, key: ServiceKeys.saveUser)
+              
+//             let json =    AppHelper.getJSON(ServiceKeys.saveUser)
+                self.profileData = GetUserProfile(fromJson:getData)
+                
+//                Ser.kAppDelegate.user?.saveUser(userData)
+//                AppHelper.saveUser(user)
+//                Constants.kAppDelegate.user = user
+//                Constants.kAppDelegate.user?.saveUser(userData)
+//                appDelegate.user = user
+//                AppHelper.saveUser(jsonDate ?? Data())
+//                print(appDelegate.user?.name)
                 }
                 
              else {

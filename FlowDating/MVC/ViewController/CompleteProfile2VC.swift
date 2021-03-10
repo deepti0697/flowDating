@@ -28,7 +28,8 @@ class CompleteProfile2VC: UIViewController {
     @IBOutlet weak var distanceSliderValue: RangeSeekSlider!
     @IBOutlet weak var backBtnOutlt: UIButton!
     @IBOutlet weak var ageRangeSlider: RangeSeekSlider!
-    
+    var profileData = GetUserProfile()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         SliderLabels()
@@ -43,6 +44,17 @@ class CompleteProfile2VC: UIViewController {
         self.baseview2.roundCorners(corners: [.topLeft, .topRight], radius: 30)
        }
     override func viewWillAppear(_ animated: Bool) {
+//        let json =    AppHelper.getJSON(ServiceKeys.saveUser)
+//           self.profileData = GetUserProfile(fromJson:json)
+        if profileData.prefrence != nil {
+            let minAge =  Int(profileData.prefrence?.min_age ?? "")
+            let maxAge = Int(profileData.prefrence?.max_age ?? "")
+
+            self.ageRangeSlider.selectedMinValue = CGFloat(minAge ?? 0)
+                self.ageRangeSlider.selectedMaxValue = CGFloat(maxAge ?? 0)
+        }
+       
+        print(ageRangeSlider.minValue,ageRangeSlider.maxValue)
         distanceRangeSlider.minimumValue = 0
         distanceRangeSlider.maximumValue = 100
         distanceSwitch.tintColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
@@ -170,7 +182,14 @@ class CompleteProfile2VC: UIViewController {
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
+      if  AppHelper.getStringForKey(ServiceKeys.profile_Screen) == "2" {
+        openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
+
+        }
+        }
+        else {
         self.navigationController?.popViewController(animated: true)
+    }
     }
     /*
     // MARK: - Navigation
@@ -215,6 +234,7 @@ class CompleteProfile2VC: UIViewController {
                 if self.isComingFromRegistration {
                 self.openViewController(controller: MultiplePictureUploadVC.self, storyBoard: .mainStoryBoard) { (vc) in
                     vc.isComingFromRegistration = true
+                    vc.getDataProfile = self.profileData 
                 }
                 }
                 else {

@@ -11,8 +11,6 @@ import SwiftyJSON
 
 class GetUserProfile{
   
-          
-        
     var device_type: String!
     var app_version:String!
     var os_version:String!
@@ -40,13 +38,17 @@ class GetUserProfile{
     var is_verified: Bool!
     var photos = [AllPhotos]()
     var prefrence :UserPrefence?
+    var surveyQuestion:Questiner?
     init() { }
     
     init(fromJson json: JSON!){
         if json.isEmpty{
             return
         }
-        
+        let getLenderData = json["preferences"]
+        let questionerData = json["questionnaire"]
+        surveyQuestion  =  Questiner(fromJson: questionerData)
+        prefrence  =  UserPrefence(fromJson: getLenderData)
         is_pause = json["is_pause"].boolValue
         device_type = json["device_type"].stringValue
         app_version = json["app_version"].stringValue
@@ -80,7 +82,59 @@ class GetUserProfile{
         }
     }
 }
+class Questiner {
+//    "questionnaire": {
+    var id: String!
+    var user_id:String!
+    var height_type:String!
+    var height:String!
+    var good_looking:String!
+    var kids:Bool!
+    var kids_in_future:String!
+    var my_health:String!
+    var other_health :String!
+    var relevant:Array<String>!
+    var my_qualities:Array<String>!
+    var other_qualities:Array<String>!
+    
+//   var relevant”: [3,4,5],
+    //   >>            “my_qualities”: “2,3,5”,
+    //   >>            “other_qualities”: “2,3,5”,
+    var personality:String!
+    var interested_fact:String!
+    var decision:String!
+    var prefer_clarity:String!
+    var deleted_at:String!
+    
+    init() { }
+    
+    init(fromJson json: JSON!){
+        if json.isEmpty{
+            return
+        }
+       let fetchedImages = json["relevant"].arrayObject as? [String]
+        relevant = fetchedImages
+        
+//        relevant =
+        my_qualities = json["my_qualities"].arrayObject as? [String]
+        other_qualities = json["other_qualities"].arrayObject as? [String]
+        id  = json["id"].stringValue
+        user_id = json["user_id"].stringValue
+        height_type = json["height_type"].stringValue
+        height = json["height"].stringValue
+        good_looking = json["good_looking"].stringValue
+        kids = json["kids"].boolValue
+        kids_in_future = json["kids_in_future"].stringValue
+        my_health = json["my_health"].stringValue
+        other_health = json["other_health"].stringValue
+        personality = json["personality"].stringValue
+        interested_fact = json["interested_fact"].stringValue
+        decision = json["decision"].stringValue
+        prefer_clarity = json["prefer_clarity"].stringValue
+        deleted_at = json["deleted_at"].stringValue
+    }
 
+}
 class UserPrefence {
     var id:String!
     var user_id:String!
@@ -162,7 +216,7 @@ class AllUserData{
 }
 class AllPhotos {
     
-
+    var id :String!
 var user_id:String!
 var type: String!
 var name:String!
@@ -172,6 +226,7 @@ init(fromJson json: JSON!){
     if json.isEmpty{
         return
     }
+    id = json["id"].stringValue
     user_id = json["user_id"].stringValue
     type = json["type"].stringValue
     name = json["name"].stringValue

@@ -485,7 +485,7 @@ class ServiceClass: NSObject {
          }
      
        //MARK:- EmailLogin
-     
+    
   
     
     //MARK:- Survey
@@ -494,6 +494,12 @@ class ServiceClass: NSObject {
         let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.upload_Photos)"
         let headers: HTTPHeaders = ["Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
             self.multipleImageUpload(urlString, params: params, data: data, headers: headers, completion: completion)
+    }
+    func hitServicedeleteImage(_ params:[String : Any],data: [Data], completion:@escaping completionBlockType)
+    {
+        let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.delete_photo)"
+        let headers: HTTPHeaders = ["Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+        self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
     }
     func hitServiceForOTPSend(_ params:[String : Any], completion:@escaping completionBlockType)
         {
@@ -584,7 +590,7 @@ func hitServiceForGetSavedUser(_ params:[String : Any], completion:@escaping com
     }
     func hitServiceForGetMyProfile(_ params:[String : Any], completion:@escaping completionBlockType)
         {
-            let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.getSavedUser)"
+            let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.get_Profile)"
            
         let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
             self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)

@@ -4824,6 +4824,13 @@
                                                                                 <constraint firstAttribute="height" constant="50" id="q8j-9s-UMw"/>
                                                                             </constraints>
                                                                         </imageView>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group -11" translatesAutoresizingMaskIntoConstraints="NO" id="Hyv-cz-ESk">
+                                                                            <rect key="frame" x="98" y="70" width="30" height="30"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="30" id="GQn-Xq-dMS"/>
+                                                                                <constraint firstAttribute="height" constant="30" id="kyR-09-aZD"/>
+                                                                            </constraints>
+                                                                        </imageView>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sic-tF-c72">
                                                                             <rect key="frame" x="5" y="5" width="118" height="90"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4832,7 +4839,7 @@
                                                                                     <real key="value" value="5"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth1">
-                                                                                    <real key="value" value="1"/>
+                                                                                    <real key="value" value="0.0"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor1">
                                                                                     <color key="value" red="0.92156862750000001" green="0.92156862750000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -4843,6 +4850,7 @@
                                                                     <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstItem="xgK-un-L0P" firstAttribute="leading" secondItem="nlN-iK-jPS" secondAttribute="leading" id="4e4-bQ-Zuf"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="Hyv-cz-ESk" secondAttribute="bottom" id="GiV-JW-Dkk"/>
                                                                         <constraint firstItem="xgK-un-L0P" firstAttribute="centerY" secondItem="nlN-iK-jPS" secondAttribute="centerY" id="IUV-fl-voC"/>
                                                                         <constraint firstAttribute="trailing" secondItem="sic-tF-c72" secondAttribute="trailing" constant="5" id="J5p-8i-idv"/>
                                                                         <constraint firstItem="S4q-D9-5Dr" firstAttribute="centerY" secondItem="nlN-iK-jPS" secondAttribute="centerY" id="Lii-ZA-fSd"/>
@@ -4850,6 +4858,7 @@
                                                                         <constraint firstAttribute="bottom" secondItem="xgK-un-L0P" secondAttribute="bottom" id="Uak-oV-15Y"/>
                                                                         <constraint firstItem="xgK-un-L0P" firstAttribute="top" secondItem="nlN-iK-jPS" secondAttribute="top" id="YRp-BY-NQn"/>
                                                                         <constraint firstItem="S4q-D9-5Dr" firstAttribute="centerX" secondItem="nlN-iK-jPS" secondAttribute="centerX" id="Yh0-kW-iPx"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="Hyv-cz-ESk" secondAttribute="trailing" id="kaB-0X-yRY"/>
                                                                         <constraint firstAttribute="bottom" secondItem="sic-tF-c72" secondAttribute="bottom" constant="5" id="m34-D1-TtN"/>
                                                                         <constraint firstItem="sic-tF-c72" firstAttribute="leading" secondItem="nlN-iK-jPS" secondAttribute="leading" constant="5" id="p6y-TV-PGS"/>
                                                                         <constraint firstAttribute="trailing" secondItem="xgK-un-L0P" secondAttribute="trailing" id="pgo-XT-CFt"/>
@@ -4881,6 +4890,8 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <size key="customSize" width="128" height="100"/>
                                                         <connections>
+                                                            <outlet property="crossImageView" destination="Hyv-cz-ESk" id="Fp4-7K-3rU"/>
+                                                            <outlet property="hiddenImageView" destination="S4q-D9-5Dr" id="oaB-IC-uv0"/>
                                                             <outlet property="imgeView" destination="sic-tF-c72" id="FM5-eF-ZvP"/>
                                                             <outlet property="selectedImageView" destination="xgK-un-L0P" id="akh-pL-Yfd"/>
                                                         </connections>
@@ -5057,7 +5068,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBD-Fd-b5B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6582" y="-285"/>
+            <point key="canvasLocation" x="6581.6000000000004" y="-285.60719640179911"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9MT-3e-WH8">

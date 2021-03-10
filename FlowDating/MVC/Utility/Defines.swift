@@ -93,7 +93,7 @@
         static let login = "apiLogin"
 
         static let upload_Photos = "upload_photos"
-     
+        static let delete_photo = "delete_photo"
         static let hitSurvey = "complete_questionnaire"
         static let send_OTP = "send_login_otp"
         static let sign_up_Otp = "send_otp"
@@ -108,6 +108,8 @@
         static let request_User = "request_to_user"
         static let likeDisLikeUser = "users_like_dislike"
      static let getSavedUser = "saved_users"
+        static let get_Profile = "profile_details"
+//
         
     }
     struct ErrorCodes

@@ -18,7 +18,11 @@ protocol  userActions {
 }
 class CandidateDetailsVC: UIViewController {
     
-    
+    var isComingFromHome = true
+    @IBOutlet weak var hurtBtnOutlt: UIButton!
+    @IBOutlet weak var superLikeBtnOutlt: UIButton!
+    @IBOutlet weak var closeBtnOutlt: UIButton!
+    @IBOutlet weak var chatOutlt: UIButton!
     @IBOutlet weak var reportAndSaveUIVIew: UIView!
     @IBOutlet weak var tinderCardView: UIView!
     var delegate:userActions?
@@ -27,7 +31,7 @@ class CandidateDetailsVC: UIViewController {
     @IBOutlet weak var horoScopeLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
     @IBOutlet weak var userNameLbl: UILabel!
-        @IBOutlet weak var likeButtonView: UIView!
+    @IBOutlet weak var likeButtonView: UIView!
     @IBOutlet weak var public_collection: UICollectionView!
     @IBOutlet weak var private_collection: UICollectionView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -171,6 +175,14 @@ class CandidateDetailsVC: UIViewController {
         self.reportAndSaveUIVIew.isHidden = true
         self.navigationController?.navigationBar.isHidden  = true
         setup()
+        if isComingFromHome {
+            self.closeBtnOutlt.isHidden = false
+            self.hurtBtnOutlt.isHidden = false
+        }
+        else  {
+            self.closeBtnOutlt.isHidden = true
+            self.hurtBtnOutlt.isHidden = true
+        }
         
        
     }
@@ -270,8 +282,10 @@ extension CandidateDetailsVC:CardViewDelegate {
         
         switch type {
         case .left:
+            self.reportAndSaveUIVIew.isHidden = true
           break
         case .right:
+            self.reportAndSaveUIVIew.isHidden = true
           break
         case .bottom:
           break

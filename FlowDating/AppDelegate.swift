@@ -56,13 +56,13 @@ import FirebaseMessaging
         let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile1VC") as! CompleteProfile1VC
         let nv4 = UINavigationController(rootViewController: vc1)
         vc1.isComingFromRegistration = true
-        vc1.backButtonOutlt.isHidden = true
+//        vc1.backButtonOutlt.isHidden = true
         self.window?.rootViewController = nv4
         self.window?.makeKeyAndVisible()
     }
     else if AppHelper.getStringForKey(ServiceKeys.profile_Screen) == "2" {
         let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-        let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile2VC") as! CompleteProfile2VC
+        let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile1VC") as! CompleteProfile1VC
         let nv4 = UINavigationController(rootViewController: vc1)
 //        vc1.backBtnOutlt.isHidden = true
         self.window?.rootViewController = nv4
@@ -70,7 +70,7 @@ import FirebaseMessaging
     }
     else {
             let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-            let vc1 = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile1VC") as! CompleteProfile1VC
             let nv4 = UINavigationController(rootViewController: vc1)
 
             self.window?.rootViewController = nv4
@@ -331,5 +331,19 @@ extension AppDelegate:UNUserNotificationCenterDelegate,MessagingDelegate {
         let stringItem = items.map {"\($0)"} .joined(separator: separator)
         Swift.print("\(stringItem)", terminator: terminator)
         //#endif
+    }
+}
+extension AppDelegate {
+    
+    private struct AssociatedKey {
+        static var user  = ServiceKeys.saveUser
+    }
+    public var user: GetUserProfile? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKey.user) as? GetUserProfile
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &AssociatedKey.user, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
     }
 }

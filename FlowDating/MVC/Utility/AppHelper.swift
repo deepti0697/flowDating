@@ -8,7 +8,7 @@
 
 import Foundation
 import  UIKit
-
+import SwiftyJSON
 var activityIndicator:UIActivityIndicatorView?
 
 class AppHelper: NSObject, UIAlertViewDelegate{
@@ -31,6 +31,40 @@ class AppHelper: NSObject, UIAlertViewDelegate{
         return ""
     }
     
+    class func saveUser(_ data: Data) {
+        do {
+            let archivedData = try NSKeyedArchiver.archivedData(withRootObject: data, requiringSecureCoding: false)
+            UserDefaults.standard.set(archivedData, forKey: "user")
+        } catch { print(error) }
+        
+        UserDefaults.standard.synchronize()
+    }
+    class  func saveJSON(json: JSON, key:String) {
+       if let jsonString = json.rawString() {
+          UserDefaults.standard.setValue(jsonString, forKey: key)
+       }
+    }
+
+    class  func getJSON(_ key: String)-> JSON? {
+        var p = ""
+        if let result = UserDefaults.standard.string(forKey: key) {
+            p = result
+        }
+        if p != "" {
+            if let json = p.data(using: String.Encoding.utf8, allowLossyConversion: false) {
+                do {
+                    return try JSON(data: json)
+                } catch {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+
     // save to user default
     class func setBoolForKey (_ value: Bool? , key: String!) {
         let defaults = UserDefaults.standard

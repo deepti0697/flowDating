@@ -290,7 +290,7 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
              
                 self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
                     vc.isComingFromRegistration = true
-                    vc.backButtonOutlt.isHidden = true
+//                    vc.backButtonOutlt.isHidden = true
                     
                 }
                 }

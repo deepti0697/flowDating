@@ -9,18 +9,20 @@ import UIKit
 import SwiftyJSON
 class SurveyVC: UIViewController {
     
-    
+    var profileDataAvaialable:GetUserProfile?
     var isComingFromRegistration = false
     @IBOutlet weak var maximumSliderBottomValue: UILabel!
     @IBOutlet weak var minimumSliderBottomLbl: UILabel!
     @IBOutlet weak var switchHeight: UISwitch!
+
+    var convertCMTOInches  =  47.368
     var heightStoreValue:Float = 121
     var goodLookingStoreValue:Float = 1
     var howWealthyStoreValue:Float = 1
     var otherPersonWealthyStoreValue:Float = 1
     var inchValue = "3'11"
     var isSwitchOn = false
-    var distance = 0
+    var distance = 1
     var relevantSelectedIndexArray = [Int]()
     var selectedQualitiesArray = [Int]()
     var otherPersonQualities = [Int]()
@@ -30,6 +32,7 @@ class SurveyVC: UIViewController {
     var interesetedValue  = 0
     var doYouWantKids = 0
     var isKidsWant = false
+    
     @IBOutlet weak var yesKidsOutlt: UIButton!
     @IBOutlet weak var twoOC: UIButton!
     @IBOutlet weak var baseview2: UIView!
@@ -37,7 +40,6 @@ class SurveyVC: UIViewController {
     @IBOutlet weak var scaleView: UIView!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var threeOC: UIButton!
-    
     @IBOutlet weak var nearFuture: UIButton!
     @IBOutlet weak var yesKidswantOutlt: UIButton!
     @IBOutlet weak var noKidsWantOutlt: UIButton!
@@ -55,18 +57,18 @@ class SurveyVC: UIViewController {
     @IBOutlet weak var sevenOc: UIButton!
     @IBOutlet weak var sixOC: UIButton!
     @IBOutlet weak var fiveOC: UIButton!
+    @IBOutlet weak var collctnView: UICollectionView!
+    @IBOutlet weak var fourOC: UIButton!
+    @IBOutlet weak var switchonAndOffView: UIView!
+    @IBOutlet weak var kidsView: UIView!
     
     var value = -1 {
         didSet {
             collctnView.reloadData()
         }
     }
-    @IBOutlet weak var collctnView: UICollectionView!
-    @IBOutlet weak var fourOC: UIButton!
-    @IBOutlet weak var switchonAndOffView: UIView!
-    
+
     var currentValue = 1
-    
     var relevantArray = ["Travel","Sports","Reading/Art/Music","Business/Work","Chill/Relax"]
     var descriptionArray = ["You are his/her priority","Laugh together","Supports/Takes care of you","Meaningfuleaningfull conversations","Full of surprises/Fascinates you","Honest/Loyal"        ,"Cute/Dear","Quality sex"]
     var qualitiesArray =
@@ -76,8 +78,8 @@ class SurveyVC: UIViewController {
     var observableArray = ["I trust tested and focus on facts","I trust my intuition and better keep my options open"]
     var decisionsArray = ["Emotions","Rationality"]
     var flexibilityArray = [" Lets stick to the plan and clarity","Lets keep my options open and face the unknown"]
-    
     var lbl_Distance = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //        buttonRounded()
@@ -98,12 +100,16 @@ class SurveyVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBOutlet weak var kidsView: UIView!
+   
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         //
+      
+//        let json =    AppHelper.getJSON(ServiceKeys.saveUser)
+//           self.profileDataAvaialable = GetUserProfile(fromJson:json)
+        lbl_Distance.isHidden = false
         lbl_Distance.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
-        self.setUIView(caseValue: currentValue)
+       
 //        self.slider.minimumValue = 121
 //        self.slider.maximumValue = 190
         self.slider.minimumValue = 121
@@ -125,6 +131,69 @@ class SurveyVC: UIViewController {
         } else if #available(iOS 12.0, *) {
             self.switchHeight.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
         }
+        if profileDataAvaialable?.surveyQuestion?.height != nil {
+            if let personality = profileDataAvaialable?.surveyQuestion?.personality {
+                personalityValue = Int(personality) ?? 0
+            }
+            if let intrstdValue = profileDataAvaialable?.surveyQuestion?.interested_fact {
+                interesetedValue = Int(intrstdValue) ?? 0
+            }
+            if let decisonValue = profileDataAvaialable?.surveyQuestion?.decision {
+                decisionValue = Int(decisonValue) ?? 0
+            }
+            if let clarity = profileDataAvaialable?.surveyQuestion?.prefer_clarity {
+                clarityValue = Int(clarity) ?? 0
+            }
+            if let goodlooking = profileDataAvaialable?.surveyQuestion?.good_looking {
+                goodLookingStoreValue = Float(goodlooking) ?? 0.0
+            }
+            if let wealthy = profileDataAvaialable?.surveyQuestion?.my_health {
+                howWealthyStoreValue = Float(wealthy) ?? 0.0
+            }
+            if let other = profileDataAvaialable?.surveyQuestion?.other_health {
+                otherPersonWealthyStoreValue = Float(other) ?? 0.0
+            }
+             
+            
+          
+            guard let arraynt = profileDataAvaialable?.surveyQuestion?.relevant  else {
+                return
+            }
+            
+            for i in arraynt {
+                self.relevantSelectedIndexArray.append(Int(i ) ?? 0)
+            }
+            
+            guard  let otherArray = profileDataAvaialable?.surveyQuestion?.other_qualities  else {
+                return
+            }
+            
+            for i in otherArray {
+                self.otherPersonQualities.append(Int(i ) ?? 0)
+            }
+            
+            guard  let selectedArray = profileDataAvaialable?.surveyQuestion?.other_qualities else {
+                return
+            }
+            
+            for i in selectedArray {
+                self.selectedQualitiesArray.append(Int(i ) ?? 0)
+            }
+        if profileDataAvaialable?.surveyQuestion?.height_type == "inches" {
+            
+            switchHeight.setOn(true, animated: false)
+            self.heightStoreValue = Float((Float(profileDataAvaialable?.surveyQuestion?.height ?? "") ?? 0))
+//            lbl_Distance.setTitle("\( inchValue) INCHES", for: .normal)
+//            slider.setValue(Float(self.profileDataAvaialable?.surveyQuestion?.height ?? "0") ?? 0.0, animated: false)
+        }
+        else {
+            switchHeight.setOn(false, animated: false)
+            self.heightStoreValue = Float((Float(profileDataAvaialable?.surveyQuestion?.height ?? "") ?? 0))
+//            lbl_Distance.setTitle("\(profileDataAvaialable?.surveyQuestion?.height ?? "") CM", for: .normal)
+//            slider.setValue(Float(self.profileDataAvaialable?.surveyQuestion?.height ?? "0") ?? 0.0, animated: false)
+        }
+        }
+        self.setUIView(caseValue: currentValue)
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -306,6 +375,7 @@ class SurveyVC: UIViewController {
                
                 print(showFootAndInchesFromCm(x))
                 self.inchValue = "\(showFootAndInchesFromCm(x))"
+//                self.convertCMTOInches = self.convertCentimerToInches(_inch: x)
                 lbl_Distance.setTitle( "\(inchValue) INCHES", for: .normal)
             }
             
@@ -354,7 +424,7 @@ class SurveyVC: UIViewController {
             self.topLabel.text = "What is your height?"
             self.switchonAndOffView.isHidden = false
 //            slider.setValue(self.heightStoreValue, animated: false)
-            if !isSwitchOn{
+             if !isSwitchOn{
                 self.minimumSliderBottomLbl.text = "121 CM"
                 self.maximumSliderBottomValue.text = "220 CM"
                 lbl_Distance.setTitle("\(Int(self.heightStoreValue)) CM", for: .normal)
@@ -363,10 +433,13 @@ class SurveyVC: UIViewController {
             else {
                 self.minimumSliderBottomLbl.text = "3'11 INCHES"
                 self.maximumSliderBottomValue.text = "7'2 INCHES"
-                lbl_Distance.setTitle("\(self.inchValue) INCHES", for: .normal)
-                slider.setValue(Float(self.inchValue) ?? 0.0, animated: false)
+                self.inchValue = "\(showFootAndInchesFromCm(Int(heightStoreValue)))"
+//                self.convertCMTOInches = self.convertCentimerToInches(_inch: x)
+                lbl_Distance.setTitle( "\(inchValue) INCHES", for: .normal)
+//                lbl_Distance.setTitle("\(showFootAndInchesFromCm(Int(self.inchValue) ?? 0)) INCHES", for: .normal)
+                slider.setValue(Float(self.heightStoreValue) , animated: false)
             }
-            
+           
 //            self.distance = 0
             lbl_Distance.center = setUISliderThumbValueWithLabel(slider: slider)
             self.oneAC.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
@@ -382,8 +455,10 @@ class SurveyVC: UIViewController {
             self.maximumSliderBottomValue.text = "10"
             self.slider.minimumValue = 1
             self.slider.maximumValue = 10
+            
             slider.setValue( 1, animated: false)
-            lbl_Distance.setTitle("\(Int(self.goodLookingStoreValue))       ", for: .normal)
+            lbl_Distance.setTitle("\(Int(self.goodLookingStoreValue))", for: .normal)
+        
             self.switchonAndOffView.isHidden = true
 //            self.distance = 1
             
@@ -706,7 +781,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
         case 6:
             cell.lblSubject.text = self.relevantArray[indexPath.row]
             
-            if relevantSelectedIndexArray.contains(indexPath.row) {
+            if relevantSelectedIndexArray.contains(indexPath.row + 1) {
                 cell.collectionImageView.image = #imageLiteral(resourceName: "Group 9950")
             }
             else {
@@ -717,7 +792,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
             
             cell.lblSubject.text = self.qualitiesArray[indexPath.row]
             
-            if selectedQualitiesArray.contains(indexPath.row) {
+            if selectedQualitiesArray.contains(indexPath.row + 1) {
                 cell.collectionImageView.image = #imageLiteral(resourceName: "Group 9950")
             }
             else {
@@ -726,15 +801,15 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
             
         case 8:
             cell.lblSubject.text = self.descriptionArray[indexPath.row]
-            if otherPersonQualities.contains(indexPath.row) {
+            if otherPersonQualities.contains(indexPath.row + 1) {
                 cell.collectionImageView.image = #imageLiteral(resourceName: "Group 9950")
             }
             else {
                 cell.collectionImageView.image =  #imageLiteral(resourceName: "Rectangle 3733")
             }
         case 9 :
-            cell.lblSubject.text = self.personalityArray[indexPath.row]
-            if personalityValue == indexPath.row {
+             cell.lblSubject.text = self.personalityArray[indexPath.row]
+            if personalityValue == indexPath.row + 1  {
                 cell.collectionImageView.image = #imageLiteral(resourceName: "Group 9950")
                 
             }
@@ -744,7 +819,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
             }
         case 10:
             cell.lblSubject.text = self.observableArray[indexPath.row]
-            if interesetedValue == indexPath.row {
+            if interesetedValue == indexPath.row + 1 {
                 cell.collectionImageView.image = #imageLiteral(resourceName: "Group 9950")
                 
             }
@@ -754,7 +829,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
             }
         case 11:
             cell.lblSubject.text = self.decisionsArray[indexPath.row]
-            if decisionValue == indexPath.row {
+            if decisionValue == indexPath.row + 1 {
                 cell.collectionImageView.image = #imageLiteral(resourceName: "Group 9950")
                 
             }
@@ -766,7 +841,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
         case 12:
             cell.lblSubject.text = self.flexibilityArray[indexPath.row]
             
-            if clarityValue == indexPath.row {
+            if clarityValue == indexPath.row + 1 {
                 cell.collectionImageView.image = #imageLiteral(resourceName: "Group 9950")
                 
             }
@@ -790,18 +865,18 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
         switch  value {
         case 6:
             if relevantSelectedIndexArray.count < 3 {
-                if relevantSelectedIndexArray.contains(indexPath.row){
+                if relevantSelectedIndexArray.contains(indexPath.row + 1){
                     //relevantSelectedIndexArray.remove(at: indexPath.row)
-                    relevantSelectedIndexArray = relevantSelectedIndexArray.filter{ $0 != indexPath.row }
+                    relevantSelectedIndexArray = relevantSelectedIndexArray.filter{ $0 != indexPath.row + 1}
                 }
                 else {
-                    self.relevantSelectedIndexArray.append(indexPath.row)
+                    self.relevantSelectedIndexArray.append(indexPath.row + 1)
                 }
             }
             else{
-                if relevantSelectedIndexArray.contains(indexPath.row){
+                if relevantSelectedIndexArray.contains(indexPath.row + 1){
                     //                relevantSelectedIndexArray.remove(at: indexPath.row)
-                    relevantSelectedIndexArray = relevantSelectedIndexArray.filter{ $0 != indexPath.row}
+                    relevantSelectedIndexArray = relevantSelectedIndexArray.filter{ $0 != indexPath.row + 1}
                 }
                 else {
                     Common.showAlert(alertMessage: "You can select maximum 3", alertButtons: ["Ok"]) { (bt) in
@@ -809,19 +884,19 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
                 }
             }
         case 7:
-            if selectedQualitiesArray.count < 4 {
-                if selectedQualitiesArray.contains(indexPath.row){
+            if selectedQualitiesArray.count < 5 {
+                if selectedQualitiesArray.contains(indexPath.row + 1){
                     //                relevantSelectedIndexArray.remove(at: indexPath.row)
-                    selectedQualitiesArray = selectedQualitiesArray.filter{ $0 != indexPath.row}
+                    selectedQualitiesArray = selectedQualitiesArray.filter{ $0 != indexPath.row + 1}
                 }
                 else {
-                    self.selectedQualitiesArray.append(indexPath.row)
+                    self.selectedQualitiesArray.append(indexPath.row + 1)
                 }
             }
             else{
-                if selectedQualitiesArray.contains(indexPath.row){
+                if selectedQualitiesArray.contains(indexPath.row + 1){
                     //                relevantSelectedIndexArray.remove(at: indexPath.row)
-                    selectedQualitiesArray = selectedQualitiesArray.filter{ $0 != indexPath.row}
+                    selectedQualitiesArray = selectedQualitiesArray.filter{ $0 != indexPath.row + 1}
                 }
                 else {
                     Common.showAlert(alertMessage: "You can select maximum 4", alertButtons: ["Ok"]) { (bt) in
@@ -829,37 +904,41 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
                 }
             }
         case 8:
-            if otherPersonQualities.count < 7 {
-                if otherPersonQualities.contains(indexPath.row){
+            if otherPersonQualities.count < 5 {
+                if otherPersonQualities.contains(indexPath.row + 1){
                     //                relevantSelectedIndexArray.remove(at: indexPath.row)
-                    otherPersonQualities = otherPersonQualities.filter{ $0 != indexPath.row}
+                    otherPersonQualities = otherPersonQualities.filter{ $0 != indexPath.row + 1}
                 }
                 else {
-                    self.otherPersonQualities.append(indexPath.row)
+                    self.otherPersonQualities.append(indexPath.row + 1)
                 }
             }
             else{
-                if otherPersonQualities.contains(indexPath.row){
+                if otherPersonQualities.contains(indexPath.row + 1){
                     //                relevantSelectedIndexArray.remove(at: indexPath.row)
-                    otherPersonQualities = otherPersonQualities.filter{ $0 != indexPath.row}
+                  
+                
+               
+                    //                relevantSelectedIndexArray.remove(at: indexPath.row)
+                    otherPersonQualities = otherPersonQualities.filter{ $0 != indexPath.row + 1}
                 }
                 else {
-                    Common.showAlert(alertMessage: "You can select maximum 8", alertButtons: ["Ok"]) { (bt) in
+                    Common.showAlert(alertMessage: "You can select maximum 4", alertButtons: ["Ok"]) { (bt) in
                     }
                 }
             }
         case 9:
             
-            personalityValue = indexPath.row
+            personalityValue = indexPath.row + 1
         case 10:
             
-            interesetedValue = indexPath.row
+            interesetedValue = indexPath.row + 1
         case 11:
             
-            decisionValue = indexPath.row
+            decisionValue = indexPath.row + 1
         case 12:
             
-            clarityValue    = indexPath.row
+            clarityValue    = indexPath.row + 1
         default:
             
             
@@ -894,14 +973,16 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
         switch str {
         case 1:
             
-            if isSwitchOn {
+            if !isSwitchOn {
                 params["height_type"] = "cm"
+                
             }
             else {
                 params["height_type"] = "inches"
+//                params["height"] = self.inchValue
             }
-            
             params["height"] = self.distance
+         
             return params
         case 2:
             params["good_looking"] = self.goodLookingStoreValue
@@ -938,23 +1019,23 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
             
         case 9:
             
-            params["personality"] = self.personalityValue + 1
+            params["personality"] = self.personalityValue
             return params
             
         case 10:
             
-            params["interested_fact"] = self.personalityValue + 1
+            params["interested_fact"] = self.personalityValue
             return params
             
             
         case 11:
             
-            params["decision"] = self.personalityValue + 1
+            params["decision"] = self.personalityValue
             return params
             
         case 12:
             
-            params["prefer_clarity"] = self.personalityValue + 1
+            params["prefer_clarity"] = self.personalityValue
             return params
             
             
@@ -994,7 +1075,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
         
         
         for amount in relevantSelectedIndexArray {
-            let amtStr = amount + 1
+            let amtStr = amount
             amountArray.append(amtStr)
         }
         
@@ -1005,7 +1086,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
         
         
         for amount in selectedQualitiesArray {
-            let amtStr = amount + 1
+            let amtStr = amount
             amountArray.append(amtStr)
         }
         
@@ -1016,7 +1097,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
         
         
         for amount in otherPersonQualities {
-            let amtStr = amount + 1
+            let amtStr = amount
             amountArray.append(amtStr)
         }
         
@@ -1058,5 +1139,9 @@ extension SurveyVC {
         let feetRest: Double = ((feet * 100).truncatingRemainder(dividingBy: 100) / 100)
         let inches = Int(floor(feetRest * 12))
         return "\(feetShow)' \(inches)"
+    }
+    func convertCentimerToInches(_inch:Int) -> Double{
+        let inches =  Double(_inch) / 2.54
+        return inches
     }
 }

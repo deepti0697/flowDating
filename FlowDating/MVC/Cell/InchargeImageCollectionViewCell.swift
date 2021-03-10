@@ -7,9 +7,11 @@
 //
 
 import UIKit
-
+import SDWebImage
 class InchargeImageCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var crossImageView: UIImageView!
+    @IBOutlet weak var hiddenImageView: UIImageView!
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var imgeView: UIImageView!
     override  func awakeFromNib() {
@@ -19,15 +21,17 @@ class InchargeImageCollectionViewCell: UICollectionViewCell {
 //        self.imageView.contentMode = UIviewC
         
     }
-    func confirgureCell(response:UIImage){
-//        if let imageStr = response.image{
-//            print(imageStr)
-//
-//            let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-//            let imageUrl = URL(string: urlString ?? "")
-//            imgeView?.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: ""), options: .continueInBackground) { (img, err, cacheType, url) in
-//            }
-//        }
+    func confirgureCell(response:AllPhotos){
+        self.selectedImageView.isHidden = false
+        
+        if let imageStr = response.name{
+            print(imageStr)
+            
+            let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let imageUrl = URL(string: urlString ?? "")
+            selectedImageView?.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: ""), options: .continueInBackground) { (img, err, cacheType, url) in
+            }
+        }
 //
     }
 

@@ -107,6 +107,7 @@ class SurveyVC: UIViewController {
       
 //        let json =    AppHelper.getJSON(ServiceKeys.saveUser)
 //           self.profileDataAvaialable = GetUserProfile(fromJson:json)
+        
         lbl_Distance.isHidden = false
         lbl_Distance.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
        
@@ -132,6 +133,21 @@ class SurveyVC: UIViewController {
             self.switchHeight.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1)
         }
         if profileDataAvaialable?.surveyQuestion?.height != nil {
+            if profileDataAvaialable?.surveyQuestion?.kids  == false {
+                isKidsWant = false
+            }
+            else {
+                isKidsWant = true
+            }
+            if profileDataAvaialable?.surveyQuestion?.kids_in_future == "0" {
+                doYouWantKids = 0
+            }
+            else if profileDataAvaialable?.surveyQuestion?.kids_in_future == "1" {
+                doYouWantKids = 1
+            }
+            else {
+                doYouWantKids = 2
+            }
             if let personality = profileDataAvaialable?.surveyQuestion?.personality {
                 personalityValue = Int(personality) ?? 0
             }
@@ -180,13 +196,14 @@ class SurveyVC: UIViewController {
                 self.selectedQualitiesArray.append(Int(i ) ?? 0)
             }
         if profileDataAvaialable?.surveyQuestion?.height_type == "inches" {
-            
+            isSwitchOn = true
             switchHeight.setOn(true, animated: false)
             self.heightStoreValue = Float((Float(profileDataAvaialable?.surveyQuestion?.height ?? "") ?? 0))
 //            lbl_Distance.setTitle("\( inchValue) INCHES", for: .normal)
 //            slider.setValue(Float(self.profileDataAvaialable?.surveyQuestion?.height ?? "0") ?? 0.0, animated: false)
         }
         else {
+            isSwitchOn = false
             switchHeight.setOn(false, animated: false)
             self.heightStoreValue = Float((Float(profileDataAvaialable?.surveyQuestion?.height ?? "") ?? 0))
 //            lbl_Distance.setTitle("\(profileDataAvaialable?.surveyQuestion?.height ?? "") CM", for: .normal)
@@ -364,11 +381,12 @@ class SurveyVC: UIViewController {
         
         
         self.distance = (x)
+        self.heightStoreValue = Float(x)
         lbl_Distance.center = setUISliderThumbValueWithLabel(slider: sender)
         switch self.currentValue {
         case 1:
             if !isSwitchOn{
-                self.heightStoreValue = Float(x)
+              
                 lbl_Distance.setTitle("\(x) CM", for: .normal)
             }
             else {
@@ -716,7 +734,7 @@ class SurveyVC: UIViewController {
                     }
                 }
             case 7 :
-                if selectedQualitiesArray.count >= 1 {
+                if selectedQualitiesArray.count >= 1  && selectedQualitiesArray.count < 5 {
                     self.previousView.isHidden = false
                     self.stackViewHeightConstraint.constant = 110
                     setUIView(caseValue: currentValue)
@@ -724,11 +742,11 @@ class SurveyVC: UIViewController {
                 }
                 
                 else {
-                    Common.showAlert(alertMessage: "Please select minimum 1", alertButtons: ["Ok"]) { (bt) in
+                    Common.showAlert(alertMessage: "Please select minimum 1 and maximum 4", alertButtons: ["Ok"]) { (bt) in
                     }
                 }
             case 8:
-                if otherPersonQualities.count >= 4{
+                if otherPersonQualities.count >= 5{
                     self.previousView.isHidden = false
                     self.stackViewHeightConstraint.constant = 110
                     setUIView(caseValue: currentValue)
@@ -931,7 +949,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
             
             personalityValue = indexPath.row + 1
         case 10:
-            
+             
             interesetedValue = indexPath.row + 1
         case 11:
             
@@ -1130,7 +1148,9 @@ extension SurveyVC {
         else {
             self.lbl_Distance.setTitle("\(heightCentimeters) INCHES", for: .normal)
         }
-        
+        func havKids(){
+            
+        }
     }
     func showFootAndInchesFromCm(_ cms: Int) -> String {
         print(cms)

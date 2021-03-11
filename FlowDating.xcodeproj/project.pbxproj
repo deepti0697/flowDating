@@ -48,17 +48,7 @@
 		F2562D7525C2BE0C0061A6C6 /* VC_Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2562D7425C2BE0C0061A6C6 /* VC_Messages.swift */; };
 		F2562D9E25C2C6670061A6C6 /* MatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2562D9D25C2C6670061A6C6 /* MatchesVC.swift */; };
 		F2562DA325C2C6BD0061A6C6 /* MatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2562DA225C2C6BD0061A6C6 /* MatchesTableViewCell.swift */; };
-		F25C2F1625F0990F007D3F39 /* image00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F25C2F0B25F0990F007D3F39 /* image00.jpg */; };
-		F25C2F1725F0990F007D3F39 /* image01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F25C2F0C25F0990F007D3F39 /* image01.jpg */; };
-		F25C2F1825F0990F007D3F39 /* image03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F25C2F0D25F0990F007D3F39 /* image03.jpg */; };
-		F25C2F1925F0990F007D3F39 /* image02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F25C2F0E25F0990F007D3F39 /* image02.jpg */; };
-		F25C2F1A25F0990F007D3F39 /* tutorial.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F25C2F0F25F0990F007D3F39 /* tutorial.pdf */; };
-		F25C2F1B25F0990F007D3F39 /* image06.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F25C2F1025F0990F007D3F39 /* image06.jpg */; };
-		F25C2F1C25F0990F007D3F39 /* image07.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F25C2F1125F0990F007D3F39 /* image07.jpg */; };
-		F25C2F1D25F0990F007D3F39 /* image05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F25C2F1225F0990F007D3F39 /* image05.jpg */; };
-		F25C2F1E25F0990F007D3F39 /* image04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F25C2F1325F0990F007D3F39 /* image04.jpg */; };
-		F25C2F1F25F0990F007D3F39 /* image09.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F25C2F1425F0990F007D3F39 /* image09.jpg */; };
-		F25C2F2025F0990F007D3F39 /* image08.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F25C2F1525F0990F007D3F39 /* image08.jpg */; };
+		F25FCCAA25FA3B0E00ECDAE9 /* TeleportionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25FCCA925FA3B0E00ECDAE9 /* TeleportionViewController.swift */; };
 		F281D33E25C7C5D500546B6F /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F281D33D25C7C5D500546B6F /* FilterCollectionViewCell.swift */; };
 		F281D39825C8126200546B6F /* VC_Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F281D39725C8125F00546B6F /* VC_Setting.swift */; };
 		F28F44F725C1271300C283FA /* CompleteProfile1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28F44F625C1271300C283FA /* CompleteProfile1VC.swift */; };
@@ -158,17 +148,7 @@
 		F2562D7425C2BE0C0061A6C6 /* VC_Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VC_Messages.swift; sourceTree = "<group>"; };
 		F2562D9D25C2C6670061A6C6 /* MatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesVC.swift; sourceTree = "<group>"; };
 		F2562DA225C2C6BD0061A6C6 /* MatchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesTableViewCell.swift; sourceTree = "<group>"; };
-		F25C2F0B25F0990F007D3F39 /* image00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image00.jpg; sourceTree = "<group>"; };
-		F25C2F0C25F0990F007D3F39 /* image01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image01.jpg; sourceTree = "<group>"; };
-		F25C2F0D25F0990F007D3F39 /* image03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image03.jpg; sourceTree = "<group>"; };
-		F25C2F0E25F0990F007D3F39 /* image02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image02.jpg; sourceTree = "<group>"; };
-		F25C2F0F25F0990F007D3F39 /* tutorial.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = tutorial.pdf; sourceTree = "<group>"; };
-		F25C2F1025F0990F007D3F39 /* image06.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image06.jpg; sourceTree = "<group>"; };
-		F25C2F1125F0990F007D3F39 /* image07.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image07.jpg; sourceTree = "<group>"; };
-		F25C2F1225F0990F007D3F39 /* image05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image05.jpg; sourceTree = "<group>"; };
-		F25C2F1325F0990F007D3F39 /* image04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image04.jpg; sourceTree = "<group>"; };
-		F25C2F1425F0990F007D3F39 /* image09.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image09.jpg; sourceTree = "<group>"; };
-		F25C2F1525F0990F007D3F39 /* image08.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image08.jpg; sourceTree = "<group>"; };
+		F25FCCA925FA3B0E00ECDAE9 /* TeleportionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleportionViewController.swift; sourceTree = "<group>"; };
 		F281D33D25C7C5D500546B6F /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		F281D39725C8125F00546B6F /* VC_Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC_Setting.swift; sourceTree = "<group>"; };
 		F28F44F625C1271300C283FA /* CompleteProfile1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteProfile1VC.swift; sourceTree = "<group>"; };
@@ -339,6 +319,7 @@
 				F2562CE625C27E040061A6C6 /* CompleteypuProfileVC4.swift */,
 				F281D39725C8125F00546B6F /* VC_Setting.swift */,
 				F21427E125E38899002FA931 /* PermissionViewController.swift */,
+				F25FCCA925FA3B0E00ECDAE9 /* TeleportionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -346,7 +327,6 @@
 		F23178A825BE901E00F4F78A /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				F25C2F0A25F0990F007D3F39 /* resource */,
 				F2E0869425EFBED9000B6346 /* CustomTapCardView.swift */,
 				F252DB6925D6458C0023AA42 /* Validate.swift */,
 				F252DB6E25D645E80023AA42 /* Validation.swift */,
@@ -411,24 +391,6 @@
 				F2562D9D25C2C6670061A6C6 /* MatchesVC.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		F25C2F0A25F0990F007D3F39 /* resource */ = {
-			isa = PBXGroup;
-			children = (
-				F25C2F0B25F0990F007D3F39 /* image00.jpg */,
-				F25C2F0C25F0990F007D3F39 /* image01.jpg */,
-				F25C2F0D25F0990F007D3F39 /* image03.jpg */,
-				F25C2F0E25F0990F007D3F39 /* image02.jpg */,
-				F25C2F0F25F0990F007D3F39 /* tutorial.pdf */,
-				F25C2F1025F0990F007D3F39 /* image06.jpg */,
-				F25C2F1125F0990F007D3F39 /* image07.jpg */,
-				F25C2F1225F0990F007D3F39 /* image05.jpg */,
-				F25C2F1325F0990F007D3F39 /* image04.jpg */,
-				F25C2F1425F0990F007D3F39 /* image09.jpg */,
-				F25C2F1525F0990F007D3F39 /* image08.jpg */,
-			);
-			path = resource;
 			sourceTree = "<group>";
 		};
 		F2A5311D25C4134B00E02054 /* Detail Page */ = {
@@ -583,7 +545,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F231796B25BED2A600F4F78A /* sf_ui_text_semibold.ttf in Resources */,
-				F25C2F2025F0990F007D3F39 /* image08.jpg in Resources */,
 				F2F847B525C1717A00DC1340 /* TinderbottomView.xib in Resources */,
 				F231796725BED2A300F4F78A /* sf_ui_display_medium.ttf in Resources */,
 				F231796325BED29F00F4F78A /* sf_ui_display_semibold.ttf in Resources */,
@@ -593,23 +554,13 @@
 				F231795725BED29400F4F78A /* sf_ui_display_light.ttf in Resources */,
 				F231795325BED29000F4F78A /* sf_ui_display_bold.ttf in Resources */,
 				F231794F25BED28B00F4F78A /* sf_compact_display_semibold.ttf in Resources */,
-				F25C2F1D25F0990F007D3F39 /* image05.jpg in Resources */,
 				F231794B25BED28800F4F78A /* sf_compact_display_regular.ttf in Resources */,
-				F25C2F1925F0990F007D3F39 /* image02.jpg in Resources */,
 				F2F847AB25C1713700DC1340 /* SwipeView.xib in Resources */,
-				F25C2F1825F0990F007D3F39 /* image03.jpg in Resources */,
-				F25C2F1E25F0990F007D3F39 /* image04.jpg in Resources */,
 				F2AF8FF125D5417000DF76AC /* GoogleService-Info.plist in Resources */,
 				F231784725BE82A400F4F78A /* LaunchScreen.storyboard in Resources */,
-				F25C2F1A25F0990F007D3F39 /* tutorial.pdf in Resources */,
-				F25C2F1725F0990F007D3F39 /* image01.jpg in Resources */,
 				F2A5311F25C4135C00E02054 /* ImageViewPage.xib in Resources */,
 				F231784425BE82A400F4F78A /* Assets.xcassets in Resources */,
-				F25C2F1C25F0990F007D3F39 /* image07.jpg in Resources */,
 				F231784225BE82A300F4F78A /* Main.storyboard in Resources */,
-				F25C2F1B25F0990F007D3F39 /* image06.jpg in Resources */,
-				F25C2F1625F0990F007D3F39 /* image00.jpg in Resources */,
-				F25C2F1F25F0990F007D3F39 /* image09.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,6 +760,7 @@
 				F2F8478B25C16AC900DC1340 /* TinderCard.swift in Sources */,
 				F21427E225E38899002FA931 /* PermissionViewController.swift in Sources */,
 				F2562D1D25C28F7D0061A6C6 /* InchargeImageCollectionViewCell.swift in Sources */,
+				F25FCCAA25FA3B0E00ECDAE9 /* TeleportionViewController.swift in Sources */,
 				F28F44F725C1271300C283FA /* CompleteProfile1VC.swift in Sources */,
 				F2A5312425C4136000E02054 /* ImageViewPage.swift in Sources */,
 				F2F847FD25C17D8100DC1340 /* ServiceClass.swift in Sources */,
@@ -994,7 +946,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FlowDating/FlowDating.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Arun Goyal (6AAGKA6J8D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = FlowDating/Info.plist;
@@ -1021,7 +973,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FlowDating/FlowDating.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Arun Goyal (6AAGKA6J8D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = FlowDating/Info.plist;

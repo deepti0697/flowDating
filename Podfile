@@ -20,6 +20,10 @@ pod 'FacebookLogin'
 
 pod 'FacebookShare'
 
+pod 'GooglePlaces'
+pod 'GooglePlacePicker'
+pod 'GoogleMaps'
+
 pod 'AlamofireImage'
 pod 'SwiftyJSON'
 pod 'SVProgressHUD'

@@ -11,6 +11,8 @@ import AVFoundation
 import IQKeyboardManagerSwift
 import Firebase
 import FirebaseMessaging
+import GoogleMaps
+import GooglePlaces
 @UIApplicationMain
  class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -25,6 +27,8 @@ import FirebaseMessaging
     var selectedVC : UINavigationController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        GMSPlacesClient.provideAPIKey("AIzaSyBe2m3BWawVp5q4maj3Q1_PmH0cYrhvrvY")
+        GMSServices.provideAPIKey("AIzaSyBe2m3BWawVp5q4maj3Q1_PmH0cYrhvrvY")
         self.window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
@@ -62,7 +66,7 @@ import FirebaseMessaging
     }
     else if AppHelper.getStringForKey(ServiceKeys.profile_Screen) == "2" {
         let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-        let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile1VC") as! CompleteProfile1VC
+        let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile2VC") as! CompleteProfile2VC
         let nv4 = UINavigationController(rootViewController: vc1)
 //        vc1.backBtnOutlt.isHidden = true
         self.window?.rootViewController = nv4
@@ -70,7 +74,7 @@ import FirebaseMessaging
     }
     else {
             let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-            let vc1 = storyBoard.instantiateViewController(withIdentifier: "CompleteProfile1VC") as! CompleteProfile1VC
+            let vc1 = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
             let nv4 = UINavigationController(rootViewController: vc1)
 
             self.window?.rootViewController = nv4

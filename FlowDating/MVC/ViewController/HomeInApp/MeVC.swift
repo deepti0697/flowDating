@@ -32,7 +32,7 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         self.navigationController?.popViewController(animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        getUserProfileApi()
         self.navigationController?.navigationBar.isHidden = true
       
         imgProfile.contentMode =  UIView.ContentMode.scaleToFill
@@ -100,9 +100,17 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         else if indexPath.row == 0 {
             openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
                 vc.isComingFromRegistration = false
-                vc.profileDataAvaialable =   self.profileData
+//                vc.profileDataAvaialable =   self.profileData
     //            vc.backButtonOutlt.isHidden = false
             }
+        }
+        else if indexPath.row == 2 {
+            openViewController(controller: TeleportionViewController.self, storyBoard: .homeStoryboard) { (vc) in
+//                vc.isComingFromRegistration = false
+//                vc.profileData =   self.profileData
+    //            vc.backButtonOutlt.isHidden = false
+            }
+            
         }
        else if indexPath.row == 1{
         openViewController(controller: CompleteProfile2VC.self, storyBoard: .mainStoryBoard) { (vc) in

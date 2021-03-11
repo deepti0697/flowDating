@@ -46,12 +46,21 @@ class CompleteProfile2VC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
 //        let json =    AppHelper.getJSON(ServiceKeys.saveUser)
 //           self.profileData = GetUserProfile(fromJson:json)
-        if profileData.prefrence != nil {
+        if profileData.prefrence?.min_age != nil {
             let minAge =  Int(profileData.prefrence?.min_age ?? "")
             let maxAge = Int(profileData.prefrence?.max_age ?? "")
 
             self.ageRangeSlider.selectedMinValue = CGFloat(minAge ?? 0)
                 self.ageRangeSlider.selectedMaxValue = CGFloat(maxAge ?? 0)
+            if profileData.prefrence?.interested_in == "female" {
+                femaleSelected()
+            }
+            else if profileData.prefrence?.interested_in == "male" {
+                maleSelected()
+            }
+            else{
+                bothSelected()
+            }
         }
        
         print(ageRangeSlider.minValue,ageRangeSlider.maxValue)
@@ -138,46 +147,18 @@ class CompleteProfile2VC: UIViewController {
     
     
     @IBAction func bothAction(_ sender: Any) {
-        genderSelected = 2
-        bothBtn.setImage(#imageLiteral(resourceName: "male-and-female-gender-symbols-1"), for: .normal)
-        femaleBtn.setImage(#imageLiteral(resourceName: "woman"), for: .normal)
-        bothBtn.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
-        bothBtn.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
-        femaleBtn.layer.borderColor = UIColor.lightGray.cgColor
-        femaleBtn.setTitleColor(.lightGray, for: .normal)
-        maleBtn.layer.borderColor = UIColor.lightGray.cgColor
-        maleBtn.setTitleColor(.lightGray, for: .normal)
-        maleBtn.setImage(#imageLiteral(resourceName: "man-1"), for: .normal)
+   bothSelected()
         
     }
     @IBAction func maleAction(_ sender: UIButton) {
-        genderSelected = 1
-//        sender.selectedbtn()
-        sender.setImage(#imageLiteral(resourceName: "man"), for: .normal)
-        femaleBtn.setImage(#imageLiteral(resourceName: "woman"), for: .normal)
-        sender.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
-        sender.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
-        femaleBtn.layer.borderColor = UIColor.lightGray.cgColor
-        femaleBtn.setTitleColor(.lightGray, for: .normal)
-        bothBtn.layer.borderColor = UIColor.lightGray.cgColor
-        bothBtn.setTitleColor(.lightGray, for: .normal)
-        bothBtn.setImage(#imageLiteral(resourceName: "male-and-female-gender-symbols"), for: .normal)
+      maleSelected()
 //        femaleBtn.normalbtn()
         
     }
    
     @IBAction func femaleAction(_ sender: UIButton) {
 //        sender.selectedbtn()
-        genderSelected  = 0
-        maleBtn.setImage(#imageLiteral(resourceName: "man-1"), for: .normal)
-        sender.setImage(#imageLiteral(resourceName: "woman-2"), for: .normal)
-        sender.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
-        sender.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
-        maleBtn.layer.borderColor = UIColor.lightGray.cgColor
-        maleBtn.setTitleColor(.lightGray, for: .normal)
-        bothBtn.layer.borderColor = UIColor.lightGray.cgColor
-        bothBtn.setTitleColor(.lightGray, for: .normal)
-        bothBtn.setImage(#imageLiteral(resourceName: "male-and-female-gender-symbols"), for: .normal)
+       femaleSelected()
 //        maleBtn.normalbtn()
     }
     
@@ -253,6 +234,44 @@ class CompleteProfile2VC: UIViewController {
             }
         })
     
+    }
+    func maleSelected(){
+        genderSelected = 1
+//        sender.selectedbtn()
+        maleBtn.setImage(#imageLiteral(resourceName: "man"), for: .normal)
+        femaleBtn.setImage(#imageLiteral(resourceName: "woman"), for: .normal)
+        maleBtn.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+        maleBtn.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
+        femaleBtn.layer.borderColor = UIColor.lightGray.cgColor
+        femaleBtn.setTitleColor(.lightGray, for: .normal)
+        bothBtn.layer.borderColor = UIColor.lightGray.cgColor
+        bothBtn.setTitleColor(.lightGray, for: .normal)
+        bothBtn.setImage(#imageLiteral(resourceName: "male-and-female-gender-symbols"), for: .normal)
+    }
+    func femaleSelected()
+    {
+        genderSelected  = 0
+        maleBtn.setImage(#imageLiteral(resourceName: "man-1"), for: .normal)
+        femaleBtn.setImage(#imageLiteral(resourceName: "woman-2"), for: .normal)
+        femaleBtn.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+        femaleBtn.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
+        maleBtn.layer.borderColor = UIColor.lightGray.cgColor
+        maleBtn.setTitleColor(.lightGray, for: .normal)
+        bothBtn.layer.borderColor = UIColor.lightGray.cgColor
+        bothBtn.setTitleColor(.lightGray, for: .normal)
+        bothBtn.setImage(#imageLiteral(resourceName: "male-and-female-gender-symbols"), for: .normal)
+    }
+    func bothSelected(){
+        genderSelected = 2
+        bothBtn.setImage(#imageLiteral(resourceName: "male-and-female-gender-symbols-1"), for: .normal)
+        femaleBtn.setImage(#imageLiteral(resourceName: "woman"), for: .normal)
+        bothBtn.setTitleColor(UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1), for: .normal)
+        bothBtn.layer.borderColor = UIColor(red: 148/255, green: 51/255, blue: 203/255, alpha: 1).cgColor
+        femaleBtn.layer.borderColor = UIColor.lightGray.cgColor
+        femaleBtn.setTitleColor(.lightGray, for: .normal)
+        maleBtn.layer.borderColor = UIColor.lightGray.cgColor
+        maleBtn.setTitleColor(.lightGray, for: .normal)
+        maleBtn.setImage(#imageLiteral(resourceName: "man-1"), for: .normal)
     }
 
 }

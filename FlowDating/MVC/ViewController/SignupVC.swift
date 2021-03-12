@@ -19,6 +19,7 @@ class SignupVC: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
     var latitude = 0.0
     var longitude = 0.0
     let locationManager = CLLocationManager()
@@ -79,7 +80,7 @@ class SignupVC: UIViewController {
     }
     
     @IBAction func signupAction(_ sender: Any) {
-        if Validate.shared.validateLogin(vc: self) {
+       
             if ( txt_mobile.text?.count)! >= 7  {
                 self.otpLogin()
             }
@@ -90,7 +91,7 @@ class SignupVC: UIViewController {
                
             }
           
-        }
+        
     }
     @IBAction func faceBookloginAction(_ sender: Any) {
         SocialLoginHelper.shared.handleLogInWithFacebookButtonPress()
@@ -146,7 +147,7 @@ class SignupVC: UIViewController {
     func otpLogin(){
         var params =  [String : Any]()
        
-        params["email"]  = self.txt_email.text ?? ""
+//        params["email"]  = self.txt_email.text ?? ""
         params["mobile"] = "91-\(self.txt_mobile.text ?? "")"
         AppManager.init().hudShow()
         ServiceClass.sharedInstance.hitServiceForSignupOTPSend(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
@@ -158,7 +159,7 @@ class SignupVC: UIViewController {
                 self.openViewController(controller: OtpScreen.self, storyBoard: .mainStoryBoard) { (vc) in
 
                     vc.isComingFromLogin = false
-                    vc.email = self.txt_email.text ?? ""
+//                    vc.email = self.txt_email.text ?? ""
                     vc.otp = otp
                     vc.mobile = self.txt_mobile.text ?? ""
                 }
@@ -202,7 +203,7 @@ extension SignupVC {
                 if user.profile_complete == "1"{
                     self.openViewController(controller: CompleteProfile1VC.self, storyBoard: .mainStoryBoard) { (vc) in
                         vc.isComingFromRegistration = true
-                        vc.backButtonOutlt.isHidden = true
+//                        vc.backButtonOutlt.isHidden = true
                     }
                 }
                 else {

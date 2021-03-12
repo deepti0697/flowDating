@@ -35,7 +35,7 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         getUserProfileApi()
         self.navigationController?.navigationBar.isHidden = true
       
-        imgProfile.contentMode =  UIView.ContentMode.scaleToFill
+//        imgProfile.contentMode =  UIView.ContentMode.Aspe
         //loctaion.text = user
 //        imgProfile.sd_setImage(with: URL.init(string: user.image ?? ""), completed: nil)
 //        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
@@ -45,7 +45,7 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-         guard let getTag = sender.view?.tag else { return }
+//         guard let getTag = sender.view?.tag else { return }
 //       let user = getUser()
 //
 //     let storyboard = UIStoryboard(name: "TabStoryboard", bundle: nil)
@@ -58,6 +58,10 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBAction func action_edit(_ sender: Any) {
         openViewController(controller: MultiplePictureUploadVC.self, storyBoard: .mainStoryBoard) { (vc) in
             vc.isComingFromRegistration = false
+          
+                vc.getDataProfile =   self.profileData
+    //            vc.backButtonOutlt.isHidden = false
+            
 //            vc.backButtonOutlt.isHidden = false
         }
 
@@ -204,7 +208,7 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
               
 //             let json =    AppHelper.getJSON(ServiceKeys.saveUser)
                 self.profileData = GetUserProfile(fromJson:getData)
-                
+              
 //                Ser.kAppDelegate.user?.saveUser(userData)
 //                AppHelper.saveUser(user)
 //                Constants.kAppDelegate.user = user
@@ -226,4 +230,5 @@ class MeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
         })
     }
+ 
 }

@@ -15,6 +15,10 @@ import UIKit
 import SwiftyJSON
 class HomeVC: ViewController {
     
+    var iscomingFromCompleteProfile4 = true
+        
+    
+    var surveyPop:SurveypopUPView?
     @IBOutlet weak var switchOutlt: UISwitch!
     @IBOutlet weak var bottomViewC: UIView!
     @IBOutlet weak var curveView: UIView!
@@ -63,6 +67,11 @@ class HomeVC: ViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+        if iscomingFromCompleteProfile4 {
+            poploanInfoView()
+        }
+         
+        
 //        self.tabBarController?.hidesBottomBarWhenPushed = true
         //        self.valueArray.removeAll()
 //        if !comingfromDetail {
@@ -70,6 +79,29 @@ class HomeVC: ViewController {
         
     }
     
+    fileprivate func poploanInfoView() {
+        
+        if surveyPop == nil {
+            //               self.view.isUserInteractionEnabled = false
+            surveyPop = Bundle.main.loadNibNamed("SurveypopUPView", owner: self, options: nil)?.first as? SurveypopUPView
+            surveyPop?.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
+          
+            surveyPop?.closeButtonClouser = { [weak self] in
+                if let strongSelf = self {
+                    strongSelf.removeChangePassView()
+                }
+            }
+            appdelegate.window?.addSubview(surveyPop!)
+           
+        }
+        
+    }
+    fileprivate func removeChangePassView() {
+      
+        surveyPop?.removeFromSuperview()
+        surveyPop = nil
+        
+    }
     
     @IBAction func openProfileVC(_ sender: Any) {
         openViewController(controller: MeVC.self, storyBoard: .homeStoryboard) { (vc) in
@@ -86,6 +118,7 @@ class HomeVC: ViewController {
             //            let ids = value.num
             openViewController(controller: CandidateDetailsVC.self, storyBoard: .homeStoryboard) { (vc) in
                 vc.userDetail = self.tempArray[0]
+                vc.delegate = self
                 vc.isComingFromHome = true
             }
            

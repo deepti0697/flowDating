@@ -111,26 +111,7 @@ class AppHelper: NSObject, UIAlertViewDelegate{
     }
    
     //MARK: AlertView
-    class func showALertWithTag(_ tag:Int, title:String, message:String?,delegate:AnyObject!, cancelButtonTitle:String?, otherButtonTitle:String?)
-    {
-        let alert = UIAlertView()
-        
-        alert.tag = tag
-        alert.title = title
-        alert.message = message
-        alert.delegate = delegate
-        if (cancelButtonTitle != nil)
-        {
-            alert.addButton(withTitle: cancelButtonTitle!)
-        }
-        if (otherButtonTitle != nil)
-        {
-            alert.addButton(withTitle: otherButtonTitle!)
-        }
-        
-        alert.show()
-        
-    }
+    
     
     //MARK:- Add Delay
     class func delay(_ delay:Double, closure:@escaping ()->()) {

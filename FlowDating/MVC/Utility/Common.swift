@@ -173,6 +173,8 @@ class Common: NSObject {
             transform = transform.rotated(by: CGFloat(-Double.pi/2))
         case .up, .upMirrored:
             break
+        @unknown default:
+           break
         }
         
         switch image.imageOrientation {
@@ -184,6 +186,8 @@ class Common: NSObject {
             transform = transform.scaledBy(x: -1, y: 1)
         case .up, .down, .left, .right:
             break
+        @unknown default:
+           break
         }
         
         // Now we draw the underlying CGImage into a new context, applying the transform

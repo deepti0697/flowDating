@@ -18,6 +18,7 @@ protocol  userActions {
 }
 class CandidateDetailsVC: UIViewController {
     
+    @IBOutlet weak var saveAndCancelMatchOutlt: UIButton!
     var isComingFromHome = true
     @IBOutlet weak var hurtBtnOutlt: UIButton!
     @IBOutlet weak var superLikeBtnOutlt: UIButton!
@@ -176,10 +177,12 @@ class CandidateDetailsVC: UIViewController {
         self.navigationController?.navigationBar.isHidden  = true
         setup()
         if isComingFromHome {
+            self.saveAndCancelMatchOutlt.setTitle("Save User", for: .normal)
             self.closeBtnOutlt.isHidden = false
             self.hurtBtnOutlt.isHidden = false
         }
         else  {
+            self.saveAndCancelMatchOutlt.setTitle("Cancel Match", for: .normal)
             self.closeBtnOutlt.isHidden = true
             self.hurtBtnOutlt.isHidden = true
         }

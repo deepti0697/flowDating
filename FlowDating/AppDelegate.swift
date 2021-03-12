@@ -76,7 +76,7 @@ import GooglePlaces
             let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
             let vc1 = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
             let nv4 = UINavigationController(rootViewController: vc1)
-
+        vc1.iscomingFromCompleteProfile4 = false
             self.window?.rootViewController = nv4
             self.window?.makeKeyAndVisible()
         }
@@ -127,7 +127,9 @@ import GooglePlaces
         nv1.tabBarItem = UITabBarItem.init(title: "first", image: UIImage(named: "Hurt")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "SHurt")?.withRenderingMode(.alwaysOriginal))
         nv2.tabBarItem = UITabBarItem.init(title: "secnds", image: UIImage(named: "Chat")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "SChat")?.withRenderingMode(.alwaysOriginal))
         nv3.tabBarItem = UITabBarItem.init(title: "third", image: UIImage(named: "Saved")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "SSaved")?.withRenderingMode(.alwaysOriginal))
-        nv4.tabBarItem = UITabBarItem.init(title: "fourth", image: UIImage(named: "Mystery")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "SMystery")?.withRenderingMode(.alwaysOriginal))
+        nv4.tabBarItem = UITabBarItem.init(title: "fourth", image: UIImage(named: "Mystery"), selectedImage: UIImage(named: "SMystery"))
+        
+//        nv4.tabBarItem = UITabBarItem.init(title: "fourth", image: UIImage(named: "Mystery")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "SMystery")?.withRenderingMode(.alwaysOriginal))
         
         // nv3.tabBarItem.isEnabled = false
         
@@ -181,7 +183,7 @@ import GooglePlaces
         let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
         let vc1 = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
         let nv4 = UINavigationController(rootViewController: vc1)
-        
+        vc1.iscomingFromCompleteProfile4 = false
         self.window?.rootViewController = nv4
         self.window?.makeKeyAndVisible()
     }

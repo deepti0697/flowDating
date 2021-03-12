@@ -343,7 +343,7 @@ class TinderCard: UIView {
     func rightClickAction() {
         
          imageViewStatus.image = UIImage (named: "checkbox")
-         overLayImage.image = #imageLiteral(resourceName: "SHurt")
+         overLayImage.image = #imageLiteral(resourceName: "Group -14")
         let finishPoint = CGPoint(x: center.x + frame.size.width * 2, y: center.y)
         imageViewStatus.alpha = 0.5
         overLayImage.alpha = 0.5
@@ -362,7 +362,7 @@ class TinderCard: UIView {
     // left click action
     func leftClickAction() {
         imageViewStatus.image = UIImage (named: "checkbox")
-        overLayImage.image = #imageLiteral(resourceName: "SHurt")
+        overLayImage.image = #imageLiteral(resourceName: "Group -11")
        
 //        imageViewStatus.image = UIImage (named: "remove")
 //

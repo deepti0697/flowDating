@@ -581,6 +581,14 @@ class ServiceClass: NSObject {
             self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
         }
     
+    func hitServicesForLogOut(_ params:[String : Any], completion:@escaping completionBlockType)
+        {
+            let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.log_Out)"
+           
+        let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+            self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+        }
+    
 func hitServiceForGetSavedUser(_ params:[String : Any], completion:@escaping completionBlockType)
     {
         let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.getSavedUser)"

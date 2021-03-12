@@ -248,8 +248,7 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
             otpLogin(pamaters: params)
         }
         else {
-            params["email"] =  self.email
-      
+         
             params["social_type"] = "phone"
             params["social_id"] =  ""
         
@@ -376,7 +375,6 @@ class OtpScreen: UIViewController,UITextFieldDelegate {
     func ResendotpSignup(){
         var params =  [String : Any]()
        
-        params["email"]  = self.email
         params["mobile"] = "91-\(self.mobile)"
         AppManager.init().hudShow()
         ServiceClass.sharedInstance.hitServiceForSignupOTPSend(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in

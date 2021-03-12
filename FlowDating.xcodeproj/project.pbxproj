@@ -60,6 +60,12 @@
 		F2A5317B25C436B800E02054 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5317A25C436B800E02054 /* MeVC.swift */; };
 		F2AF8FF125D5417000DF76AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2AF8FF025D5417000DF76AC /* GoogleService-Info.plist */; };
 		F2E0869525EFBED9000B6346 /* CustomTapCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E0869425EFBED9000B6346 /* CustomTapCardView.swift */; };
+		F2E5A42125FB824B0073173D /* SurveypopUPView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E5A42025FB824B0073173D /* SurveypopUPView.xib */; };
+		F2E5A42625FB82680073173D /* SurveypopUPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E5A42525FB82680073173D /* SurveypopUPView.swift */; };
+		F2E8F87C25FB2E47003D5B31 /* TermAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E8F87B25FB2E47003D5B31 /* TermAndConditionViewController.swift */; };
+		F2E8F88125FB2E55003D5B31 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E8F88025FB2E54003D5B31 /* AboutUsViewController.swift */; };
+		F2E8F88325FB2E5D003D5B31 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E8F88225FB2E5D003D5B31 /* PrivacyPolicyViewController.swift */; };
+		F2E8F88525FB2E6F003D5B31 /* FQsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E8F88425FB2E6F003D5B31 /* FQsViewController.swift */; };
 		F2F43DF025C2D2D20007C3BC /* VC_Interests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F43DEF25C2D2D20007C3BC /* VC_Interests.swift */; };
 		F2F8472C25C13C7E00DC1340 /* SurveyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F8472B25C13C7E00DC1340 /* SurveyVC.swift */; };
 		F2F8478B25C16AC900DC1340 /* TinderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F8478A25C16AC900DC1340 /* TinderCard.swift */; };
@@ -161,6 +167,12 @@
 		F2AF8FF025D5417000DF76AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2AF8FF525D5440F00DF76AC /* FlowDating.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlowDating.entitlements; sourceTree = "<group>"; };
 		F2E0869425EFBED9000B6346 /* CustomTapCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTapCardView.swift; sourceTree = "<group>"; };
+		F2E5A42025FB824B0073173D /* SurveypopUPView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveypopUPView.xib; sourceTree = "<group>"; };
+		F2E5A42525FB82680073173D /* SurveypopUPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveypopUPView.swift; sourceTree = "<group>"; };
+		F2E8F87B25FB2E47003D5B31 /* TermAndConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermAndConditionViewController.swift; sourceTree = "<group>"; };
+		F2E8F88025FB2E54003D5B31 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		F2E8F88225FB2E5D003D5B31 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		F2E8F88425FB2E6F003D5B31 /* FQsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FQsViewController.swift; sourceTree = "<group>"; };
 		F2F43DEF25C2D2D20007C3BC /* VC_Interests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VC_Interests.swift; sourceTree = "<group>"; };
 		F2F8472B25C13C7E00DC1340 /* SurveyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyVC.swift; sourceTree = "<group>"; };
 		F2F8478A25C16AC900DC1340 /* TinderCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderCard.swift; sourceTree = "<group>"; };
@@ -305,6 +317,8 @@
 		F23178A725BE901100F4F78A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F2E5A41C25FB80D10073173D /* ReusableView */,
+				F2E8F87725FB2CCA003D5B31 /* WebView */,
 				F2A5311D25C4134B00E02054 /* Detail Page */,
 				F2562D7025C2BADD0061A6C6 /* Home */,
 				F2562D1425C28F200061A6C6 /* MultiplePictureUploadVC.swift */,
@@ -407,6 +421,26 @@
 			children = (
 			);
 			path = TapCardView;
+			sourceTree = "<group>";
+		};
+		F2E5A41C25FB80D10073173D /* ReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				F2E5A42025FB824B0073173D /* SurveypopUPView.xib */,
+				F2E5A42525FB82680073173D /* SurveypopUPView.swift */,
+			);
+			path = ReusableView;
+			sourceTree = "<group>";
+		};
+		F2E8F87725FB2CCA003D5B31 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				F2E8F88425FB2E6F003D5B31 /* FQsViewController.swift */,
+				F2E8F88225FB2E5D003D5B31 /* PrivacyPolicyViewController.swift */,
+				F2E8F88025FB2E54003D5B31 /* AboutUsViewController.swift */,
+				F2E8F87B25FB2E47003D5B31 /* TermAndConditionViewController.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		F2F8479325C16AE900DC1340 /* HomeInApp */ = {
@@ -559,6 +593,7 @@
 				F2AF8FF125D5417000DF76AC /* GoogleService-Info.plist in Resources */,
 				F231784725BE82A400F4F78A /* LaunchScreen.storyboard in Resources */,
 				F2A5311F25C4135C00E02054 /* ImageViewPage.xib in Resources */,
+				F2E5A42125FB824B0073173D /* SurveypopUPView.xib in Resources */,
 				F231784425BE82A400F4F78A /* Assets.xcassets in Resources */,
 				F231784225BE82A300F4F78A /* Main.storyboard in Resources */,
 			);
@@ -728,6 +763,7 @@
 				F23178CC25BEA3DB00F4F78A /* Extension.swift in Sources */,
 				F2A5312925C4145100E02054 /* DetailsCell.swift in Sources */,
 				F2562D1525C28F210061A6C6 /* MultiplePictureUploadVC.swift in Sources */,
+				F2E8F87C25FB2E47003D5B31 /* TermAndConditionViewController.swift in Sources */,
 				F252DB7E25D64A9C0023AA42 /* CustomView.swift in Sources */,
 				F2F43DF025C2D2D20007C3BC /* VC_Interests.swift in Sources */,
 				F231783F25BE82A300F4F78A /* ViewController.swift in Sources */,
@@ -749,8 +785,11 @@
 				F2F847EB25C17A5100DC1340 /* ExploreModel.swift in Sources */,
 				F2562D9E25C2C6670061A6C6 /* MatchesVC.swift in Sources */,
 				F2F847BA25C1717F00DC1340 /* TinderbottomView.swift in Sources */,
+				F2E5A42625FB82680073173D /* SurveypopUPView.swift in Sources */,
 				F24A17FF25E52B0B00C3ADC8 /* SocialLoginHelper.swift in Sources */,
+				F2E8F88325FB2E5D003D5B31 /* PrivacyPolicyViewController.swift in Sources */,
 				F252DB7425D645F40023AA42 /* AppHelper.swift in Sources */,
+				F2E8F88525FB2E6F003D5B31 /* FQsViewController.swift in Sources */,
 				F231793D25BECAB800F4F78A /* OtpScreen.swift in Sources */,
 				F2F847C125C1761900DC1340 /* HomeVC.swift in Sources */,
 				F231797D25BED8D800F4F78A /* UIViewExtension.swift in Sources */,
@@ -761,6 +800,7 @@
 				F21427E225E38899002FA931 /* PermissionViewController.swift in Sources */,
 				F2562D1D25C28F7D0061A6C6 /* InchargeImageCollectionViewCell.swift in Sources */,
 				F25FCCAA25FA3B0E00ECDAE9 /* TeleportionViewController.swift in Sources */,
+				F2E8F88125FB2E55003D5B31 /* AboutUsViewController.swift in Sources */,
 				F28F44F725C1271300C283FA /* CompleteProfile1VC.swift in Sources */,
 				F2A5312425C4136000E02054 /* ImageViewPage.swift in Sources */,
 				F2F847FD25C17D8100DC1340 /* ServiceClass.swift in Sources */,

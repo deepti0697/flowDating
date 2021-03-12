@@ -35,6 +35,7 @@ class CompleteypuProfileVC4: UIViewController {
 //        openViewController(controller: HomeVC.self, storyBoard: .mainStoryBoard) { (vc) in
 //
 //        }
+     
         appdelegate.setHomeVC()
     }
     

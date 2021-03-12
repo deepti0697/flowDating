@@ -139,6 +139,7 @@ class SurveyVC: UIViewController {
             else {
                 isKidsWant = true
             }
+            
             if profileDataAvaialable?.surveyQuestion?.kids_in_future == "0" {
                 doYouWantKids = 0
             }
@@ -468,6 +469,7 @@ class SurveyVC: UIViewController {
         case 2:
             self.kidsView.isHidden = true
             self.scaleView.isHidden = false
+            
             self.topLabel.text = "What is your honest opinion on how good looking you are?"
             self.minimumSliderBottomLbl.text = "1"
             self.maximumSliderBottomValue.text = "10"
@@ -705,7 +707,12 @@ class SurveyVC: UIViewController {
     }
     @IBAction func nextButtonAction(_ sender: Any) {
         if currentValue >= 12 {
-            appdelegate.setHomeVC()
+            let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
+            let vc1 = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            let nv4 = UINavigationController(rootViewController: vc1)
+            vc1.iscomingFromCompleteProfile4 = true
+            appdelegate.window?.rootViewController = nv4
+            appdelegate.window?.makeKeyAndVisible()
         }
         else {
           
@@ -734,7 +741,7 @@ class SurveyVC: UIViewController {
                     }
                 }
             case 7 :
-                if selectedQualitiesArray.count >= 1  && selectedQualitiesArray.count < 5 {
+                if selectedQualitiesArray.count >= 1  && selectedQualitiesArray.count < 4 {
                     self.previousView.isHidden = false
                     self.stackViewHeightConstraint.constant = 110
                     setUIView(caseValue: currentValue)
@@ -999,7 +1006,7 @@ extension SurveyVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColle
                 params["height_type"] = "inches"
 //                params["height"] = self.inchValue
             }
-            params["height"] = self.distance
+            params["height"] = self.heightStoreValue
          
             return params
         case 2:

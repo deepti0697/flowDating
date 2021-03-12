@@ -85,7 +85,11 @@
     //
     //    Dev url
     //
-     
+        static let webBaseURl = "https://73.octaldevs.com/flawdating/public/content?type="
+        static let FAQUrl = "faq"
+        static let privacyPolicy = "privacy_policy"
+        static let aboutUS  = "about"
+        static let termAndCondition = "terms_service"
         static let home = "explore"
         static let regiser_New_User = "/auth/register"
         static let check_Mobile_Registered = "/auth/email-mobile-exists"
@@ -109,6 +113,7 @@
         static let likeDisLikeUser = "users_like_dislike"
      static let getSavedUser = "saved_users"
         static let get_Profile = "profile_details"
+        static let log_Out = "sing_out"
 //
         
     }

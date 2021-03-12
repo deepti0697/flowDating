@@ -176,17 +176,17 @@ class AppManager {
 
 public extension Dictionary {
     
-    public static func +<Key, Value> (lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
+    static func +<Key, Value> (lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
         var result = lhs
         rhs.forEach{ result[$0] = $1 }
         return result
     }
     
-    public mutating func merge(with dictionary: [Key: Value]) {
+    mutating func merge(with dictionary: [Key: Value]) {
         dictionary.forEach { updateValue($1, forKey: $0) }
     }
     
-    public func merged(with dictionary: [Key: Value]) -> [Key: Value] {
+    func merged(with dictionary: [Key: Value]) -> [Key: Value] {
         var dict = self
         dict.merge(with: dictionary)
         return dict

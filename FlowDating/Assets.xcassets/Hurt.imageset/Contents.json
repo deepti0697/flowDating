@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "matchesunselect@2x-1.png",
+      "filename" : "heartgray@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "matchesunselect@3x.png",
+      "filename" : "heartgray@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

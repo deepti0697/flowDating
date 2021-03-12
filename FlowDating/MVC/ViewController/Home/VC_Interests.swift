@@ -9,20 +9,26 @@
 import Foundation
 import AVFoundation
 import UIKit
-
+import SwiftyJSON
 
 class VC_Interests: UIViewController {
   
-  
+    var getMysteryUSer = [AllUserData](){
+        didSet {
+            collectionView_InterestingUser.reloadData()
+        }
+    }
     @IBOutlet weak var collectionView_InterestingUser: UICollectionView!
     
     var interestInfoArr = NSMutableArray()
+    
     var selectedIndexForView = 0
     var type = "ViewedMe"
     override func viewWillAppear(_ animated: Bool) {
         UiLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        apiCallInterest()
+    
+        MysteryUser()
     }
     
     override func viewDidLoad() {
@@ -51,7 +57,7 @@ class VC_Interests: UIViewController {
         collectionView_InterestingUser.dataSource = self
 
     }
-
+   
 }
 
 //MARK:- collection view delegates and data source
@@ -67,14 +73,14 @@ extension VC_Interests:UICollectionViewDelegate,UICollectionViewDataSource,UICol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
-                return 20
+        return getMysteryUSer.count
        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell_InterestingUser", for: indexPath) as! Cell_InterestingUser
-          
+        cell.configureCell(response: getMysteryUSer[indexPath.row])
 
             return cell
         }
@@ -99,6 +105,7 @@ class Cell_InterestingUser: UICollectionViewCell {
     @IBOutlet weak var lbl_AddressAnddistance: UILabel!
     @IBOutlet weak var lbl_ImagesCount: UILabel!
     
+    @IBOutlet weak var matchedLbl: UILabel!
     @IBOutlet weak var img_Shadow: UIImageView!
     private var gradient: CAGradientLayer!
 
@@ -122,6 +129,9 @@ class Cell_InterestingUser: UICollectionViewCell {
 //        layerg.frame = CGRect(x: 0.0, y: 0.0, width: self.img_Profile.frame.size.width, height: self.img_Profile.frame.size.height)
     }
     
+    func configureCell(response:AllUserData){
+        matchedLbl.text =   "\(response.compatibility ?? "") Matched"
+    }
 //    func gradientLayer(){
 //        gradient = CAGradientLayer()
 //        gradient.frame = self.bounds
@@ -139,8 +149,32 @@ class Cell_InterestingUser: UICollectionViewCell {
 
 extension VC_Interests{
     
-   func apiCallInterest() {
-    
-    
-}
+    func MysteryUser(){
+        let param = [String:Any]()
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServiceForGetSavedUser(param, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                self.getMysteryUSer.removeAll()
+                for obj in parseData["data"].arrayValue {
+                   let comObj = AllUserData(fromJson:obj)
+                    self.getMysteryUSer.append(comObj)
+                }
+              
+                }
+                
+             else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
+    }
+
 }
